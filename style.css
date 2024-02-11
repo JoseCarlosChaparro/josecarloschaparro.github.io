@@ -1,0 +1,14 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+#portrait{
+    border-radius: 10%;
+}
+
+.icon-square {
+    width: 3rem;
+    height: 3rem;
+    border-radius: .75rem;
+  }
+  
