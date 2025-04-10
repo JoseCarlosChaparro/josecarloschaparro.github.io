@@ -11,4 +11,16 @@ body{
     height: 3rem;
     border-radius: .75rem;
   }
-  
+
+#portrait {
+    border-radius: 10%;
+    transition: transform 0.3s ease-in-out;
+}
+
+#portrait:hover {
+    transform: scale(1.05);
+}
+
+.img-fluid:hover {
+    transform: scale(1.05);
+}
