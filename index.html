@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8">
@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="dark bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
     <!-- Header / Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all">
@@ -148,7 +148,7 @@
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <!-- Text Content -->
                 <div class="space-y-6 scroll-reveal">
                     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -158,9 +158,40 @@
                     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                         Currently co-leading development of a <span class="font-semibold">Smart Cooler Grab-and-Go system</span> using cutting-edge computer vision and deep learning technologies. I've architected the complete ML pipeline from data annotation to cloud deployment.
                     </p>
+                </div>
+
+                <!-- Right Column: Languages + Stats -->
+                <div class="space-y-6 scroll-reveal">
+                    <!-- Languages Card -->
+                    <div class="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Languages</h3>
+                        <div class="space-y-4">
+                            <!-- Spanish -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Spanish</span>
+                                    <span class="text-gray-600 dark:text-gray-400">Native</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
+                                </div>
+                            </div>
+
+                            <!-- English -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">English</span>
+                                    <span class="text-gray-600 dark:text-gray-400">Professional</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full w-11/12 bg-gradient-to-r from-primary to-secondary"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Highlight Stats -->
-                    <div class="grid grid-cols-2 gap-6 pt-6">
+                    <div class="grid grid-cols-2 gap-6">
                         <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                             <div class="text-3xl font-bold text-primary mb-2">2+</div>
                             <div class="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
@@ -168,34 +199,6 @@
                         <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                             <div class="text-3xl font-bold text-secondary mb-2">10+</div>
                             <div class="text-sm text-gray-600 dark:text-gray-400">Technologies</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Languages Card -->
-                <div class="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 p-8 rounded-2xl scroll-reveal">
-                    <h3 class="text-2xl font-bold mb-6">Languages</h3>
-                    <div class="space-y-4">
-                        <!-- Spanish -->
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-semibold">Spanish</span>
-                                <span class="text-gray-600 dark:text-gray-400">Native</span>
-                            </div>
-                            <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                <div class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
-                            </div>
-                        </div>
-
-                        <!-- English -->
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-semibold">English</span>
-                                <span class="text-gray-600 dark:text-gray-400">Professional</span>
-                            </div>
-                            <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                <div class="h-full w-11/12 bg-gradient-to-r from-primary to-secondary"></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,8 +219,10 @@
 
             <!-- Timeline Container -->
             <div class="relative">
-                <!-- Vertical Line (hidden on mobile) -->
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-secondary"></div>
+                <!-- Vertical Line Background (hidden on mobile) -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-300 dark:bg-gray-700"></div>
+                <!-- Vertical Line Animated (hidden on mobile) -->
+                <div id="timeline-line" class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 timeline-line bg-gradient-to-b from-primary to-secondary"></div>
 
                 <!-- Experience Item 1 - Moneta Market (Right side) -->
                 <div class="mb-12 md:mb-16 relative scroll-reveal">
@@ -228,7 +233,7 @@
                         <!-- Content -->
                         <div class="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-primary">
                             <!-- Date Badge -->
-                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-primary rounded-full flex items-center justify-center timeline-dot text-primary">
                                 <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
                             </div>
 
@@ -280,7 +285,7 @@
                         <!-- Content -->
                         <div class="md:col-start-1 bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-secondary md:border-l-0 md:border-r-4 md:text-right">
                             <!-- Date Badge -->
-                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-secondary rounded-full flex items-center justify-center timeline-dot text-secondary">
                                 <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
                             </div>
 

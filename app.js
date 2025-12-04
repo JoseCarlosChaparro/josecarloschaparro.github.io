@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeNavigation();
     initializeTypingAnimation();
     initializeScrollAnimations();
+    initializeTimelineAnimations();
     initializeLoadingScreen();
     initializeBackToTop();
 });
@@ -185,8 +186,8 @@ function initializeTypingAnimation() {
 
 function initializeScrollAnimations() {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -203,9 +204,46 @@ function initializeScrollAnimations() {
     const animateElements = document.querySelectorAll('.scroll-reveal');
 
     animateElements.forEach((el, index) => {
-        el.style.transitionDelay = `${index * 0.1}s`;
+        el.style.transitionDelay = `${index * 0.05}s`;
         observer.observe(el);
     });
+}
+
+// ============================================
+// TIMELINE ANIMATIONS
+// ============================================
+
+function initializeTimelineAnimations() {
+    const timelineLine = document.getElementById('timeline-line');
+    const timelineDots = document.querySelectorAll('.timeline-dot');
+    const experienceSection = document.getElementById('experience');
+
+    if (!timelineLine || !experienceSection) return;
+
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate the line
+                timelineLine.classList.add('active');
+
+                // Animate dots with stagger
+                timelineDots.forEach((dot, index) => {
+                    setTimeout(() => {
+                        dot.classList.add('active');
+                    }, 400 + (index * 300));
+                });
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(experienceSection);
 }
 
 // ============================================

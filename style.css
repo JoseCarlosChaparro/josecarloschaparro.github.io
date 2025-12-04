@@ -70,8 +70,8 @@ html {
 /* Scroll reveal animations */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .scroll-reveal.revealed {
@@ -95,4 +95,52 @@ html {
 /* Dark mode button styles */
 .dark .btn-secondary {
     @apply border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900;
+}
+
+/* Timeline animations */
+.timeline-line {
+    height: 0;
+    transition: height 0.8s ease-out;
+}
+
+.timeline-line.active {
+    height: 100%;
+}
+
+.timeline-dot {
+    transform: scale(0);
+    transition: transform 0.5s ease-out;
+}
+
+.timeline-dot.active {
+    transform: scale(1);
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+.timeline-dot.active::before {
+    opacity: 0.3;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.1;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
 }
