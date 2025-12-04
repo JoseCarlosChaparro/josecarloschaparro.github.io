@@ -1,240 +1,713 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Ch. Portfolio</title>
-    <!-- Icon -->
+    <meta name="description" content="José Chaparro - Computer Science Engineer & Full-Stack Developer specializing in AI & Computer Vision">
+    <meta name="keywords" content="José Chaparro, AI Engineer, Computer Vision, Full-Stack Developer, Machine Learning, Python, C#, AWS, TensorFlow, PyTorch">
+    <meta name="author" content="José Chaparro">
+    <title>José Chaparro | AI & Computer Vision Engineer</title>
+
+    <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicons/favicon.ico">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- CSS Stylehseet -->
-    <link href="style.css" rel="stylesheet" />
-    <!-- Open Sans Font -->
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <!-- Header Section -->
-    <section id="header" class="sticky-top">
+<body class="dark bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <h1 class="navbar-brand p-2">José Chaparro </h1>
-                <button class="navbar-toggler me-5" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" aria-current="page" href="#who">Who</a>
-                        <a class="nav-link" href="#work">Work</a>
-                        <a class="nav-link" href="#what">What</a>
-                        <a class="nav-link" href="#where">Where</a>
-                    </div>
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#hero" class="text-xl md:text-2xl font-bold">
+                    José <span class="text-primary">Chaparro</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                    <li><a href="#experience" class="hover:text-primary transition-colors">Experience</a></li>
+                    <li><a href="#skills" class="hover:text-primary transition-colors">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-primary transition-colors">Projects</a></li>
+                    <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+
+                <!-- Dark Mode Toggle + Mobile Menu Button -->
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+                        <!-- Icon will be injected by JavaScript -->
+                    </button>
+                    <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle mobile menu" aria-expanded="false">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
                 </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <ul class="flex flex-col space-y-2">
+                    <li><a href="#about" class="block py-2 hover:text-primary transition-colors">About</a></li>
+                    <li><a href="#experience" class="block py-2 hover:text-primary transition-colors">Experience</a></li>
+                    <li><a href="#skills" class="block py-2 hover:text-primary transition-colors">Skills</a></li>
+                    <li><a href="#projects" class="block py-2 hover:text-primary transition-colors">Projects</a></li>
+                    <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
             </div>
         </nav>
+    </header>
 
-    </section>
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-20 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <!-- Text Content -->
+                <div class="order-2 md:order-1 text-center md:text-left scroll-reveal">
+                    <p class="text-primary dark:text-blue-400 font-semibold mb-4 text-lg">
+                        Hello, I'm
+                    </p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                        José Chaparro
+                    </h1>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-6 min-h-[3rem]">
+                        <span id="typed-text"></span>
+                        <span class="animate-pulse">|</span>
+                    </div>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
+                        Computer Science Engineer & Full-Stack Developer specializing in AI & Computer Vision
+                    </p>
 
-
-    <!-- Who am I Section -->
-    <section id="who">
-        <div class="container px-4 py-5 mt-5">
-            <div class="row">
-                <div class="col-12 col-lg-8 col-md-11">
-                    <h2 class="display-5 fw-bold text-body-emphasis">Who Am I?</h2>
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#projects" class="btn-primary">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            Get In Touch
+                        </a>
+                    </div>
                 </div>
 
+                <!-- Profile Image -->
+                <div class="order-1 md:order-2 flex justify-center scroll-reveal">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                        <img src="./assets/images/Jose picture 1-1.JPG" alt="José Chaparro - AI & Computer Vision Engineer" class="relative rounded-full w-64 h-64 sm:w-80 sm:h-80 object-cover shadow-2xl ring-4 ring-white dark:ring-gray-800" loading="eager">
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-4 ">
-                    <img id="portrait" class=" mb-4 img-fluid " src="./assets/images/Jose picture 1-1.JPG"
-                        alt="picture of José Chaparro">
-                </div>
-                <div class="col-12 col-lg-4 col-md-7 text-left ">
-                    <p class="lead mb-4 text-wrap">Computer Science Engineer who is programming and problem-solving oriented. 
-                        Has good programming and software development skill, and teamwork and communication skill. Can overcome barriers, adapt to new environments quickly, and continue to learn.</p>
-                </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
             </div>
         </div>
     </section>
 
-    
-    <!-- Current Job Section -->
-    <section id="work" class="container py-5">
-        <div class="col-12 col-lg-8 col-md-11">
-            <h2 class="display-5 fw-bold text-body-emphasis">What I Do at Work?</h2>
-        </div>
-        <p class="card-text">
-          Over 1 year of hands-on experience in enterprise software development, delivering robust solutions with .NET (Visual Basic), DevExpress and SQL Server.
-        </p>    
-        <div class="row">
-          <!-- Card 1 -->
-          <div class="col-md-6 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Software Development</h5>
-                <p class="card-text">
-                  Working with .NET using Visual Basic to build, maintain, and optimize key modules of the enterprise software platform.
-                </p>
-              </div>
+    <!-- About Me Section -->
+    <section id="about" class="py-20 px-4 bg-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                    About <span class="text-primary">Me</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="col-md-6 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">SQL Database Design</h5>
-                <p class="card-text">
-                  Designing and implementing SQL databases, including stored procedures, performance tuning, and automating tasks with scheduled jobs.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="col-md-6 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Collaboration & Methodology</h5>
-                <p class="card-text">
-                  Collaborating with cross-functional teams under a customized Scrum methodology, using Microsoft Team Foundation for version control and workflow management.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Card 4 -->
-          <div class="col-md-6 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Support & Training</h5>
-                <p class="card-text">
-                  Offering training and technical support related to best practices in software development and cybersecurity, helping teams stay aligned with internal standards.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      
 
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6 scroll-reveal">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Computer Science Engineer with a passion for <span class="font-semibold text-primary">Artificial Intelligence</span> and <span class="font-semibold text-secondary">Computer Vision</span>. I combine strong programming skills with problem-solving abilities to create innovative solutions.
+                    </p>
+
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Currently co-leading development of a <span class="font-semibold">Smart Cooler Grab-and-Go system</span> using cutting-edge computer vision and deep learning technologies. I've architected the complete ML pipeline from data annotation to cloud deployment.
+                    </p>
+
+                    <!-- Highlight Stats -->
+                    <div class="grid grid-cols-2 gap-6 pt-6">
+                        <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <div class="text-3xl font-bold text-primary mb-2">2+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <div class="text-3xl font-bold text-secondary mb-2">10+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Technologies</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages Card -->
+                <div class="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 p-8 rounded-2xl scroll-reveal">
+                    <h3 class="text-2xl font-bold mb-6">Languages</h3>
+                    <div class="space-y-4">
+                        <!-- Spanish -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Spanish</span>
+                                <span class="text-gray-600 dark:text-gray-400">Native</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                <div class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
+                            </div>
+                        </div>
+
+                        <!-- English -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">English</span>
+                                <span class="text-gray-600 dark:text-gray-400">Professional</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                <div class="h-full w-11/12 bg-gradient-to-r from-primary to-secondary"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                    Work <span class="text-primary">Experience</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="relative">
+                <!-- Vertical Line (hidden on mobile) -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-secondary"></div>
+
+                <!-- Experience Item 1 - Moneta Market (Right side) -->
+                <div class="mb-12 md:mb-16 relative scroll-reveal">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <!-- Empty space for timeline alignment -->
+                        <div class="hidden md:block"></div>
+
+                        <!-- Content -->
+                        <div class="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-primary">
+                            <!-- Date Badge -->
+                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
+                            </div>
+
+                            <div class="text-primary font-semibold mb-2">August 2024 - Present</div>
+                            <h3 class="text-2xl font-bold mb-2">Software Developer</h3>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4">Moneta Market LLC</h4>
+
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Co-leading Smart Cooler Grab-and-Go system using Computer Vision and Deep Learning</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Built complete ML pipeline: Label Studio, AWS S3, PostgreSQL on AWS Lightsail</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Developed Flask prototype for real-time object detection testing</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Architected scalable cloud infrastructure for deployment</span>
+                                </li>
+                            </ul>
+
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-2 mt-6">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Computer Vision</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">AWS</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Flask</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 - Grupo Roga (Left side) -->
+                <div class="mb-12 md:mb-16 relative scroll-reveal">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <!-- Content -->
+                        <div class="md:col-start-1 bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-secondary md:border-l-0 md:border-r-4 md:text-right">
+                            <!-- Date Badge -->
+                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
+                            </div>
+
+                            <div class="text-secondary font-semibold mb-2">2023 - August 2024</div>
+                            <h3 class="text-2xl font-bold mb-2">CORE Software Developer</h3>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4">Grupo Roga</h4>
+
+                            <ul class="space-y-3">
+                                <li class="flex items-start md:flex-row-reverse md:text-right">
+                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Developed ERP modules using .NET/VB, DevExpress, and SQL Server</span>
+                                </li>
+                                <li class="flex items-start md:flex-row-reverse md:text-right">
+                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Built geolocation tracking system with Azure Maps API</span>
+                                </li>
+                                <li class="flex items-start md:flex-row-reverse md:text-right">
+                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Database design, stored procedures, and performance tuning</span>
+                                </li>
+                                <li class="flex items-start md:flex-row-reverse md:text-right">
+                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Collaborated using Scrum methodology with TFS version control</span>
+                                </li>
+                            </ul>
+
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-2 mt-6 md:justify-end">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">.NET</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">SQL Server</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Azure</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Scrum</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                    Technical <span class="text-primary">Skills</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Category 1: Languages -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                        </svg>
+                        <h3 class="text-xl font-bold">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">C#</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Python</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">JavaScript</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">TypeScript</span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Frontend -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
+                        </svg>
+                        <h3 class="text-xl font-bold">Frontend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Next.js</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">React</span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Backend -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"/>
+                        </svg>
+                        <h3 class="text-xl font-bold">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">.NET</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">NestJS</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">FastAPI</span>
+                    </div>
+                </div>
+
+                <!-- Category 4: AI/CV (Highlighted) -->
+                <div class="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 p-6 rounded-2xl hover:shadow-xl transition-all group border-2 border-primary/20 scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
+                        </svg>
+                        <h3 class="text-xl font-bold">AI & Computer Vision</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">OpenCV</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">TensorFlow</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">PyTorch</span>
+                    </div>
+                </div>
+
+                <!-- Category 5: Databases -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+                        </svg>
+                        <h3 class="text-xl font-bold">Databases</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">SQL Server</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <!-- Category 6: Tools -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
+                        </svg>
+                        <h3 class="text-xl font-bold">Tools & Cloud</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Docker</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Linux</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Git</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Projects Section -->
-    <section id="what">
-        <div class="container px-4 py-5 mt-5">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <h2 class="display-5 fw-bold text-body-emphasis">What I've Done?</h2>
-                </div>
-
+    <section id="projects" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                    Featured <span class="text-primary">Projects</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
-            <div class="row justify-content-between">
-                <div class="col-12  col-md-5 text-left mt-2">
-                    <h3 class="fw-bold" >Fine-tunning Stable Disfussion</h3>
-                    <a href="https://www.canva.com/design/DAFTMfU1h64/lsz3cp48acsOA0-ZfHQXCA/edit?utm_content=DAFTMfU1h64&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"><img id="portrait" class=" mb-4 img-fluid "
-                        src="./assets/images/Stable difussion josecarlos otuput example.png"
-                        alt="picture of José Chaparro"></a>
-                    <p class="lead mb-4 text-wrap">Fine-tunned Stable difussion model with custom dataset to make
-                        pictures of myself.</p>
-                </div>
 
-                <div class="col-12 col-md-5 text-left mt-2">
-                    <h3 class="fw-bold">Galaga For Everyone</h3>
-                    <a href="https://github.com/JoseCarlosChaparro/GalagaForEveryone"><img id="portrait" class=" mb-4 img-fluid " src="./assets/images/galagaforeveryone.jpg"
-                        alt="picture of José Chaparro"></a>
-                    <p class="lead mb-4 text-wrap">Unreal Engine game controlled with an android smartphone's
-                        accelerometer connected with a Processing Language interface using HTTP requests.
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Smart Cooler -->
+                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                            </svg>
+                        </div>
+                        <!-- Status Badge -->
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full">In Progress</span>
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                            Smart Cooler Grab-and-Go
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            ML pipeline with computer vision for automated retail. Built with Label Studio, AWS, and real-time object detection.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Computer Vision</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">AWS</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Flask</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">PostgreSQL</span>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
+                            Contact for Details
+                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2: Stable Diffusion -->
+                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
+                    <!-- Project Image -->
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="./assets/images/Stable difussion josecarlos otuput example.png" alt="Stable Diffusion Fine-tuning Output" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy">
+                        <!-- Status Badge -->
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">Completed</span>
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                            Fine-Tuning Stable Diffusion
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Custom dataset training for personalized image generation. Explored deep learning model fine-tuning techniques.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">AI</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Deep Learning</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Python</span>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="https://www.canva.com/design/DAFTMfU1h64/lsz3cp48acsOA0-ZfHQXCA/edit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
+                            View Presentation
+                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3: Galaga For Everyone -->
+                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
+                    <!-- Project Image -->
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="./assets/images/galagaforeveryone.jpg" alt="Galaga For Everyone Game" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy">
+                        <!-- Status Badge -->
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">Completed</span>
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                            Galaga For Everyone
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Unreal Engine game controlled via smartphone accelerometer using Processing and HTTP requests.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Unreal Engine</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Processing</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Android</span>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="https://github.com/JoseCarlosChaparro/GalagaForEveryone" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
+                            View on GitHub
+                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Section Header -->
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                    Get In <span class="text-primary">Touch</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Interested in collaborating on AI/CV projects or discussing opportunities? Let's connect!
+                </p>
+            </div>
+
+            <!-- Contact Cards Grid -->
+            <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Email Card -->
+                <a href="mailto:jc_chaparro@hotmail.com" class="group bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
+                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-semibold mb-1">Email</h3>
+                            <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
+                                jc_chaparro@hotmail.com
+                            </p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- LinkedIn Card -->
+                <a href="https://www.linkedin.com/in/jos%C3%A9-chaparro-56a3211b9/" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
+                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-semibold mb-1">LinkedIn</h3>
+                            <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
+                                José Chaparro
+                            </p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- GitHub Card -->
+                <a href="https://github.com/JoseCarlosChaparro" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
+                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-semibold mb-1">GitHub</h3>
+                            <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
+                                JoseCarlosChaparro
+                            </p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Phone Card -->
+                <a href="tel:+526142152635" class="group bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
+                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-semibold mb-1">Phone</h3>
+                            <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
+                                +52 614-215-2635
+                            </p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Copyright -->
+                <div class="text-center md:text-left">
+                    <p class="text-sm">
+                        © 2025 José Chaparro. All rights reserved.
                     </p>
                 </div>
+
+                <!-- Footer Navigation -->
+                <nav>
+                    <ul class="flex flex-wrap justify-center gap-6 text-sm">
+                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#experience" class="hover:text-primary transition-colors">Experience</a></li>
+                        <li><a href="#skills" class="hover:text-primary transition-colors">Skills</a></li>
+                        <li><a href="#projects" class="hover:text-primary transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Back to Top -->
+                <button id="back-to-top" class="bg-primary hover:bg-secondary text-white p-3 rounded-full transition-all hover:scale-110 opacity-0 pointer-events-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+                    </svg>
+                </button>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <section id="where">
-        <div class="container px-4 py-5 mt-5">
-            <div class="row">
-                <div class="col-12 col-lg-8 col-md-11">
-                    <h2 class="display-5 fw-bold text-body-emphasis">Where to find me?</h2>
-                </div>
-            </div>
-            <div class="container" id="hanging-icons">
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-4 py-5">
-                    <div class="col d-flex align-items-start">
-                        <div
-                            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <img src="./assets/icons/icons8-phone-50.png" alt="telephone icon" height="30">
-                        </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">+52 614-215-2635</h3>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-                        <div
-                            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <img src="./assets/icons/email-svgrepo-com.svg" alt="email icon" height="22">
-                        </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">jc_chaparro@hotmail.com</h3>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-                        <div
-                            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <img src="./assets/icons/github-mark-white.svg" alt="Github White Logo" height="30">
-                        </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis"><a
-                                    href="https://github.com/JoseCarlosChaparro">JoseCarlosChaparro</a></h3>
-
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-                        <div
-                            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <img src="./assets/icons/icons8-linkedin.svg" alt="linkedin logo" height="38">
-                        </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis"><a
-                                    href="https://www.linkedin.com/in/jos%C3%A9-chaparro-56a3211b9/">José Chaparro</a>
-                            </h3>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        </div>
-
-    </section>
-
-    <!-- Footer section -->
-    <section>
-        <div class="container">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-              <p class="col-md-4 mb-0 text-body-secondary">© 2025 Jose Ch.</p>
-          
-              <ul class="nav col-md-4 justify-content-end">
-                <li class="nav-item"><a href="#who" class="nav-link px-2 text-body-secondary">Who</a></li>
-                <li class="nav-item"><a href="#work" class="nav-link px-2 text-body-secondary">Work</a></li>
-                <li class="nav-item"><a href="#what" class="nav-link px-2 text-body-secondary">What</a></li>
-                <li class="nav-item"><a href="#where" class="nav-link px-2 text-body-secondary">Where</a></li>
-              </ul>
-            </footer>
-          </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <script src="app.js"></script>
 </body>
 
 </html>

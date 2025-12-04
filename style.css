@@ -1,26 +1,98 @@
-body{
-    font-family: 'Open Sans', sans-serif;
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
-#portrait{
-    border-radius: 10%;
+/* Loading animation overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
 }
 
-.icon-square {
-    width: 3rem;
-    height: 3rem;
-    border-radius: .75rem;
-  }
-
-#portrait {
-    border-radius: 10%;
-    transition: transform 0.3s ease-in-out;
+.loading-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
-#portrait:hover {
-    transform: scale(1.05);
+/* Spinner */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(37, 99, 235, 0.2);
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
-.img-fluid:hover {
-    transform: scale(1.05);
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7c3aed;
+}
+
+/* Scroll reveal animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Button styles using Tailwind @apply */
+.btn-primary {
+    @apply px-6 py-3 bg-primary text-white rounded-lg font-semibold
+           hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl
+           hover:scale-105 active:scale-95;
+}
+
+.btn-secondary {
+    @apply px-6 py-3 bg-transparent border-2 border-primary text-primary
+           rounded-lg font-semibold hover:bg-primary hover:text-white
+           transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95;
+}
+
+/* Dark mode button styles */
+.dark .btn-secondary {
+    @apply border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900;
 }
