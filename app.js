@@ -135,10 +135,10 @@ function initializeTypingAnimation() {
     if (!typedTextElement) return;
 
     const roles = [
-        'AI Engineer',
-        'Computer Vision Specialist',
         'Full-Stack Developer',
-        'Software Engineer'
+        'Software Engineer',
+        'Backend Specialist',
+        'AI Enthusiast'
     ];
 
     let roleIndex = 0;
