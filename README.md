@@ -1,2 +1,5 @@
-# html-portfolio
-This repository is to show my portfolio and a little bit of myself so people can know me better
+# josechaparro.com — Personal portfolio website
+
+Source code for my personal portfolio site. Built with HTML, Tailwind CSS, and vanilla JS.
+
+→ [josechaparro.com](https://josechaparro.com)
