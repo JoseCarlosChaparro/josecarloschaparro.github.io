@@ -3,8 +3,9 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Register languagechange listener before firing the event
+    // Register languagechange listeners before firing the event
     initializeTypingAnimation();
+    initializeExperienceCounter();
 
     const languageManager = new LanguageManager();
     await languageManager.init();
@@ -16,6 +17,38 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeLoadingScreen();
     initializeBackToTop();
 });
+
+// ============================================
+// EXPERIENCE COUNTER (auto-updating years)
+// ============================================
+
+function yearsSince(yyyyMm) {
+    const [year, month] = yyyyMm.split('-').map(Number);
+    const start = new Date(year, month - 1, 1);
+    const diffMs = Date.now() - start.getTime();
+    const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+    return Math.floor(years);
+}
+
+function initializeExperienceCounter() {
+    // Populate any element with data-experience-since="YYYY-MM"
+    document.querySelectorAll('[data-experience-since]').forEach(el => {
+        el.textContent = `${yearsSince(el.dataset.experienceSince)}+`;
+    });
+
+    // Replace {years} placeholder in localized strings after language load
+    document.addEventListener('languagechange', () => {
+        const sinceEl = document.querySelector('[data-experience-since]');
+        if (!sinceEl) return;
+        const years = yearsSince(sinceEl.dataset.experienceSince);
+
+        document.querySelectorAll('[data-i18n-html], [data-i18n]').forEach(el => {
+            if (el.innerHTML.includes('{years}')) {
+                el.innerHTML = el.innerHTML.replaceAll('{years}', years);
+            }
+        });
+    });
+}
 
 // ============================================
 // DARK MODE FUNCTIONALITY

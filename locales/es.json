@@ -27,7 +27,7 @@
   ],
   "about": {
     "title": "Sobre <span class=\"text-primary\">mí</span>",
-    "p1": "<span class=\"font-semibold text-primary\">Desarrollador de Software</span> con más de 2 años de experiencia en producción construyendo sistemas backend en Python y .NET, desplegando infraestructura cloud en AWS y desarrollando aplicaciones multiplataforma.",
+    "p1": "<span class=\"font-semibold text-primary\">Desarrollador de Software</span> con {years}+ años de experiencia en producción construyendo sistemas backend en Python y .NET, desplegando infraestructura cloud en AWS y desarrollando aplicaciones multiplataforma.",
     "p2": "Actualmente en <span class=\"font-semibold\">Moneta Market</span>, donde soy responsable de la arquitectura de microservicios: una plataforma de producción con 6 contenedores que integra pipelines de ML, webhooks event-driven y una app de escritorio en C#. También trabajo como consultor independiente construyendo sistemas full stack con <span class=\"font-semibold text-secondary\">React, FastAPI y PostgreSQL</span>.",
     "languages": "Idiomas",
     "spanish": "Español",
