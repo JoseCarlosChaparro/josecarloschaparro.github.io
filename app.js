@@ -2,10 +2,15 @@
 // INITIALIZATION
 // ============================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Register languagechange listener before firing the event
+    initializeTypingAnimation();
+
+    const languageManager = new LanguageManager();
+    await languageManager.init();
+
     initializeTheme();
     initializeNavigation();
-    initializeTypingAnimation();
     initializeScrollAnimations();
     initializeTimelineAnimations();
     initializeLoadingScreen();
@@ -134,50 +139,50 @@ function initializeTypingAnimation() {
 
     if (!typedTextElement) return;
 
-    const roles = [
-        'Software Developer',
-        'Backend Engineer',
-        'Systems Architect',
-        'Cloud & Infrastructure'
-    ];
-
+    let roles = [];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let typingSpeed = 100;
+    let timeoutId = null;
 
     function type() {
+        if (roles.length === 0) return;
+
         const currentRole = roles[roleIndex];
 
         if (isDeleting) {
-            // Remove characters
             typedTextElement.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
             typingSpeed = 50;
         } else {
-            // Add characters
             typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
             charIndex++;
             typingSpeed = 100;
         }
 
-        // Check if word is complete
         if (!isDeleting && charIndex === currentRole.length) {
-            // Pause before deleting
             typingSpeed = 2000;
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
-            // Move to next role
             isDeleting = false;
             roleIndex = (roleIndex + 1) % roles.length;
             typingSpeed = 500;
         }
 
-        setTimeout(type, typingSpeed);
+        timeoutId = setTimeout(type, typingSpeed);
     }
 
-    // Start typing animation
-    type();
+    // Roles are provided by languagechange event dispatched by LanguageManager
+    document.addEventListener('languagechange', ({ detail }) => {
+        if (timeoutId) clearTimeout(timeoutId);
+        roles = detail.translations.typedRoles ?? [];
+        roleIndex = 0;
+        charIndex = 0;
+        isDeleting = false;
+        typedTextElement.textContent = '';
+        type();
+    });
 }
 
 // ============================================
@@ -298,6 +303,89 @@ function initializeBackToTop() {
 // ============================================
 // UTILITY FUNCTIONS
 // ============================================
+
+// ============================================
+// LANGUAGE MANAGER
+// ============================================
+
+class LanguageManager {
+    #currentLanguage;
+    #cache = {};
+    #parser = new DOMParser();
+
+    constructor() {
+        this.#currentLanguage = localStorage.getItem('language') || 'en';
+    }
+
+    async init() {
+        await this.#applyLanguage(this.#currentLanguage);
+
+        const toggleBtn = document.getElementById('language-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => this.#toggle());
+        }
+    }
+
+    getCurrentLanguage() {
+        return this.#currentLanguage;
+    }
+
+    async #toggle() {
+        const next = this.#currentLanguage === 'en' ? 'es' : 'en';
+        await this.#applyLanguage(next);
+    }
+
+    async #applyLanguage(lang) {
+        const translations = await this.#loadLocale(lang);
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const value = this.#resolve(translations, el.dataset.i18n);
+            if (value) el.textContent = value;
+        });
+
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const value = this.#resolve(translations, el.dataset.i18nHtml);
+            if (value) this.#setHTML(el, value);
+        });
+
+        const toggleBtn = document.getElementById('language-toggle');
+        if (toggleBtn) toggleBtn.textContent = lang.toUpperCase();
+
+        document.documentElement.lang = lang;
+        localStorage.setItem('language', lang);
+        this.#currentLanguage = lang;
+
+        document.dispatchEvent(
+            new CustomEvent('languagechange', { detail: { lang, translations } })
+        );
+    }
+
+    async #loadLocale(lang) {
+        if (this.#cache[lang]) return this.#cache[lang];
+
+        try {
+            const response = await fetch(`locales/${lang}.json`);
+            const data = await response.json();
+            this.#cache[lang] = data;
+            return data;
+        } catch (error) {
+            console.error(`Error loading locale: ${lang}`, error);
+            return {};
+        }
+    }
+
+    // Parses developer-authored locale strings via DOMParser (no user input reaches here)
+    #setHTML(element, htmlString) {
+        const doc = this.#parser.parseFromString(htmlString, 'text/html');
+        element.replaceChildren(...Array.from(doc.body.childNodes));
+    }
+
+    // O(1) resolution — max 1 level deep: "category.key"
+    #resolve(obj, path) {
+        const [category, key] = path.split('.');
+        return key ? obj[category]?.[key] : obj[category];
+    }
+}
 
 // Throttle function for scroll events
 function throttle(func, limit) {

@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "subtitle": "Software Developer with expertise in backend systems, cloud infrastructure (AWS), and microservices architecture"
+  },
+  "ui": {
+    "viewWork": "View My Work",
+    "getInTouch": "Get In Touch",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "contactDetails": "Contact for Details",
+    "viewPresentation": "View Presentation",
+    "viewGitHub": "View on GitHub"
+  },
+  "typedRoles": [
+    "Software Developer",
+    "Backend Engineer",
+    "Systems Architect",
+    "Cloud & Infrastructure"
+  ],
+  "about": {
+    "title": "About <span class=\"text-primary\">Me</span>",
+    "p1": "<span class=\"font-semibold text-primary\">Software Developer</span> with 2+ years building production systems. I focus on backend architecture, cloud infrastructure on AWS, and microservices design — from database modeling and API design to deployment pipelines.",
+    "p2": "Currently at Moneta Market, where I design and operate a microservices stack on AWS (EC2, RDS, S3) using <span class=\"font-semibold\">Docker Compose</span> and Nginx as reverse proxy. I also work as an independent contractor building full-stack systems with <span class=\"font-semibold text-secondary\">React, FastAPI, and PostgreSQL</span>.",
+    "languages": "Languages",
+    "spanish": "Spanish",
+    "spanishLevel": "Native",
+    "english": "English",
+    "englishLevel": "Professional",
+    "yearsExp": "Years Experience",
+    "technologies": "Technologies"
+  },
+  "experience": {
+    "title": "Work <span class=\"text-primary\">Experience</span>",
+    "mmPeriod": "August 2025 - Present",
+    "monetaB1": "Designed and orchestrated a microservices architecture using Docker Compose, integrating Python APIs and configuring Nginx as a reverse proxy",
+    "monetaB2": "Set up deployment environments on AWS (EC2, S3, RDS), applying least-privilege IAM policies and securing credentials with AWS Secrets Manager",
+    "monetaB3": "Managed relational databases on Amazon RDS (PostgreSQL), establishing secure connections via SSH tunneling through bastion hosts",
+    "monetaB4": "Built backend services and webhooks for automated data synchronization and processing across multiple cloud containers",
+    "rogaPeriod": "March 2024 - August 2025",
+    "rogaB1": "Developed ERP modules using .NET/VB, DevExpress, and SQL Server",
+    "rogaB2": "Built geolocation tracking system with Azure Maps API",
+    "rogaB3": "Database design, stored procedures, and performance tuning",
+    "rogaB4": "Collaborated using Scrum methodology with TFS version control"
+  },
+  "skills": {
+    "title": "Technical <span class=\"text-primary\">Skills</span>",
+    "languages": "Languages",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "cloud": "Cloud & Infrastructure",
+    "databases": "Databases",
+    "tools": "Tools"
+  },
+  "projects": {
+    "title": "Featured <span class=\"text-primary\">Projects</span>",
+    "scDesc": "Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with Flask, PostgreSQL on AWS, and integrated ML capabilities.",
+    "sdDesc": "Custom dataset training for personalized image generation. Explored deep learning model fine-tuning techniques.",
+    "galagaDesc": "Unreal Engine game controlled via smartphone accelerometer using Processing and HTTP requests."
+  },
+  "contact": {
+    "title": "Get In <span class=\"text-primary\">Touch</span>",
+    "subtitle": "Looking to build backend systems, cloud infrastructure, or scalable APIs? Let's connect.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "tagline": "Software Developer · Backend & Cloud Infrastructure",
+    "copyright": "© 2026 José Chaparro. All rights reserved."
+  }
+}

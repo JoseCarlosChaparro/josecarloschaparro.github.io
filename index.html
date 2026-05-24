@@ -55,15 +55,18 @@
 
                 <!-- Desktop Navigation -->
                 <ul class="hidden md:flex space-x-8">
-                    <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
-                    <li><a href="#experience" class="hover:text-primary transition-colors">Experience</a></li>
-                    <li><a href="#skills" class="hover:text-primary transition-colors">Skills</a></li>
-                    <li><a href="#projects" class="hover:text-primary transition-colors">Projects</a></li>
-                    <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="#about" class="hover:text-primary transition-colors" data-i18n="nav.about">About</a></li>
+                    <li><a href="#experience" class="hover:text-primary transition-colors" data-i18n="nav.experience">Experience</a></li>
+                    <li><a href="#skills" class="hover:text-primary transition-colors" data-i18n="nav.skills">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-primary transition-colors" data-i18n="nav.projects">Projects</a></li>
+                    <li><a href="#contact" class="hover:text-primary transition-colors" data-i18n="nav.contact">Contact</a></li>
                 </ul>
 
                 <!-- Dark Mode Toggle + Mobile Menu Button -->
                 <div class="flex items-center gap-4">
+                    <button id="language-toggle" class="px-2.5 py-1 rounded-lg text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors border border-gray-200 dark:border-gray-700" aria-label="Toggle language">
+                        EN
+                    </button>
                     <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
                         <!-- Icon will be injected by JavaScript -->
                     </button>
@@ -78,11 +81,11 @@
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden pb-4">
                 <ul class="flex flex-col space-y-2">
-                    <li><a href="#about" class="block py-2 hover:text-primary transition-colors">About</a></li>
-                    <li><a href="#experience" class="block py-2 hover:text-primary transition-colors">Experience</a></li>
-                    <li><a href="#skills" class="block py-2 hover:text-primary transition-colors">Skills</a></li>
-                    <li><a href="#projects" class="block py-2 hover:text-primary transition-colors">Projects</a></li>
-                    <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="#about" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.about">About</a></li>
+                    <li><a href="#experience" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.experience">Experience</a></li>
+                    <li><a href="#skills" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.skills">Skills</a></li>
+                    <li><a href="#projects" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.projects">Projects</a></li>
+                    <li><a href="#contact" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -94,7 +97,7 @@
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <!-- Text Content -->
                 <div class="order-2 md:order-1 text-center md:text-left scroll-reveal">
-                    <p class="text-primary dark:text-blue-400 font-semibold mb-4 text-lg">
+                    <p class="text-primary dark:text-blue-400 font-semibold mb-4 text-lg" data-i18n="hero.greeting">
                         Hello, I'm
                     </p>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
@@ -104,16 +107,16 @@
                         <span id="typed-text"></span>
                         <span class="animate-pulse">|</span>
                     </div>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto md:mx-0" data-i18n="hero.subtitle">
                         Software Developer with expertise in backend systems, cloud infrastructure (AWS), and microservices architecture
                     </p>
 
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#projects" class="btn-primary">
+                        <a href="#projects" class="btn-primary" data-i18n="ui.viewWork">
                             View My Work
                         </a>
-                        <a href="#contact" class="btn-secondary">
+                        <a href="#contact" class="btn-secondary" data-i18n="ui.getInTouch">
                             Get In Touch
                         </a>
                     </div>
@@ -151,11 +154,11 @@
             <div class="grid md:grid-cols-2 gap-12 items-start">
                 <!-- Text Content -->
                 <div class="space-y-6 scroll-reveal">
-                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n-html="about.p1">
                         <span class="font-semibold text-primary">Software Developer</span> with 2+ years building production systems. I focus on backend architecture, cloud infrastructure on AWS, and microservices design — from database modeling and API design to deployment pipelines.
                     </p>
 
-                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n-html="about.p2">
                         Currently at Moneta Market, where I design and operate a microservices stack on AWS (EC2, RDS, S3) using <span class="font-semibold">Docker Compose</span> and Nginx as reverse proxy. I also work as an independent contractor building full-stack systems with <span class="font-semibold text-secondary">React, FastAPI, and PostgreSQL</span>.
                     </p>
                 </div>
@@ -164,13 +167,13 @@
                 <div class="space-y-6 scroll-reveal">
                     <!-- Languages Card -->
                     <div class="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 p-8 rounded-2xl">
-                        <h3 class="text-2xl font-bold mb-6">Languages</h3>
+                        <h3 class="text-2xl font-bold mb-6" data-i18n="about.languages">Languages</h3>
                         <div class="space-y-4">
                             <!-- Spanish -->
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <span class="font-semibold">Spanish</span>
-                                    <span class="text-gray-600 dark:text-gray-400">Native</span>
+                                    <span class="font-semibold" data-i18n="about.spanish">Spanish</span>
+                                    <span class="text-gray-600 dark:text-gray-400" data-i18n="about.spanishLevel">Native</span>
                                 </div>
                                 <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                                     <div class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
@@ -180,8 +183,8 @@
                             <!-- English -->
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <span class="font-semibold">English</span>
-                                    <span class="text-gray-600 dark:text-gray-400">Professional</span>
+                                    <span class="font-semibold" data-i18n="about.english">English</span>
+                                    <span class="text-gray-600 dark:text-gray-400" data-i18n="about.englishLevel">Professional</span>
                                 </div>
                                 <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                                     <div class="h-full w-11/12 bg-gradient-to-r from-primary to-secondary"></div>
@@ -194,11 +197,11 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                             <div class="text-3xl font-bold text-primary mb-2">2+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="about.yearsExp">Years Experience</div>
                         </div>
                         <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                             <div class="text-3xl font-bold text-secondary mb-2">10+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Technologies</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="about.technologies">Technologies</div>
                         </div>
                     </div>
                 </div>
@@ -212,7 +215,7 @@
             <!-- Section Header -->
             <div class="text-center mb-16 scroll-reveal">
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    Work <span class="text-primary">Experience</span>
+                    <span data-i18n-html="experience.title">Work <span class="text-primary">Experience</span></span>
                 </h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
@@ -237,7 +240,7 @@
                                 <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
                             </div>
 
-                            <div class="text-primary font-semibold mb-2">August 2025 - Present</div>
+                            <div class="text-primary font-semibold mb-2" data-i18n="experience.mmPeriod">August 2025 - Present</div>
                             <h3 class="text-2xl font-bold mb-2">Software Developer</h3>
                             <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4">Moneta Market LLC</h4>
 
@@ -246,25 +249,25 @@
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Designed and orchestrated a microservices architecture using Docker Compose, integrating Python APIs and configuring Nginx as a reverse proxy</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB1">Designed and orchestrated a microservices architecture using Docker Compose, integrating Python APIs and configuring Nginx as a reverse proxy</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Set up deployment environments on AWS (EC2, S3, RDS), applying least-privilege IAM policies and securing credentials with AWS Secrets Manager</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB2">Set up deployment environments on AWS (EC2, S3, RDS), applying least-privilege IAM policies and securing credentials with AWS Secrets Manager</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Managed relational databases on Amazon RDS (PostgreSQL), establishing secure connections via SSH tunneling through bastion hosts</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB3">Managed relational databases on Amazon RDS (PostgreSQL), establishing secure connections via SSH tunneling through bastion hosts</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Built backend services and webhooks for automated data synchronization and processing across multiple cloud containers</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB4">Built backend services and webhooks for automated data synchronization and processing across multiple cloud containers</span>
                                 </li>
                             </ul>
 
@@ -291,7 +294,7 @@
                                 <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
                             </div>
 
-                            <div class="text-secondary font-semibold mb-2">March 2024 - August 2025</div>
+                            <div class="text-secondary font-semibold mb-2" data-i18n="experience.rogaPeriod">March 2024 - August 2025</div>
                             <h3 class="text-2xl font-bold mb-2">CORE Software Developer</h3>
                             <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4">Grupo Roga</h4>
 
@@ -300,25 +303,25 @@
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Developed ERP modules using .NET/VB, DevExpress, and SQL Server</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB1">Developed ERP modules using .NET/VB, DevExpress, and SQL Server</span>
                                 </li>
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Built geolocation tracking system with Azure Maps API</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB2">Built geolocation tracking system with Azure Maps API</span>
                                 </li>
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Database design, stored procedures, and performance tuning</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB3">Database design, stored procedures, and performance tuning</span>
                                 </li>
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300">Collaborated using Scrum methodology with TFS version control</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB4">Collaborated using Scrum methodology with TFS version control</span>
                                 </li>
                             </ul>
 
@@ -342,7 +345,7 @@
             <!-- Section Header -->
             <div class="text-center mb-16 scroll-reveal">
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    Technical <span class="text-primary">Skills</span>
+                    <span data-i18n-html="skills.title">Technical <span class="text-primary">Skills</span></span>
                 </h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
@@ -355,7 +358,7 @@
                         <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
                         </svg>
-                        <h3 class="text-xl font-bold">Languages</h3>
+                        <h3 class="text-xl font-bold" data-i18n="skills.languages">Languages</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">C#</span>
@@ -371,7 +374,7 @@
                         <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
                         </svg>
-                        <h3 class="text-xl font-bold">Frontend</h3>
+                        <h3 class="text-xl font-bold" data-i18n="skills.frontend">Frontend</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Next.js</span>
@@ -386,7 +389,7 @@
                         <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"/>
                         </svg>
-                        <h3 class="text-xl font-bold">Backend</h3>
+                        <h3 class="text-xl font-bold" data-i18n="skills.backend">Backend</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">.NET</span>
@@ -403,7 +406,7 @@
                         <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/>
                         </svg>
-                        <h3 class="text-xl font-bold">Cloud & Infrastructure</h3>
+                        <h3 class="text-xl font-bold" data-i18n="skills.cloud">Cloud & Infrastructure</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">AWS</span>
@@ -420,7 +423,7 @@
                         <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
                         </svg>
-                        <h3 class="text-xl font-bold">Databases</h3>
+                        <h3 class="text-xl font-bold" data-i18n="skills.databases">Databases</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">PostgreSQL</span>
@@ -435,7 +438,7 @@
                         <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
                         </svg>
-                        <h3 class="text-xl font-bold">Tools & Cloud</h3>
+                        <h3 class="text-xl font-bold" data-i18n="skills.tools">Tools & Cloud</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Docker</span>
@@ -454,7 +457,7 @@
             <!-- Section Header -->
             <div class="text-center mb-16 scroll-reveal">
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    Featured <span class="text-primary">Projects</span>
+                    <span data-i18n-html="projects.title">Featured <span class="text-primary">Projects</span></span>
                 </h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
@@ -472,7 +475,7 @@
                         </div>
                         <!-- Status Badge -->
                         <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full">In Progress</span>
+                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProgress">In Progress</span>
                         </div>
                     </div>
 
@@ -481,7 +484,7 @@
                         <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                             Smart Cooler Grab-and-Go
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.scDesc">
                             Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with Flask, PostgreSQL on AWS, and integrated ML capabilities.
                         </p>
 
@@ -495,7 +498,7 @@
 
                         <!-- CTA Button -->
                         <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            Contact for Details
+                            <span data-i18n="ui.contactDetails">Contact for Details</span>
                             <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
                             </svg>
@@ -510,7 +513,7 @@
                         <img src="./assets/images/Stable difussion josecarlos otuput example.png" alt="Stable Diffusion Fine-tuning Output" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy">
                         <!-- Status Badge -->
                         <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">Completed</span>
+                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.completed">Completed</span>
                         </div>
                     </div>
 
@@ -519,7 +522,7 @@
                         <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                             Fine-Tuning Stable Diffusion
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.sdDesc">
                             Custom dataset training for personalized image generation. Explored deep learning model fine-tuning techniques.
                         </p>
 
@@ -532,7 +535,7 @@
 
                         <!-- CTA Button -->
                         <a href="https://www.canva.com/design/DAFTMfU1h64/lsz3cp48acsOA0-ZfHQXCA/edit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            View Presentation
+                            <span data-i18n="ui.viewPresentation">View Presentation</span>
                             <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
                             </svg>
@@ -547,7 +550,7 @@
                         <img src="./assets/images/galagaforeveryone.jpg" alt="Galaga For Everyone Game" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy">
                         <!-- Status Badge -->
                         <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">Completed</span>
+                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.completed">Completed</span>
                         </div>
                     </div>
 
@@ -556,7 +559,7 @@
                         <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                             Galaga For Everyone
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.galagaDesc">
                             Unreal Engine game controlled via smartphone accelerometer using Processing and HTTP requests.
                         </p>
 
@@ -569,7 +572,7 @@
 
                         <!-- CTA Button -->
                         <a href="https://github.com/JoseCarlosChaparro/GalagaForEveryone" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            View on GitHub
+                            <span data-i18n="ui.viewGitHub">View on GitHub</span>
                             <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
                             </svg>
@@ -586,11 +589,11 @@
             <!-- Section Header -->
             <div class="text-center mb-16 scroll-reveal">
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    Get In <span class="text-primary">Touch</span>
+                    <span data-i18n-html="contact.title">Get In <span class="text-primary">Touch</span></span>
                 </h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
                 <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Looking to build backend systems, cloud infrastructure, or scalable APIs? Let's connect.
+                    <span data-i18n="contact.subtitle">Looking to build backend systems, cloud infrastructure, or scalable APIs? Let's connect.</span>
                 </p>
             </div>
 
@@ -607,7 +610,7 @@
                             </div>
                         </div>
                         <div class="ml-4 flex-1 min-w-0">
-                            <h3 class="text-lg font-semibold mb-1">Email</h3>
+                            <h3 class="text-lg font-semibold mb-1" data-i18n="contact.email">Email</h3>
                             <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors break-words">
                                 jc_chaparro@hotmail.com
                             </p>
@@ -629,7 +632,7 @@
                             </div>
                         </div>
                         <div class="ml-4 flex-1">
-                            <h3 class="text-lg font-semibold mb-1">LinkedIn</h3>
+                            <h3 class="text-lg font-semibold mb-1" data-i18n="contact.linkedin">LinkedIn</h3>
                             <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
                                 José Chaparro
                             </p>
@@ -651,7 +654,7 @@
                             </div>
                         </div>
                         <div class="ml-4 flex-1">
-                            <h3 class="text-lg font-semibold mb-1">GitHub</h3>
+                            <h3 class="text-lg font-semibold mb-1" data-i18n="contact.github">GitHub</h3>
                             <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">
                                 JoseCarlosChaparro
                             </p>
@@ -678,10 +681,10 @@
                     <h3 class="text-xl font-bold mb-2">
                         José <span class="text-primary">Chaparro</span>
                     </h3>
-                    <p class="text-sm text-gray-400">
+                    <p class="text-sm text-gray-400" data-i18n="footer.tagline">
                         Software Developer · Backend & Cloud Infrastructure
                     </p>
-                    <p class="text-xs text-gray-500 mt-2">
+                    <p class="text-xs text-gray-500 mt-2" data-i18n="footer.copyright">
                         © 2026 José Chaparro. All rights reserved.
                     </p>
                 </div>
