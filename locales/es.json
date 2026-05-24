@@ -27,28 +27,34 @@
   ],
   "about": {
     "title": "Sobre <span class=\"text-primary\">mí</span>",
-    "p1": "<span class=\"font-semibold text-primary\">Desarrollador de Software</span> con más de 2 años construyendo sistemas en producción. Me enfoco en arquitectura backend, infraestructura cloud en AWS y diseño de microservicios — desde modelado de bases de datos y diseño de APIs hasta pipelines de despliegue.",
-    "p2": "Actualmente en Moneta Market, donde diseño y opero una arquitectura de microservicios en AWS (EC2, RDS, S3) usando <span class=\"font-semibold\">Docker Compose</span> y Nginx como reverse proxy. También trabajo como consultor independiente construyendo sistemas full stack con <span class=\"font-semibold text-secondary\">React, FastAPI y PostgreSQL</span>.",
+    "p1": "<span class=\"font-semibold text-primary\">Desarrollador de Software</span> con más de 2 años de experiencia en producción construyendo sistemas backend en Python y .NET, desplegando infraestructura cloud en AWS y desarrollando aplicaciones multiplataforma.",
+    "p2": "Actualmente en <span class=\"font-semibold\">Moneta Market</span>, donde soy responsable de la arquitectura de microservicios: una plataforma de producción con 6 contenedores que integra pipelines de ML, webhooks event-driven y una app de escritorio en C#. También trabajo como consultor independiente construyendo sistemas full stack con <span class=\"font-semibold text-secondary\">React, FastAPI y PostgreSQL</span>.",
     "languages": "Idiomas",
     "spanish": "Español",
     "spanishLevel": "Nativo",
     "english": "Inglés",
-    "englishLevel": "Profesional",
+    "englishLevel": "Avanzado (B2)",
     "yearsExp": "Años de experiencia",
     "technologies": "Tecnologías"
   },
   "experience": {
     "title": "Experiencia <span class=\"text-primary\">Laboral</span>",
     "mmPeriod": "Agosto 2025 - Presente",
-    "monetaB1": "Diseñé y orquesté una arquitectura de microservicios con Docker Compose, integrando APIs en Python y configurando Nginx como reverse proxy",
-    "monetaB2": "Configuré entornos de despliegue en AWS (EC2, S3, RDS), aplicando políticas IAM de mínimo privilegio y asegurando credenciales con AWS Secrets Manager",
-    "monetaB3": "Administré bases de datos relacionales en Amazon RDS (PostgreSQL), estableciendo conexiones seguras mediante túneles SSH a través de bastion hosts",
-    "monetaB4": "Desarrollé servicios backend y webhooks para la sincronización y procesamiento automatizado de datos entre múltiples contenedores cloud",
+    "monetaB1": "Diseñé y orquesté la primera plataforma containerizada de la empresa: stack Docker Compose de 6 servicios (2 microservicios FastAPI, Label Studio, MLflow, Nginx reverse proxy) desplegado en AWS EC2 con red privada y health checks automatizados",
+    "monetaB2": "Diseñé un esquema PostgreSQL de 18 tablas en AWS RDS con 18 foreign keys, 28+ índices estratégicos, sistema de migraciones idempotente y soft-delete con audit trail; acceso vía túnel SSH a través de bastion host en EC2",
+    "monetaB3": "Construí un servicio webhook event-driven en FastAPI integrando Label Studio con S3: Repository pattern, rollback atómico DB/S3 ante fallos, connection pooling async y caché en memoria con fallback a BD",
+    "monetaB4": "Desarrollé una app de escritorio multiplataforma en C# (.NET 10, Avalonia, migrada desde WPF solo-Windows) para revisión humana de frames con etiquetado ML: arquitectura MVVM, flujo de verificación en dos pasadas y caché de prefetch con ventana deslizante",
+    "monetaB5": "Implementé políticas IAM de menor privilegio y AWS Secrets Manager para gestión de credenciales; usé LocalStack para emulación local de S3 sin exponer credenciales de producción",
+    "contractorPeriod": "Febrero 2025 - Presente",
+    "contractorRole": "Desarrollador Full Stack",
+    "contractorCompany": "Consultor Independiente",
+    "contractorB1": "Desarrollo de aplicaciones web y móviles completas con React, React Native y Next.js, creando interfaces responsivas y experiencias de usuario optimizadas",
+    "contractorB2": "Arquitectura backend con FastAPI, Django y Express.js, APIs RESTful escalables con PostgreSQL y SQLite, esquemas normalizados y consultas eficientes",
     "rogaPeriod": "Marzo 2024 - Agosto 2025",
-    "rogaB1": "Desarrollo y mantenimiento de módulos ERP con .NET/VB, DevExpress y SQL Server",
-    "rogaB2": "Construcción de sistema de rastreo geolocalizado con Azure Maps API",
-    "rogaB3": "Diseño de base de datos, procedimientos almacenados y optimización de rendimiento",
-    "rogaB4": "Colaboración con metodología Scrum y control de versiones con TFS"
+    "rogaRole": "Desarrollador de Software .NET",
+    "rogaB1": "Mantuve y extendí el ERP interno utilizado en 170+ sucursales y 1,750+ empleados (Mueblería El Pasito / Villarreal Muebles / Dinexpress); implementé módulos de inventario multi-sucursal, gestión de precios, cuentas por cobrar y POS en .NET Framework",
+    "rogaB2": "Diseñé la arquitectura de base de datos en SQL Server para operaciones retail multi-sucursal: procedimientos almacenados para agregación de inventario y lógica de precios, generación automatizada de reportes y envío de correos mediante SQL Server Agent",
+    "rogaB3": "Estandaricé prácticas de seguridad en el ciclo de vida del desarrollo: gestor de contraseñas, llaves de seguridad físicas y procesos formalizados de desarrollo"
   },
   "skills": {
     "title": "Habilidades <span class=\"text-primary\">Técnicas</span>",
@@ -57,7 +63,7 @@
     "backend": "Backend",
     "cloud": "Cloud e Infraestructura",
     "databases": "Bases de Datos",
-    "tools": "Herramientas"
+    "architecture": "Arquitectura"
   },
   "projects": {
     "title": "Proyectos <span class=\"text-primary\">Destacados</span>",
