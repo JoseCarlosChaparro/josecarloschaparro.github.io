@@ -155,11 +155,11 @@
                 <!-- Text Content -->
                 <div class="space-y-6 scroll-reveal">
                     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n-html="about.p1">
-                        <span class="font-semibold text-primary">Software Developer</span> with 2+ years building production systems. I focus on backend architecture, cloud infrastructure on AWS, and microservices design — from database modeling and API design to deployment pipelines.
+                        <span class="font-semibold text-primary">Software Developer</span> with 2+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and developing cross-platform applications.
                     </p>
 
                     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n-html="about.p2">
-                        Currently at Moneta Market, where I design and operate a microservices stack on AWS (EC2, RDS, S3) using <span class="font-semibold">Docker Compose</span> and Nginx as reverse proxy. I also work as an independent contractor building full-stack systems with <span class="font-semibold text-secondary">React, FastAPI, and PostgreSQL</span>.
+                        Currently at <span class="font-semibold">Moneta Market</span>, where I own the microservices architecture: a 6-container production platform integrating ML pipelines, event-driven webhooks, and a C# desktop app. I also work as an independent contractor building full-stack systems with <span class="font-semibold text-secondary">React, FastAPI, and PostgreSQL</span>.
                     </p>
                 </div>
 
@@ -184,10 +184,10 @@
                             <div>
                                 <div class="flex justify-between mb-2">
                                     <span class="font-semibold" data-i18n="about.english">English</span>
-                                    <span class="text-gray-600 dark:text-gray-400" data-i18n="about.englishLevel">Professional</span>
+                                    <span class="text-gray-600 dark:text-gray-400" data-i18n="about.englishLevel">Upper-Intermediate (B2)</span>
                                 </div>
                                 <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full w-11/12 bg-gradient-to-r from-primary to-secondary"></div>
+                                    <div class="h-full w-3/4 bg-gradient-to-r from-primary to-secondary"></div>
                                 </div>
                             </div>
                         </div>
@@ -249,42 +249,49 @@
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB1">Designed and orchestrated a microservices architecture using Docker Compose, integrating Python APIs and configuring Nginx as a reverse proxy</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB1">Architected the company's first containerized platform: 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) deployed on AWS EC2 with private networking and automated health checks</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB2">Set up deployment environments on AWS (EC2, S3, RDS), applying least-privilege IAM policies and securing credentials with AWS Secrets Manager</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB2">Designed an 18-table PostgreSQL schema on AWS RDS with 18 foreign keys, 28+ strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB3">Managed relational databases on Amazon RDS (PostgreSQL), establishing secure connections via SSH tunneling through bastion hosts</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB3">Built an event-driven FastAPI webhook service integrating Label Studio with S3: Repository pattern, atomic DB/S3 rollback on failure, async connection pooling, and in-memory cache with DB fallback</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB4">Built backend services and webhooks for automated data synchronization and processing across multiple cloud containers</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB4">Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated from Windows-only WPF) for human review of ML-labeled video frames: MVVM architecture, two-pass verification workflow, and sliding-window prefetch cache</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB5">Implemented least-privilege IAM policies and AWS Secrets Manager for credential management; used LocalStack for local S3 emulation without exposing production credentials</span>
                                 </li>
                             </ul>
 
                             <!-- Tech Tags -->
                             <div class="flex flex-wrap gap-2 mt-6">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">FastAPI</span>
                                 <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Docker Compose</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Python</span>
                                 <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">AWS</span>
                                 <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">PostgreSQL</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">C# / .NET 10</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Avalonia</span>
                                 <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Nginx</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">REST APIs</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Experience Item 2 - Grupo Roga (Left side) -->
+                <!-- Experience Item 2 - Independent Contractor (Left side) -->
                 <div class="mb-12 md:mb-16 relative scroll-reveal">
                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <!-- Content -->
@@ -294,43 +301,83 @@
                                 <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
                             </div>
 
-                            <div class="text-secondary font-semibold mb-2" data-i18n="experience.rogaPeriod">March 2024 - August 2025</div>
-                            <h3 class="text-2xl font-bold mb-2">CORE Software Developer</h3>
-                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4">Grupo Roga</h4>
+                            <div class="text-secondary font-semibold mb-2" data-i18n="experience.contractorPeriod">February 2025 - Present</div>
+                            <h3 class="text-2xl font-bold mb-2" data-i18n="experience.contractorRole">Full Stack Developer</h3>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4" data-i18n="experience.contractorCompany">Independent Contractor</h4>
 
                             <ul class="space-y-3">
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB1">Developed ERP modules using .NET/VB, DevExpress, and SQL Server</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB1">Built complete web and mobile applications using React, React Native, and Next.js, delivering responsive interfaces and optimized user experiences</span>
                                 </li>
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB2">Built geolocation tracking system with Azure Maps API</span>
-                                </li>
-                                <li class="flex items-start md:flex-row-reverse md:text-right">
-                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB3">Database design, stored procedures, and performance tuning</span>
-                                </li>
-                                <li class="flex items-start md:flex-row-reverse md:text-right">
-                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB4">Collaborated using Scrum methodology with TFS version control</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB2">Designed backend architectures with FastAPI, Django, and Express.js, scalable RESTful APIs with PostgreSQL and SQLite, normalized schemas, and efficient query design</span>
                                 </li>
                             </ul>
 
                             <!-- Tech Tags -->
                             <div class="flex flex-wrap gap-2 mt-6 md:justify-end">
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">.NET</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">SQL Server</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Azure</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Scrum</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">React</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">React Native</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Next.js</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">FastAPI</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Django</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Express.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 - Grupo Roga (Right side) -->
+                <div class="mb-12 md:mb-16 relative scroll-reveal">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <!-- Empty space for timeline alignment -->
+                        <div class="hidden md:block"></div>
+
+                        <!-- Content -->
+                        <div class="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-primary">
+                            <!-- Date Badge -->
+                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-primary rounded-full flex items-center justify-center timeline-dot text-primary">
+                                <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
+                            </div>
+
+                            <div class="text-primary font-semibold mb-2" data-i18n="experience.rogaPeriod">March 2024 - August 2025</div>
+                            <h3 class="text-2xl font-bold mb-2" data-i18n="experience.rogaRole">.NET Software Developer</h3>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4">Grupo Roga</h4>
+
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB1">Maintained and extended the internal ERP used across 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress); built modules for multi-branch inventory, pricing, accounts receivable, and POS in .NET Framework</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB2">Designed SQL Server database architecture supporting multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, automated reports and email delivery via SQL Server Agent</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB3">Standardized security practices across the development lifecycle: password manager for credential handling, physical security keys, and formalized coding processes</span>
+                                </li>
+                            </ul>
+
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-2 mt-6">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">.NET Framework</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">C#</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">SQL Server</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Stored Procedures</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Scrum</span>
                             </div>
                         </div>
                     </div>
@@ -361,10 +408,11 @@
                         <h3 class="text-xl font-bold" data-i18n="skills.languages">Languages</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">C#</span>
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Python</span>
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">JavaScript</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">TypeScript</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">C#</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">SQL</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">HTML5 / CSS3</span>
                     </div>
                 </div>
 
@@ -392,11 +440,12 @@
                         <h3 class="text-xl font-bold" data-i18n="skills.backend">Backend</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">.NET</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">NestJS</span>
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">FastAPI</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Express.js</span>
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Django</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Node.js</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Express.js</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">.NET Framework</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Avalonia (.NET 10)</span>
                     </div>
                 </div>
 
@@ -410,10 +459,11 @@
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">AWS</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">EC2 / RDS / S3</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">IAM</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Secrets Manager</span>
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Docker Compose</span>
                         <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Nginx</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">IAM</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">EC2 / RDS / S3</span>
                     </div>
                 </div>
 
@@ -438,13 +488,14 @@
                         <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
                         </svg>
-                        <h3 class="text-xl font-bold" data-i18n="skills.tools">Tools & Cloud</h3>
+                        <h3 class="text-xl font-bold" data-i18n="skills.architecture">Architecture</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Docker</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Git</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Linux</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Scrum</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Microservices</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">RESTful APIs</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">MVVM</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Repository Pattern</span>
+                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Event-driven</span>
                     </div>
                 </div>
             </div>

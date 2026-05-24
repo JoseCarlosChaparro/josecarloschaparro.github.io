@@ -27,28 +27,34 @@
   ],
   "about": {
     "title": "About <span class=\"text-primary\">Me</span>",
-    "p1": "<span class=\"font-semibold text-primary\">Software Developer</span> with 2+ years building production systems. I focus on backend architecture, cloud infrastructure on AWS, and microservices design — from database modeling and API design to deployment pipelines.",
-    "p2": "Currently at Moneta Market, where I design and operate a microservices stack on AWS (EC2, RDS, S3) using <span class=\"font-semibold\">Docker Compose</span> and Nginx as reverse proxy. I also work as an independent contractor building full-stack systems with <span class=\"font-semibold text-secondary\">React, FastAPI, and PostgreSQL</span>.",
+    "p1": "<span class=\"font-semibold text-primary\">Software Developer</span> with 2+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and developing cross-platform applications.",
+    "p2": "Currently at <span class=\"font-semibold\">Moneta Market</span>, where I own the microservices architecture: a 6-container production platform integrating ML pipelines, event-driven webhooks, and a C# desktop app. I also work as an independent contractor building full-stack systems with <span class=\"font-semibold text-secondary\">React, FastAPI, and PostgreSQL</span>.",
     "languages": "Languages",
     "spanish": "Spanish",
     "spanishLevel": "Native",
     "english": "English",
-    "englishLevel": "Professional",
+    "englishLevel": "Upper-Intermediate (B2)",
     "yearsExp": "Years Experience",
     "technologies": "Technologies"
   },
   "experience": {
     "title": "Work <span class=\"text-primary\">Experience</span>",
     "mmPeriod": "August 2025 - Present",
-    "monetaB1": "Designed and orchestrated a microservices architecture using Docker Compose, integrating Python APIs and configuring Nginx as a reverse proxy",
-    "monetaB2": "Set up deployment environments on AWS (EC2, S3, RDS), applying least-privilege IAM policies and securing credentials with AWS Secrets Manager",
-    "monetaB3": "Managed relational databases on Amazon RDS (PostgreSQL), establishing secure connections via SSH tunneling through bastion hosts",
-    "monetaB4": "Built backend services and webhooks for automated data synchronization and processing across multiple cloud containers",
+    "monetaB1": "Architected the company's first containerized platform: 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) deployed on AWS EC2 with private networking and automated health checks",
+    "monetaB2": "Designed an 18-table PostgreSQL schema on AWS RDS with 18 foreign keys, 28+ strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host",
+    "monetaB3": "Built an event-driven FastAPI webhook service integrating Label Studio with S3: Repository pattern, atomic DB/S3 rollback on failure, async connection pooling, and in-memory cache with DB fallback",
+    "monetaB4": "Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated from Windows-only WPF) for human review of ML-labeled video frames: MVVM architecture, two-pass verification workflow, and sliding-window prefetch cache",
+    "monetaB5": "Implemented least-privilege IAM policies and AWS Secrets Manager for credential management; used LocalStack for local S3 emulation without exposing production credentials",
+    "contractorPeriod": "February 2025 - Present",
+    "contractorRole": "Full Stack Developer",
+    "contractorCompany": "Independent Contractor",
+    "contractorB1": "Built complete web and mobile applications using React, React Native, and Next.js, delivering responsive interfaces and optimized user experiences",
+    "contractorB2": "Designed backend architectures with FastAPI, Django, and Express.js, scalable RESTful APIs with PostgreSQL and SQLite, normalized schemas, and efficient query design",
     "rogaPeriod": "March 2024 - August 2025",
-    "rogaB1": "Developed ERP modules using .NET/VB, DevExpress, and SQL Server",
-    "rogaB2": "Built geolocation tracking system with Azure Maps API",
-    "rogaB3": "Database design, stored procedures, and performance tuning",
-    "rogaB4": "Collaborated using Scrum methodology with TFS version control"
+    "rogaRole": ".NET Software Developer",
+    "rogaB1": "Maintained and extended the internal ERP used across 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress); built modules for multi-branch inventory, pricing, accounts receivable, and POS in .NET Framework",
+    "rogaB2": "Designed SQL Server database architecture supporting multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, automated reports and email delivery via SQL Server Agent",
+    "rogaB3": "Standardized security practices across the development lifecycle: password manager for credential handling, physical security keys, and formalized coding processes"
   },
   "skills": {
     "title": "Technical <span class=\"text-primary\">Skills</span>",
@@ -57,7 +63,7 @@
     "backend": "Backend",
     "cloud": "Cloud & Infrastructure",
     "databases": "Databases",
-    "tools": "Tools"
+    "architecture": "Architecture"
   },
   "projects": {
     "title": "Featured <span class=\"text-primary\">Projects</span>",
