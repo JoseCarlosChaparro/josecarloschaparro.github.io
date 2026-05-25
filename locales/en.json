@@ -50,6 +50,7 @@
     "contractorCompany": "Independent Contractor",
     "contractorB1": "Built complete web and mobile applications using React, React Native, and Next.js, delivering responsive interfaces and optimized user experiences",
     "contractorB2": "Designed backend architectures with FastAPI, Django, and Express.js, scalable RESTful APIs with PostgreSQL and SQLite, normalized schemas, and efficient query design",
+    "contractorB3": "Self-host client applications on a personal Linux server using Dokploy and Docker Compose (backends, frontends, and databases); manage DNS through Cloudflare and expose services securely with Cloudflare Tunnels (no open ports), offering clients a low-cost alternative to Vercel or AWS",
     "rogaPeriod": "March 2024 - August 2025",
     "rogaRole": ".NET Software Developer",
     "rogaB1": "Maintained and extended the internal ERP used across 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress); built modules for multi-branch inventory, pricing, accounts receivable, and POS in .NET Framework",
