@@ -8,7 +8,7 @@
   },
   "hero": {
     "greeting": "Hola, soy",
-    "subtitle": "Desarrollador de Software con experiencia en sistemas backend, infraestructura cloud (AWS) y arquitectura de microservicios"
+    "subtitle": "Ingeniero Full Stack con experiencia en sistemas backend, infraestructura cloud (AWS) y arquitectura de microservicios"
   },
   "ui": {
     "viewWork": "Ver mi trabajo",
@@ -21,14 +21,14 @@
     "viewGitHub": "Ver en GitHub"
   },
   "typedRoles": [
-    "Desarrollador de Software",
+    "Ingeniero Full Stack",
     "Ingeniero Backend",
     "Arquitecto de Sistemas",
     "Cloud e Infraestructura"
   ],
   "about": {
     "title": "Sobre <span class=\"text-primary\">mí</span>",
-    "p1": "<span class=\"font-semibold text-primary\">Desarrollador de Software</span> con {years}+ años de experiencia en producción construyendo sistemas backend en Python y .NET, desplegando infraestructura cloud en AWS y desarrollando aplicaciones multiplataforma.",
+    "p1": "<span class=\"font-semibold text-primary\">Ingeniero Full Stack</span> con {years}+ años de experiencia en producción construyendo sistemas backend en Python y .NET, desplegando infraestructura cloud en AWS y desarrollando aplicaciones multiplataforma.",
     "p2": "Actualmente en <span class=\"font-semibold\">Moneta Market</span>, donde soy responsable de la arquitectura de microservicios: una plataforma de producción con 6 contenedores que integra pipelines de ML, webhooks event-driven y una app de escritorio en C#. También trabajo como consultor independiente construyendo sistemas full stack con <span class=\"font-semibold text-secondary\">React, FastAPI y PostgreSQL</span>.",
     "languages": "Idiomas",
     "spanish": "Español",
@@ -41,6 +41,8 @@
   "experience": {
     "title": "Experiencia <span class=\"text-primary\">Laboral</span>",
     "mmPeriod": "Agosto 2025 - Presente",
+    "monetaRole": "Ingeniero Full Stack",
+    "monetaCompany": "Moneta Market LLC",
     "monetaB1": "Diseñé y orquesté la primera plataforma containerizada de la empresa: stack Docker Compose de 6 servicios (2 microservicios FastAPI, Label Studio, MLflow, Nginx reverse proxy) desplegado en AWS EC2 con red privada y health checks automatizados",
     "monetaB2": "Diseñé un esquema PostgreSQL de 18 tablas en AWS RDS con 18 foreign keys, 28+ índices estratégicos, sistema de migraciones idempotente y soft-delete con audit trail; acceso vía túnel SSH a través de bastion host en EC2",
     "monetaB3": "Construí un servicio webhook event-driven en FastAPI integrando Label Studio con S3: Repository pattern, rollback atómico DB/S3 ante fallos, connection pooling async y caché en memoria con fallback a BD",
@@ -83,7 +85,7 @@
     "cvDesc": "Descargar PDF"
   },
   "footer": {
-    "tagline": "Desarrollador de Software · Backend e Infraestructura Cloud",
+    "tagline": "Ingeniero Full Stack · Backend e Infraestructura Cloud",
     "copyright": "© 2026 José Chaparro. Todos los derechos reservados."
   }
 }

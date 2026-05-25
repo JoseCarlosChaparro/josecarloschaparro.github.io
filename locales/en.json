@@ -8,7 +8,7 @@
   },
   "hero": {
     "greeting": "Hello, I'm",
-    "subtitle": "Software Developer with expertise in backend systems, cloud infrastructure (AWS), and microservices architecture"
+    "subtitle": "Full Stack Engineer with expertise in backend systems, cloud infrastructure (AWS), and microservices architecture"
   },
   "ui": {
     "viewWork": "View My Work",
@@ -21,14 +21,14 @@
     "viewGitHub": "View on GitHub"
   },
   "typedRoles": [
-    "Software Developer",
+    "Full Stack Engineer",
     "Backend Engineer",
     "Systems Architect",
     "Cloud & Infrastructure"
   ],
   "about": {
     "title": "About <span class=\"text-primary\">Me</span>",
-    "p1": "<span class=\"font-semibold text-primary\">Software Developer</span> with {years}+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and developing cross-platform applications.",
+    "p1": "<span class=\"font-semibold text-primary\">Full Stack Engineer</span> with {years}+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and developing cross-platform applications.",
     "p2": "Currently at <span class=\"font-semibold\">Moneta Market</span>, where I own the microservices architecture: a 6-container production platform integrating ML pipelines, event-driven webhooks, and a C# desktop app. I also work as an independent contractor building full-stack systems with <span class=\"font-semibold text-secondary\">React, FastAPI, and PostgreSQL</span>.",
     "languages": "Languages",
     "spanish": "Spanish",
@@ -41,6 +41,8 @@
   "experience": {
     "title": "Work <span class=\"text-primary\">Experience</span>",
     "mmPeriod": "August 2025 - Present",
+    "monetaRole": "Full Stack Engineer",
+    "monetaCompany": "Moneta Market LLC",
     "monetaB1": "Architected the company's first containerized platform: 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) deployed on AWS EC2 with private networking and automated health checks",
     "monetaB2": "Designed an 18-table PostgreSQL schema on AWS RDS with 18 foreign keys, 28+ strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host",
     "monetaB3": "Built an event-driven FastAPI webhook service integrating Label Studio with S3: Repository pattern, atomic DB/S3 rollback on failure, async connection pooling, and in-memory cache with DB fallback",
@@ -83,7 +85,7 @@
     "cvDesc": "Download PDF"
   },
   "footer": {
-    "tagline": "Software Developer · Backend & Cloud Infrastructure",
+    "tagline": "Full Stack Engineer · Backend & Cloud Infrastructure",
     "copyright": "© 2026 José Chaparro. All rights reserved."
   }
 }
