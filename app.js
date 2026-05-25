@@ -294,15 +294,21 @@ function initializeLoadingScreen() {
     loadingOverlay.innerHTML = '<div class="spinner"></div>';
     document.body.prepend(loadingOverlay);
 
-    // Hide loading screen when page is fully loaded
-    window.addEventListener('load', () => {
+    const hideOverlay = () => {
         setTimeout(() => {
             loadingOverlay.classList.add('fade-out');
-            setTimeout(() => {
-                loadingOverlay.remove();
-            }, 500);
+            setTimeout(() => loadingOverlay.remove(), 500);
         }, 500);
-    });
+    };
+
+    // If the window has already fired the load event by the time we run
+    // (common when async init like fetching locales finishes after load),
+    // hide immediately. Otherwise wait for it.
+    if (document.readyState === 'complete') {
+        hideOverlay();
+    } else {
+        window.addEventListener('load', hideOverlay, { once: true });
+    }
 }
 
 // ============================================
