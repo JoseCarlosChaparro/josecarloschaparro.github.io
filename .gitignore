@@ -1,0 +1,6 @@
+
+# LaTeX build artifacts
+docs/cv/*.aux
+docs/cv/*.log
+docs/cv/*.out
+docs/cv/*.pdf
