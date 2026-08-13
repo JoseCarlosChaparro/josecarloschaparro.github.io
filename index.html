@@ -261,7 +261,7 @@
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB2">Designed an 18-table PostgreSQL schema on AWS RDS with 18 foreign keys, 28+ strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB2">Designed a 25-table PostgreSQL schema on AWS RDS with 24 foreign keys, 34 strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host</span>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,6 +281,12 @@
                                     </svg>
                                     <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB5">Implemented least-privilege IAM policies and AWS Secrets Manager for credential management; used LocalStack for local S3 emulation without exposing production credentials</span>
                                 </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB6">Built the data pipeline's operator tooling (CLIs, idempotent S3-PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT)</span>
+                                </li>
                             </ul>
 
                             <!-- Tech Tags -->
@@ -292,12 +298,14 @@
                                 <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">C# / .NET 10</span>
                                 <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Avalonia</span>
                                 <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Nginx</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">GitLab CI</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">MLflow</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Experience Item 2 - Independent Contractor (Left side) -->
+                <!-- Experience Item 2 - Bifrost Code (Left side) -->
                 <div class="mb-12 md:mb-16 relative scroll-reveal">
                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <!-- Content -->
@@ -308,40 +316,41 @@
                             </div>
 
                             <div class="text-secondary font-semibold mb-2" data-i18n="experience.contractorPeriod">February 2025 - Present</div>
-                            <h3 class="text-2xl font-bold mb-2" data-i18n="experience.contractorRole">Full Stack Developer</h3>
-                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4" data-i18n="experience.contractorCompany">Independent Contractor</h4>
+                            <h3 class="text-2xl font-bold mb-2" data-i18n="experience.contractorRole">Full Stack Engineer &amp; Co-founder</h3>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4" data-i18n="experience.contractorCompany">Bifrost Code — Independent Software Studio</h4>
 
                             <ul class="space-y-3">
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB1">Built complete web and mobile applications using React, React Native, and Next.js, delivering responsive interfaces and optimized user experiences</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB1">Deliver full-stack web apps end-to-end with React, Next.js, NestJS, and Express on TypeScript pnpm monorepos with PostgreSQL; earlier delivered projects shipped with React Native, FastAPI, and Django</span>
                                 </li>
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB2">Designed backend architectures with FastAPI, Django, and Express.js, scalable RESTful APIs with PostgreSQL and SQLite, normalized schemas, and efficient query design</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB2">Production projects for real clients: FisioApp (multi-tenant clinic management, WCAG 2.1 AA audited), Feriu (multi-tenant shared-expense platform), and Karaoke Balu (real-time karaoke request platform with SSE and kiosk mode)</span>
                                 </li>
                                 <li class="flex items-start md:flex-row-reverse md:text-right">
                                     <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB3">Self-host client applications on a personal Linux server using Dokploy and Docker Compose (backends, frontends, and databases); manage DNS through Cloudflare and expose services securely with Cloudflare Tunnels (no open ports), offering clients a low-cost alternative to Vercel or AWS</span>
+                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB3">Self-host client applications on the studio's own infrastructure — a Proxmox VM running Ubuntu Server with Dokploy and Docker Compose; DNS through Cloudflare and services exposed securely via Cloudflare Tunnels (no open ports), a low-cost alternative to Vercel or AWS</span>
                                 </li>
                             </ul>
 
                             <!-- Tech Tags -->
                             <div class="flex flex-wrap gap-2 mt-6 md:justify-end">
                                 <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">React</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">React Native</span>
                                 <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Next.js</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">FastAPI</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Django</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">NestJS</span>
                                 <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Express.js</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">TypeScript</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">PostgreSQL</span>
                                 <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Dokploy</span>
                                 <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Cloudflare</span>
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Proxmox</span>
                             </div>
                         </div>
                     </div>
@@ -554,12 +563,12 @@
                             Smart Cooler Grab-and-Go
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.scDesc">
-                            Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with Flask, PostgreSQL on AWS, and integrated ML capabilities.
+                            Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with FastAPI, PostgreSQL on AWS, and integrated ML capabilities.
                         </p>
 
                         <!-- Tech Stack -->
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Flask</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">FastAPI</span>
                             <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">AWS</span>
                             <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">PostgreSQL</span>
                             <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Python</span>
@@ -575,7 +584,133 @@
                     </div>
                 </article>
 
-                <!-- Project 2: Stable Diffusion -->
+                <!-- Project 2: FisioApp -->
+                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+                            </svg>
+                        </div>
+                        <!-- Status Badge -->
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProduction">In Production</span>
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                            FisioApp
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.fisioDesc">
+                            Multi-tenant management system for physiotherapy clinics: patients, clinical records, appointments, packages, and payments. WCAG 2.1 AA audited, automated off-site backups.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Next.js</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">PostgreSQL</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Dokploy</span>
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">TypeScript</span>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
+                            <span data-i18n="ui.contactDetails">Contact for Details</span>
+                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3: Feriu -->
+                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gradient-to-br from-secondary to-primary overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <!-- Status Badge -->
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProduction">In Production</span>
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                            Feriu
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.feriuDesc">
+                            Multi-tenant, self-hosted shared-expense platform with a Splitwise-style settlement engine, built as a NestJS + Next.js pnpm monorepo on PostgreSQL.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">NestJS</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Next.js</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">PostgreSQL</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">TypeScript</span>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
+                            <span data-i18n="ui.contactDetails">Contact for Details</span>
+                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 4: Karaoke Balu -->
+                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gradient-to-br from-secondary to-primary overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"/>
+                            </svg>
+                        </div>
+                        <!-- Status Badge -->
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProduction">In Production</span>
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                            Karaoke Balu
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.karaokeDesc">
+                            Real-time karaoke request platform for live events: SSE-synced queue, admin panel, self-serve kiosk mode, and Virtual DJ integration. Express + React monorepo.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Express.js</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">React</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">SSE</span>
+                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">PostgreSQL</span>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
+                            <span data-i18n="ui.contactDetails">Contact for Details</span>
+                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 5: Stable Diffusion -->
                 <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
                     <!-- Project Image -->
                     <div class="relative h-48 overflow-hidden">

@@ -18,7 +18,8 @@
     "completed": "Completado",
     "contactDetails": "Contactar para detalles",
     "viewPresentation": "Ver presentación",
-    "viewGitHub": "Ver en GitHub"
+    "viewGitHub": "Ver en GitHub",
+    "inProduction": "En producción"
   },
   "typedRoles": [
     "Ingeniero Full Stack",
@@ -44,16 +45,17 @@
     "monetaRole": "Ingeniero Full Stack",
     "monetaCompany": "Moneta Market LLC",
     "monetaB1": "Diseñé y orquesté la primera plataforma containerizada de la empresa: stack Docker Compose de 6 servicios (2 microservicios FastAPI, Label Studio, MLflow, Nginx reverse proxy) desplegado en AWS EC2 con red privada y health checks automatizados",
-    "monetaB2": "Diseñé un esquema PostgreSQL de 18 tablas en AWS RDS con 18 foreign keys, 28+ índices estratégicos, sistema de migraciones idempotente y soft-delete con audit trail; acceso vía túnel SSH a través de bastion host en EC2",
+    "monetaB2": "Diseñé un esquema PostgreSQL de 25 tablas en AWS RDS con 24 foreign keys, 34 índices estratégicos, sistema de migraciones idempotente y soft-delete con audit trail; acceso vía túnel SSH a través de bastion host en EC2",
     "monetaB3": "Construí un servicio webhook event-driven en FastAPI integrando Label Studio con S3: Repository pattern, rollback atómico DB/S3 ante fallos, connection pooling async y caché en memoria con fallback a BD",
     "monetaB4": "Desarrollé una app de escritorio multiplataforma en C# (.NET 10, Avalonia, migrada desde WPF solo-Windows) para revisión humana de frames con etiquetado ML: arquitectura MVVM, flujo de verificación en dos pasadas y caché de prefetch con ventana deslizante",
     "monetaB5": "Implementé políticas IAM de menor privilegio y AWS Secrets Manager para gestión de credenciales; usé LocalStack para emulación local de S3 sin exponer credenciales de producción",
+    "monetaB6": "Construí el tooling operativo del pipeline de datos (CLIs, sincronización idempotente S3-PostgreSQL, auditorías de drift) y automaticé el entrenamiento de modelos vía GitLab CI sobre instancias GPU efímeras en AWS con tracking en MLflow; prototipé inferencia edge en NVIDIA Jetson (YOLO sobre TensorRT)",
     "contractorPeriod": "Febrero 2025 - Presente",
-    "contractorRole": "Desarrollador Full Stack",
-    "contractorCompany": "Consultor Independiente",
-    "contractorB1": "Desarrollo de aplicaciones web y móviles completas con React, React Native y Next.js, creando interfaces responsivas y experiencias de usuario optimizadas",
-    "contractorB2": "Arquitectura backend con FastAPI, Django y Express.js, APIs RESTful escalables con PostgreSQL y SQLite, esquemas normalizados y consultas eficientes",
-    "contractorB3": "Self-hosting de aplicaciones de clientes en un servidor Linux personal con Dokploy y Docker Compose (backends, frontends y bases de datos); gestión de DNS con Cloudflare y exposición segura de servicios mediante Cloudflare Tunnels (sin abrir puertos), ofreciendo a los clientes una alternativa de bajo costo frente a Vercel o AWS",
+    "contractorRole": "Full Stack Engineer y Cofundador",
+    "contractorCompany": "Bifrost Code — Estudio de software independiente",
+    "contractorB1": "Entrega de aplicaciones web full-stack de extremo a extremo con React, Next.js, NestJS y Express en monorepos pnpm con TypeScript y PostgreSQL; proyectos anteriores entregados con React Native, FastAPI y Django",
+    "contractorB2": "Proyectos en producción para clientes reales: FisioApp (gestión multi-tenant de clínicas, auditada WCAG 2.1 AA), Feriu (plataforma multi-tenant de gastos compartidos) y Karaoke Balu (plataforma de peticiones de karaoke en tiempo real con SSE y modo kiosko)",
+    "contractorB3": "Self-hosting de aplicaciones de clientes en infraestructura propia del estudio — una VM de Proxmox con Ubuntu Server, Dokploy y Docker Compose; DNS con Cloudflare y exposición segura de servicios mediante Cloudflare Tunnels (sin abrir puertos), una alternativa de bajo costo frente a Vercel o AWS",
     "rogaPeriod": "Marzo 2024 - Agosto 2025",
     "rogaRole": "Desarrollador de Software .NET",
     "rogaB1": "Mantuve y extendí el ERP interno utilizado en 170+ sucursales y 1,750+ empleados (Mueblería El Pasito / Villarreal Muebles / Dinexpress); implementé módulos de inventario multi-sucursal, gestión de precios, cuentas por cobrar y POS en .NET Framework",
@@ -71,9 +73,12 @@
   },
   "projects": {
     "title": "Proyectos <span class=\"text-primary\">Destacados</span>",
-    "scDesc": "Sistema full stack con infraestructura cloud, APIs RESTful y gestión de base de datos. Construido con Flask, PostgreSQL en AWS e integración con pipeline de ML.",
+    "scDesc": "Sistema full stack con infraestructura cloud, APIs RESTful y gestión de base de datos. Construido con FastAPI, PostgreSQL en AWS e integración con pipeline de ML.",
     "sdDesc": "Entrenamiento con dataset personalizado para generación de imágenes. Exploración de técnicas de fine-tuning de modelos de deep learning.",
-    "galagaDesc": "Juego en Unreal Engine controlado mediante el acelerómetro del smartphone usando Processing y peticiones HTTP."
+    "galagaDesc": "Juego en Unreal Engine controlado mediante el acelerómetro del smartphone usando Processing y peticiones HTTP.",
+    "fisioDesc": "Sistema multi-tenant de gestión para clínicas de fisioterapia: pacientes, expedientes clínicos, citas, paquetes y cobros. Auditado WCAG 2.1 AA, respaldos automáticos off-site.",
+    "feriuDesc": "Plataforma multi-tenant y self-hosted de gastos compartidos con motor de liquidación estilo Splitwise, construida como monorepo pnpm NestJS + Next.js sobre PostgreSQL.",
+    "karaokeDesc": "Plataforma de peticiones de karaoke en tiempo real para eventos en vivo: cola sincronizada por SSE, panel de administración, modo kiosko de autoservicio e integración con Virtual DJ. Monorepo Express + React."
   },
   "contact": {
     "title": "Ponerse en <span class=\"text-primary\">Contacto</span>",
