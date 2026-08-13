@@ -6,10 +6,14 @@
 
 \documentclass[10pt,letterpaper]{article}
 
+% ----- ATS: map every glyph (ligatures included) to proper Unicode in the PDF text layer -----
+\input{glyphtounicode}
+\pdfgentounicode=1
+
 % ----- Packages -----
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[top=0.5in,bottom=0.5in,left=0.65in,right=0.65in]{geometry}
+\usepackage[top=0.42in,bottom=0.42in,left=0.65in,right=0.65in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -37,7 +41,7 @@
     {\large\bfseries\color{accent}}
     {}{0pt}
     {}[\vspace{2pt}\color{rule}\hrule height 0.5pt\vspace{3pt}]
-\titlespacing*{\section}{0pt}{4pt}{1pt}
+\titlespacing*{\section}{0pt}{2pt}{0pt}
 
 \titleformat{\subsection}
     {\normalsize\bfseries}
@@ -48,13 +52,16 @@
 \setlist[itemize]{leftmargin=11pt, itemsep=0pt, topsep=0pt, parsep=0pt}
 
 % ----- Helper commands -----
+% ATS: keep "Title, Company ... Dates" on one physical line so parsers pair them correctly
 \newcommand{\role}[4]{%
-    \noindent\textbf{#1} \hfill \textcolor{subtle}{#3}\\
-    \textit{#2} \hfill \textcolor{subtle}{\textit{#4}}\par\vspace{1pt}
+    \noindent\textbf{#1}, \textit{#2} \hfill \textcolor{subtle}{#3}%
+    \if\relax\detokenize{#4}\relax\else\\{\textcolor{subtle}{\textit{#4}}}\fi
+    \par\vspace{1pt}
 }
 
 \newcommand{\skillcat}[2]{\noindent\textbf{#1:} #2\par\vspace{1pt}}
 
+\linespread{1.0}
 \pagenumbering{gobble}
 \setlength{\parindent}{0pt}
 
@@ -66,10 +73,9 @@
 \begin{center}
     {\Huge\bfseries\color{accent} José Carlos Chaparro}\\[1pt]
     {\large Full Stack Engineer}\\[4pt]
-    \small
-    +52 614 215 2635 | \href{mailto:jc_chaparro@hotmail.com}{jc\_chaparro@hotmail.com} | \href{https://www.linkedin.com/in/jose-c-chaparro/}{linkedin.com/in/jose-c-chaparro} | \href{https://github.com/JoseCarlosChaparro}{github.com/JoseCarlosChaparro} | \href{https://www.josechaparro.com}{www.josechaparro.com}\\[1pt]
-    Mexico-based $\cdot$ Open to remote / US relocation $\cdot$ \textbf{US Citizen (no sponsorship required)}\\[1pt]
-    Languages: Spanish (native) $\cdot$ English (professional working proficiency)
+    \footnotesize
+    +52 614 215 2635 | \href{mailto:jc_chaparro@hotmail.com}{jc\_chaparro@hotmail.com} | \href{https://www.linkedin.com/in/jose-c-chaparro/}{linkedin.com/in/jose-c-chaparro} | \href{https://github.com/JoseCarlosChaparro}{github.com/JoseCarlosChaparro} | \href{https://www.josechaparro.com}{josechaparro.com}\\[1pt]
+    Mexico-based $\cdot$ Open to remote / US relocation $\cdot$ \textbf{US Citizen (no sponsorship required)} $\cdot$ Spanish (native) / English (professional)
 \end{center}
 
 % ----- Professional Profile -----
@@ -78,11 +84,11 @@ Full Stack Engineer with 2+ years of production experience building backend syst
 
 % ----- Technical Skills -----
 \section*{Technical Skills}
-\skillcat{Languages}{Python, JavaScript, TypeScript, C\#, SQL}
-\skillcat{Backend}{FastAPI, Django, Node.js, .NET Framework}
+\skillcat{Programming Languages}{Python, JavaScript, TypeScript, C\#, SQL}
+\skillcat{Backend}{FastAPI, NestJS, Express (Node.js), Django, .NET Framework}
 \skillcat{Frontend}{React, React Native, Next.js}
 \skillcat{Databases}{PostgreSQL, SQL Server}
-\skillcat{Cloud \& DevOps}{AWS (EC2, RDS, S3, IAM, Secrets Manager), Docker, Docker Compose, Nginx, Cloudflare, Dokploy, Git, GitHub Actions, Linux}
+\skillcat{Cloud \& DevOps}{AWS (EC2, RDS, S3, IAM, Secrets Manager), Docker, Docker Compose, Nginx, Cloudflare, Dokploy, Git, GitHub Actions, GitLab CI/CD, Linux}
 
 % ----- Work Experience -----
 \section*{Work Experience}
@@ -90,28 +96,36 @@ Full Stack Engineer with 2+ years of production experience building backend syst
 \role{Full Stack Engineer}{Moneta Market}{August 2025 -- Present}{}
 \begin{itemize}
     \item Architected the company's first containerized platform on AWS EC2 (Linux): 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) replacing manual deployment with reproducible automation.
-    \item Designed an 18-table PostgreSQL schema on AWS RDS (18 foreign keys, 28+ indexes, idempotent migrations, soft-delete audit trail) accessed via SSH tunnel through EC2 bastion host.
-    \item Built an event-driven FastAPI webhook integrating Label Studio with S3: Repository pattern, atomic DB/S3 rollback, async connection pooling, in-memory cache with DB fallback; wrote runbooks for team onboarding.
+    \item Designed a 25-table PostgreSQL schema on AWS RDS (24 foreign keys, 34 indexes, idempotent migrations, soft-delete audit trail) accessed via SSH tunnel through EC2 bastion host.
+    \item Built an event-driven FastAPI webhook integrating Label Studio with S3: atomic DB/S3 rollback, async connection pooling, in-memory cache with DB fallback; wrote team runbooks.
     \item Developed a cross-platform C\# desktop app (.NET 10, Avalonia, migrated from WPF) for ML-frame human review: MVVM, two-pass verification, sliding-window prefetch cache.
-    \item Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3, and GitHub Actions CI; co-supervise 2 interns with the lead developer.
+    \item Built the pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT).
+    \item Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3, and CI pipelines; co-supervise 2 interns with the lead developer.
 \end{itemize}
 
-\role{Freelance Full Stack Engineer (Part-time)}{Independent Contractor}{February 2025 -- Present}{concurrent with Moneta Market role}
+\role{Full Stack Engineer \& Co-founder (Part-time)}{Bifrost Code -- independent software studio}{February 2025 -- Present}{concurrent with Moneta Market role}
 \begin{itemize}
-    \item Deliver full-stack web and mobile apps end-to-end (React, React Native, Next.js, FastAPI, Django) on PostgreSQL. Self-host on a personal Linux server using Dokploy, Docker Compose, and Cloudflare Tunnels, a low-cost alternative to Vercel/AWS for clients.
+    \item Deliver full-stack web apps end-to-end (React, Next.js, NestJS, Express on TypeScript pnpm monorepos, PostgreSQL), self-hosted on the studio's own infrastructure -- Proxmox VM (Ubuntu Server) with Dokploy, Docker Compose, and Cloudflare Tunnels, a low-cost production alternative to Vercel/AWS. Earlier delivered projects shipped with FastAPI, Django, and React Native.
 \end{itemize}
 
 \role{.NET Software Developer}{Grupo Roga}{March 2024 -- August 2025}{}
 \begin{itemize}
     \item Maintained and extended a mission-critical VB.NET ERP serving 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress), spanning POS, multi-branch inventory, pricing, and accounts receivable modules on .NET Framework.
-    \item Designed and built from scratch a new ERP module that manages the agents who visit customer homes for credit approval: owned the full design, integrated DevExpress map controls to plot assignments and visits geographically, and consumed field data captured by a companion Android app.
+    \item Built from scratch an ERP module managing the field agents who visit customer homes for credit approval: full design ownership, DevExpress map controls plotting assignments geographically, consuming data from a companion Android app.
     \item Designed SQL Server architecture for multi-branch retail: stored procedures for inventory aggregation and pricing, automated reporting via SQL Server Agent jobs, eliminating manual report compilation for operations.
+\end{itemize}
+
+% ----- Selected Projects -----
+\section*{Selected Projects (Bifrost Code, in production)}
+\begin{itemize}
+    \item \textbf{FisioApp} -- multi-tenant clinic management (patients, clinical records, appointments, payments); Next.js + PostgreSQL, WCAG 2.1 AA audited.
+    \item \textbf{Feriu} -- multi-tenant shared-expense platform (Splitwise-style settlement engine); NestJS + Next.js monorepo, PostgreSQL.
+    \item \textbf{Karaoke Balu} -- real-time karaoke request platform (SSE-synced queue, kiosk mode, Virtual DJ integration); Express + React.
 \end{itemize}
 
 % ----- Education -----
 \section*{Education}
 
-\noindent\textbf{Bachelor of Science in Computer Science Engineering}, Universidad Autónoma de Chihuahua \hfill \textcolor{subtle}{2018 -- 2023}\\
-GPA 9.2 / 10, graduated by academic merit.
+\noindent\textbf{Bachelor of Science in Computer Science Engineering}, Universidad Autónoma de Chihuahua -- GPA 9.2/10, graduated by academic merit \hfill \textcolor{subtle}{2018 -- 2023}
 
 \end{document}
