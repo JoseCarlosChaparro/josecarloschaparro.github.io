@@ -18,7 +18,8 @@
     "completed": "Completed",
     "contactDetails": "Contact for Details",
     "viewPresentation": "View Presentation",
-    "viewGitHub": "View on GitHub"
+    "viewGitHub": "View on GitHub",
+    "inProduction": "In Production"
   },
   "typedRoles": [
     "Full Stack Engineer",
@@ -44,16 +45,17 @@
     "monetaRole": "Full Stack Engineer",
     "monetaCompany": "Moneta Market LLC",
     "monetaB1": "Architected the company's first containerized platform: 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) deployed on AWS EC2 with private networking and automated health checks",
-    "monetaB2": "Designed an 18-table PostgreSQL schema on AWS RDS with 18 foreign keys, 28+ strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host",
+    "monetaB2": "Designed a 25-table PostgreSQL schema on AWS RDS with 24 foreign keys, 34 strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host",
     "monetaB3": "Built an event-driven FastAPI webhook service integrating Label Studio with S3: Repository pattern, atomic DB/S3 rollback on failure, async connection pooling, and in-memory cache with DB fallback",
     "monetaB4": "Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated from Windows-only WPF) for human review of ML-labeled video frames: MVVM architecture, two-pass verification workflow, and sliding-window prefetch cache",
     "monetaB5": "Implemented least-privilege IAM policies and AWS Secrets Manager for credential management; used LocalStack for local S3 emulation without exposing production credentials",
+    "monetaB6": "Built the data pipeline's operator tooling (CLIs, idempotent S3-PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT)",
     "contractorPeriod": "February 2025 - Present",
-    "contractorRole": "Full Stack Developer",
-    "contractorCompany": "Independent Contractor",
-    "contractorB1": "Built complete web and mobile applications using React, React Native, and Next.js, delivering responsive interfaces and optimized user experiences",
-    "contractorB2": "Designed backend architectures with FastAPI, Django, and Express.js, scalable RESTful APIs with PostgreSQL and SQLite, normalized schemas, and efficient query design",
-    "contractorB3": "Self-host client applications on a personal Linux server using Dokploy and Docker Compose (backends, frontends, and databases); manage DNS through Cloudflare and expose services securely with Cloudflare Tunnels (no open ports), offering clients a low-cost alternative to Vercel or AWS",
+    "contractorRole": "Full Stack Engineer & Co-founder",
+    "contractorCompany": "Bifrost Code — Independent Software Studio",
+    "contractorB1": "Deliver full-stack web apps end-to-end with React, Next.js, NestJS, and Express on TypeScript pnpm monorepos with PostgreSQL; earlier delivered projects shipped with React Native, FastAPI, and Django",
+    "contractorB2": "Production projects for real clients: FisioApp (multi-tenant clinic management, WCAG 2.1 AA audited), Feriu (multi-tenant shared-expense platform), and Karaoke Balu (real-time karaoke request platform with SSE and kiosk mode)",
+    "contractorB3": "Self-host client applications on the studio's own infrastructure — a Proxmox VM running Ubuntu Server with Dokploy and Docker Compose; DNS through Cloudflare and services exposed securely via Cloudflare Tunnels (no open ports), a low-cost alternative to Vercel or AWS",
     "rogaPeriod": "March 2024 - August 2025",
     "rogaRole": ".NET Software Developer",
     "rogaB1": "Maintained and extended the internal ERP used across 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress); built modules for multi-branch inventory, pricing, accounts receivable, and POS in .NET Framework",
@@ -71,9 +73,12 @@
   },
   "projects": {
     "title": "Featured <span class=\"text-primary\">Projects</span>",
-    "scDesc": "Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with Flask, PostgreSQL on AWS, and integrated ML capabilities.",
+    "scDesc": "Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with FastAPI, PostgreSQL on AWS, and integrated ML capabilities.",
     "sdDesc": "Custom dataset training for personalized image generation. Explored deep learning model fine-tuning techniques.",
-    "galagaDesc": "Unreal Engine game controlled via smartphone accelerometer using Processing and HTTP requests."
+    "galagaDesc": "Unreal Engine game controlled via smartphone accelerometer using Processing and HTTP requests.",
+    "fisioDesc": "Multi-tenant management system for physiotherapy clinics: patients, clinical records, appointments, packages, and payments. WCAG 2.1 AA audited, automated off-site backups.",
+    "feriuDesc": "Multi-tenant, self-hosted shared-expense platform with a Splitwise-style settlement engine, built as a NestJS + Next.js pnpm monorepo on PostgreSQL.",
+    "karaokeDesc": "Real-time karaoke request platform for live events: SSE-synced queue, admin panel, self-serve kiosk mode, and Virtual DJ integration. Express + React monorepo."
   },
   "contact": {
     "title": "Get In <span class=\"text-primary\">Touch</span>",

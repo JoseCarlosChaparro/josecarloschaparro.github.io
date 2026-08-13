@@ -79,22 +79,81 @@ html {
     transform: translateY(0);
 }
 
-/* Button styles using Tailwind @apply */
+/* Buttons.
+   Written as plain CSS on purpose: the Tailwind CDN runtime only expands
+   @apply inside <style type="text/tailwindcss">, never in a linked .css file. */
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+                box-shadow 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    transform: scale(1.05);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+    transform: scale(0.95);
+}
+
 .btn-primary {
-    @apply px-6 py-3 bg-primary text-white rounded-lg font-semibold
-           hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl
-           hover:scale-105 active:scale-95;
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
 }
 
 .btn-secondary {
-    @apply px-6 py-3 bg-transparent border-2 border-primary text-primary
-           rounded-lg font-semibold hover:bg-primary hover:text-white
-           transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95;
+    background-color: transparent;
+    border-color: #2563eb;
+    color: #2563eb;
 }
 
-/* Dark mode button styles */
+.btn-secondary:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
 .dark .btn-secondary {
-    @apply border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900;
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+.dark .btn-secondary:hover {
+    background-color: #60a5fa;
+    color: #111827;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-secondary {
+        transition: none;
+    }
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-primary:active,
+    .btn-secondary:active {
+        transform: none;
+    }
 }
 
 /* Timeline animations */
