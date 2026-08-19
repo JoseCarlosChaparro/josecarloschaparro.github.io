@@ -54,7 +54,7 @@
 % ----- Helper commands -----
 % ATS: keep "Title, Company ... Dates" on one physical line so parsers pair them correctly
 \newcommand{\role}[4]{%
-    \noindent\textbf{#1}, \textit{#2} \hfill \textcolor{subtle}{#3}%
+    \noindent\textbf{#1}, \textit{#2} {\textcolor{subtle}{$\cdot$ #3}}%
     \if\relax\detokenize{#4}\relax\else\\{\textcolor{subtle}{\textit{#4}}}\fi
     \par\vspace{1pt}
 }
@@ -103,7 +103,7 @@ Full Stack Engineer with 2+ years of production experience building backend syst
     \item Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3, and CI pipelines; co-supervise 2 interns with the lead developer.
 \end{itemize}
 
-\role{Co-founder \& Full Stack Engineer}{Bifrost Code -- independent software studio}{February 2025 -- Present}{side project in my own time, alongside the full-time Moneta Market role}
+\role{Co-founder \& Full Stack Engineer}{Bifrost Code}{February 2025 -- Present}{independent software studio; side project in my own time, alongside the full-time Moneta Market role}
 \begin{itemize}
     \item Deliver full-stack web apps end-to-end (React, Next.js, NestJS, Express on TypeScript pnpm monorepos, PostgreSQL), self-hosted on the studio's own infrastructure -- Proxmox VM (Ubuntu Server) with Dokploy, Docker Compose health checks, and Cloudflare Tunnels, a low-cost production alternative to Vercel/AWS. Earlier delivered projects shipped with FastAPI, Django, and React Native.
 \end{itemize}
@@ -126,6 +126,7 @@ Full Stack Engineer with 2+ years of production experience building backend syst
 % ----- Education -----
 \section*{Education}
 
-\noindent\textbf{Bachelor of Science in Computer Science Engineering}, Universidad Autónoma de Chihuahua -- GPA 9.2/10, graduated by academic merit \hfill \textcolor{subtle}{2018 -- 2023}
+\noindent\textbf{Bachelor of Science in Computer Science Engineering} {\textcolor{subtle}{$\cdot$ 2018 -- 2023}}\\
+Universidad Autónoma de Chihuahua -- GPA 9.2/10, graduated by academic merit
 
 \end{document}
