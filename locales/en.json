@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "title": "José Chaparro | Backend & Cloud Infrastructure Engineer"
+  },
   "nav": {
     "about": "About",
     "experience": "Experience",
@@ -6,91 +9,100 @@
     "projects": "Projects",
     "contact": "Contact"
   },
-  "hero": {
-    "greeting": "Hello, I'm",
-    "subtitle": "Full Stack Engineer with expertise in backend systems, cloud infrastructure (AWS), and microservices architecture"
-  },
   "ui": {
-    "viewWork": "View My Work",
-    "getInTouch": "Get In Touch",
+    "skip": "Skip to content",
+    "viewWork": "View my work",
     "downloadCV": "Download CV",
-    "inProgress": "In Progress",
+    "inProgress": "In progress",
+    "inProduction": "In production",
     "completed": "Completed",
-    "contactDetails": "Contact for Details",
-    "viewPresentation": "View Presentation",
+    "contactDetails": "Contact for details",
+    "viewPresentation": "View presentation",
     "viewGitHub": "View on GitHub",
-    "inProduction": "In Production"
+    "languageToggle": "Switch language",
+    "themeToggle": "Switch colour theme",
+    "menuToggle": "Open navigation menu",
+    "backToTop": "Back to top"
   },
   "typedRoles": [
-    "Full Stack Engineer",
     "Backend Engineer",
+    "Cloud Infrastructure",
     "Systems Architect",
-    "Cloud & Infrastructure"
+    "Full Stack Engineer"
   ],
+  "hero": {
+    "eyebrow": "Software engineer · Chihuahua, MX",
+    "lead": "I build backend systems and run the infrastructure they live on. Today I own the microservices architecture at Moneta Market and co-found the software studio Bifrost Code."
+  },
   "about": {
-    "title": "About <span class=\"text-primary\">Me</span>",
-    "p1": "<span class=\"font-semibold text-primary\">Full Stack Engineer</span> with {years}+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and developing cross-platform applications.",
-    "p2": "Currently at <span class=\"font-semibold\">Moneta Market</span>, where I own the microservices architecture: a 6-container production platform integrating ML pipelines, event-driven webhooks, and a C# desktop app. I also work as an independent contractor building full-stack systems with <span class=\"font-semibold text-secondary\">React, FastAPI, and PostgreSQL</span>.",
+    "kicker": "01 · Background",
+    "heading": "About me",
+    "p1": "Software engineer with {years}+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and shipping cross-platform applications.",
+    "p2": "At <strong class=\"font-semibold text-ink\">Moneta Market</strong> I own the microservices architecture: a six-container production platform wiring together ML pipelines, event-driven webhooks and a C# desktop app. In parallel I co-founded <strong class=\"font-semibold text-ink\">Bifrost Code</strong>, a studio that ships full-stack products and self-hosts them on its own infrastructure.",
     "languages": "Languages",
     "spanish": "Spanish",
     "spanishLevel": "Native",
     "english": "English",
-    "englishLevel": "Upper-Intermediate (B2)",
-    "yearsExp": "Years Experience",
-    "technologies": "Technologies"
+    "englishLevel": "Upper-intermediate (B2)",
+    "location": "Chihuahua, Mexico · Available for backend and infrastructure work",
+    "yearsExp": "Years of experience",
+    "servicesRun": "Services I run in production"
   },
   "experience": {
-    "title": "Work <span class=\"text-primary\">Experience</span>",
-    "mmPeriod": "August 2025 - Present",
+    "kicker": "02 · Track record",
+    "heading": "Experience",
+    "mmPeriod": "August 2025 — Present",
     "monetaRole": "Full Stack Engineer",
     "monetaCompany": "Moneta Market LLC",
-    "monetaB1": "Architected the company's first containerized platform: 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) deployed on AWS EC2 with private networking and automated health checks",
-    "monetaB2": "Designed a 25-table PostgreSQL schema on AWS RDS with 24 foreign keys, 34 strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host",
-    "monetaB3": "Built an event-driven FastAPI webhook service integrating Label Studio with S3: Repository pattern, atomic DB/S3 rollback on failure, async connection pooling, and in-memory cache with DB fallback",
-    "monetaB4": "Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated from Windows-only WPF) for human review of ML-labeled video frames: MVVM architecture, two-pass verification workflow, and sliding-window prefetch cache",
-    "monetaB5": "Implemented least-privilege IAM policies and AWS Secrets Manager for credential management; used LocalStack for local S3 emulation without exposing production credentials",
-    "monetaB6": "Built the data pipeline's operator tooling (CLIs, idempotent S3-PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT)",
-    "contractorPeriod": "February 2025 - Present",
+    "monetaB1": "Architected and shipped the company's first containerized platform: a six-service Docker Compose stack (two FastAPI microservices, Label Studio, MLflow and an Nginx reverse proxy) on AWS EC2, with private networking and automated health checks.",
+    "monetaB2": "Designed the PostgreSQL schema the whole operation rests on: 25 tables on AWS RDS with 24 foreign keys, 34 strategic indexes, an idempotent migration system and soft-delete audit trail; access runs exclusively through an SSH tunnel via an EC2 bastion host.",
+    "monetaB3": "Built an event-driven FastAPI webhook service linking Label Studio to S3: Repository pattern, atomic database/S3 rollback on any failure, async connection pooling and an in-memory cache with database fallback.",
+    "monetaB4": "Developed a cross-platform C# desktop app (.NET 10 with Avalonia, migrated off a Windows-only WPF build) for human review of model-labelled frames: MVVM architecture, two-pass verification workflow and a sliding-window prefetch cache.",
+    "monetaB5": "Implemented least-privilege IAM policies and moved credentials into AWS Secrets Manager; LocalStack emulates S3 locally so development never touches production credentials.",
+    "monetaB6": "Built the data pipeline's operator tooling — CLIs, idempotent S3-to-PostgreSQL sync, drift audits — and automated model training through GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT).",
+    "contractorPeriod": "February 2025 — Present",
     "contractorRole": "Full Stack Engineer & Co-founder",
-    "contractorCompany": "Bifrost Code — Independent Software Studio",
-    "contractorB1": "Deliver full-stack web apps end-to-end with React, Next.js, NestJS, and Express on TypeScript pnpm monorepos with PostgreSQL; earlier delivered projects shipped with React Native, FastAPI, and Django",
-    "contractorB2": "Production projects for real clients: FisioApp (multi-tenant clinic management, WCAG 2.1 AA audited), Feriu (multi-tenant shared-expense platform), and Karaoke Balu (real-time karaoke request platform with SSE and kiosk mode)",
-    "contractorB3": "Self-host client applications on the studio's own infrastructure — a Proxmox VM running Ubuntu Server with Dokploy and Docker Compose; DNS through Cloudflare and services exposed securely via Cloudflare Tunnels (no open ports), a low-cost alternative to Vercel or AWS",
-    "rogaPeriod": "March 2024 - August 2025",
+    "contractorCompany": "Bifrost Code",
+    "contractorB1": "Deliver full-stack web applications end to end with React, Next.js, NestJS and Express, on TypeScript pnpm monorepos backed by PostgreSQL; earlier engagements shipped on React Native, FastAPI and Django.",
+    "contractorB2": "Three products shipped and still running for real clients: FisioApp (multi-tenant clinic management, audited against WCAG 2.1 AA), Feriu (multi-tenant shared-expense platform) and Karaoke Balu (real-time requests over SSE with kiosk mode).",
+    "contractorB3": "Self-host client applications on the studio's own infrastructure: a Proxmox VM running Ubuntu Server with Dokploy and Docker Compose, DNS on Cloudflare and services exposed through Cloudflare Tunnels without a single inbound port — a low-cost alternative to Vercel or AWS.",
+    "rogaPeriod": "March 2024 — August 2025",
     "rogaRole": ".NET Software Developer",
-    "rogaB1": "Maintained and extended the internal ERP used across 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress); built modules for multi-branch inventory, pricing, accounts receivable, and POS in .NET Framework",
-    "rogaB2": "Designed SQL Server database architecture supporting multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, automated reports and email delivery via SQL Server Agent",
-    "rogaB3": "Standardized security practices across the development lifecycle: password manager for credential handling, physical security keys, and formalized coding processes"
+    "rogaB1": "Maintained and extended the internal ERP running across more than 170 branches and used by over 1,750 employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress); built the multi-branch inventory, pricing, accounts receivable and point-of-sale modules in .NET Framework.",
+    "rogaB2": "Designed the SQL Server database architecture behind multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, plus automated report generation and email delivery through SQL Server Agent.",
+    "rogaB3": "Standardised security practice across the development lifecycle: a shared password manager for credential handling, physical security keys, and formalised development processes the team still follows."
   },
   "skills": {
-    "title": "Technical <span class=\"text-primary\">Skills</span>",
+    "kicker": "03 · Toolkit",
+    "heading": "Technical skills",
     "languages": "Languages",
-    "frontend": "Frontend",
     "backend": "Backend",
-    "cloud": "Cloud & Infrastructure",
+    "cloud": "Cloud & infrastructure",
     "databases": "Databases",
-    "architecture": "Architecture"
+    "frontend": "Frontend",
+    "architecture": "Architecture & practice"
   },
   "projects": {
-    "title": "Featured <span class=\"text-primary\">Projects</span>",
-    "scDesc": "Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with FastAPI, PostgreSQL on AWS, and integrated ML capabilities.",
-    "sdDesc": "Custom dataset training for personalized image generation. Explored deep learning model fine-tuning techniques.",
-    "galagaDesc": "Unreal Engine game controlled via smartphone accelerometer using Processing and HTTP requests.",
-    "fisioDesc": "Multi-tenant management system for physiotherapy clinics: patients, clinical records, appointments, packages, and payments. WCAG 2.1 AA audited, automated off-site backups.",
+    "kicker": "04 · Selected work",
+    "heading": "Projects",
+    "scDesc": "Full-stack system with cloud infrastructure, RESTful APIs and an integrated machine-learning pipeline.",
+    "fisioDesc": "Multi-tenant management for physiotherapy clinics: clinical records, appointments, packages and payments. Audited against WCAG 2.1 AA, with automated off-site backups.",
     "feriuDesc": "Multi-tenant, self-hosted shared-expense platform with a Splitwise-style settlement engine, built as a NestJS + Next.js pnpm monorepo on PostgreSQL.",
-    "karaokeDesc": "Real-time karaoke request platform for live events: SSE-synced queue, admin panel, self-serve kiosk mode, and Virtual DJ integration. Express + React monorepo."
+    "karaokeDesc": "Real-time karaoke request platform for live events: an SSE-synced queue, admin panel, self-serve kiosk mode and Virtual DJ integration. Express + React monorepo.",
+    "sdDesc": "Custom dataset training for personalised image generation, exploring fine-tuning techniques for deep learning models.",
+    "galagaDesc": "Unreal Engine game controlled through a smartphone accelerometer, bridged with Processing and HTTP requests."
   },
   "contact": {
-    "title": "Get In <span class=\"text-primary\">Touch</span>",
-    "subtitle": "Looking to build backend systems, cloud infrastructure, or scalable APIs? Let's connect.",
-    "email": "Email",
+    "kicker": "05 · Get in touch",
+    "heading": "Contact",
+    "subtitle": "Backend systems, cloud infrastructure, or APIs that have to scale? Write to me and let's talk it through.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "cv": "Resume / CV",
+    "cv": "Résumé / CV",
     "cvDesc": "Download PDF"
   },
   "footer": {
-    "tagline": "Full Stack Engineer · Backend & Cloud Infrastructure",
+    "tagline": "Software engineer · Backend & cloud infrastructure",
     "copyright": "© 2026 José Chaparro. All rights reserved."
   }
 }

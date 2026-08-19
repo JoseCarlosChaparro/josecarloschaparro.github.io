@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "title": "José Chaparro | Ingeniero de backend e infraestructura cloud"
+  },
   "nav": {
     "about": "Sobre mí",
     "experience": "Experiencia",
@@ -6,91 +9,100 @@
     "projects": "Proyectos",
     "contact": "Contacto"
   },
-  "hero": {
-    "greeting": "Hola, soy",
-    "subtitle": "Ingeniero Full Stack con experiencia en sistemas backend, infraestructura cloud (AWS) y arquitectura de microservicios"
-  },
   "ui": {
+    "skip": "Saltar al contenido",
     "viewWork": "Ver mi trabajo",
-    "getInTouch": "Contáctame",
     "downloadCV": "Descargar CV",
-    "inProgress": "En Progreso",
+    "inProgress": "En progreso",
+    "inProduction": "En producción",
     "completed": "Completado",
     "contactDetails": "Contactar para detalles",
     "viewPresentation": "Ver presentación",
     "viewGitHub": "Ver en GitHub",
-    "inProduction": "En producción"
+    "languageToggle": "Cambiar idioma",
+    "themeToggle": "Cambiar tema de color",
+    "menuToggle": "Abrir menú de navegación",
+    "backToTop": "Volver arriba"
   },
   "typedRoles": [
-    "Ingeniero Full Stack",
     "Ingeniero Backend",
+    "Infraestructura Cloud",
     "Arquitecto de Sistemas",
-    "Cloud e Infraestructura"
+    "Ingeniero Full Stack"
   ],
+  "hero": {
+    "eyebrow": "Ingeniero de software · Chihuahua, MX",
+    "lead": "Construyo sistemas backend y opero la infraestructura donde viven. Hoy soy responsable de la arquitectura de microservicios en Moneta Market y cofundador del estudio de software Bifrost Code."
+  },
   "about": {
-    "title": "Sobre <span class=\"text-primary\">mí</span>",
-    "p1": "<span class=\"font-semibold text-primary\">Ingeniero Full Stack</span> con {years}+ años de experiencia en producción construyendo sistemas backend en Python y .NET, desplegando infraestructura cloud en AWS y desarrollando aplicaciones multiplataforma.",
-    "p2": "Actualmente en <span class=\"font-semibold\">Moneta Market</span>, donde soy responsable de la arquitectura de microservicios: una plataforma de producción con 6 contenedores que integra pipelines de ML, webhooks event-driven y una app de escritorio en C#. También trabajo como consultor independiente construyendo sistemas full stack con <span class=\"font-semibold text-secondary\">React, FastAPI y PostgreSQL</span>.",
+    "kicker": "01 · Trayectoria",
+    "heading": "Sobre mí",
+    "p1": "Ingeniero de software con {years}+ años de experiencia en producción construyendo sistemas backend en Python y .NET, desplegando infraestructura cloud en AWS y entregando aplicaciones multiplataforma.",
+    "p2": "En <strong class=\"font-semibold text-ink\">Moneta Market</strong> soy responsable de la arquitectura de microservicios: una plataforma de producción de seis contenedores que enlaza pipelines de ML, webhooks event-driven y una app de escritorio en C#. En paralelo cofundé <strong class=\"font-semibold text-ink\">Bifrost Code</strong>, un estudio que entrega productos full-stack y los aloja en su propia infraestructura.",
     "languages": "Idiomas",
     "spanish": "Español",
     "spanishLevel": "Nativo",
     "english": "Inglés",
     "englishLevel": "Avanzado (B2)",
+    "location": "Chihuahua, México · Disponible para proyectos de backend e infraestructura",
     "yearsExp": "Años de experiencia",
-    "technologies": "Tecnologías"
+    "servicesRun": "Servicios que opero en producción"
   },
   "experience": {
-    "title": "Experiencia <span class=\"text-primary\">Laboral</span>",
-    "mmPeriod": "Agosto 2025 - Presente",
+    "kicker": "02 · Recorrido",
+    "heading": "Experiencia",
+    "mmPeriod": "Agosto 2025 — Presente",
     "monetaRole": "Ingeniero Full Stack",
     "monetaCompany": "Moneta Market LLC",
-    "monetaB1": "Diseñé y orquesté la primera plataforma containerizada de la empresa: stack Docker Compose de 6 servicios (2 microservicios FastAPI, Label Studio, MLflow, Nginx reverse proxy) desplegado en AWS EC2 con red privada y health checks automatizados",
-    "monetaB2": "Diseñé un esquema PostgreSQL de 25 tablas en AWS RDS con 24 foreign keys, 34 índices estratégicos, sistema de migraciones idempotente y soft-delete con audit trail; acceso vía túnel SSH a través de bastion host en EC2",
-    "monetaB3": "Construí un servicio webhook event-driven en FastAPI integrando Label Studio con S3: Repository pattern, rollback atómico DB/S3 ante fallos, connection pooling async y caché en memoria con fallback a BD",
-    "monetaB4": "Desarrollé una app de escritorio multiplataforma en C# (.NET 10, Avalonia, migrada desde WPF solo-Windows) para revisión humana de frames con etiquetado ML: arquitectura MVVM, flujo de verificación en dos pasadas y caché de prefetch con ventana deslizante",
-    "monetaB5": "Implementé políticas IAM de menor privilegio y AWS Secrets Manager para gestión de credenciales; usé LocalStack para emulación local de S3 sin exponer credenciales de producción",
-    "monetaB6": "Construí el tooling operativo del pipeline de datos (CLIs, sincronización idempotente S3-PostgreSQL, auditorías de drift) y automaticé el entrenamiento de modelos vía GitLab CI sobre instancias GPU efímeras en AWS con tracking en MLflow; prototipé inferencia edge en NVIDIA Jetson (YOLO sobre TensorRT)",
-    "contractorPeriod": "Febrero 2025 - Presente",
-    "contractorRole": "Full Stack Engineer y Cofundador",
-    "contractorCompany": "Bifrost Code — Estudio de software independiente",
-    "contractorB1": "Entrega de aplicaciones web full-stack de extremo a extremo con React, Next.js, NestJS y Express en monorepos pnpm con TypeScript y PostgreSQL; proyectos anteriores entregados con React Native, FastAPI y Django",
-    "contractorB2": "Proyectos en producción para clientes reales: FisioApp (gestión multi-tenant de clínicas, auditada WCAG 2.1 AA), Feriu (plataforma multi-tenant de gastos compartidos) y Karaoke Balu (plataforma de peticiones de karaoke en tiempo real con SSE y modo kiosko)",
-    "contractorB3": "Self-hosting de aplicaciones de clientes en infraestructura propia del estudio — una VM de Proxmox con Ubuntu Server, Dokploy y Docker Compose; DNS con Cloudflare y exposición segura de servicios mediante Cloudflare Tunnels (sin abrir puertos), una alternativa de bajo costo frente a Vercel o AWS",
-    "rogaPeriod": "Marzo 2024 - Agosto 2025",
+    "monetaB1": "Arquitecté y puse en producción la primera plataforma containerizada de la empresa: un stack Docker Compose de seis servicios (dos microservicios FastAPI, Label Studio, MLflow y Nginx como reverse proxy) sobre AWS EC2, con red privada y health checks automatizados.",
+    "monetaB2": "Diseñé el esquema PostgreSQL que sostiene la operación: 25 tablas en AWS RDS con 24 llaves foráneas, 34 índices estratégicos, un sistema de migraciones idempotente y borrado lógico con traza de auditoría; el acceso pasa exclusivamente por un túnel SSH a través de un bastion host en EC2.",
+    "monetaB3": "Construí un servicio de webhooks event-driven en FastAPI que integra Label Studio con S3: patrón Repository, rollback atómico entre base de datos y S3 ante cualquier fallo, pooling asíncrono de conexiones y caché en memoria con respaldo en base de datos.",
+    "monetaB4": "Desarrollé una aplicación de escritorio multiplataforma en C# (.NET 10 con Avalonia, migrada desde un WPF que solo corría en Windows) para la revisión humana de frames etiquetados por el modelo: arquitectura MVVM, flujo de verificación en dos pasadas y caché de prefetch con ventana deslizante.",
+    "monetaB5": "Implementé políticas IAM de menor privilegio y moví las credenciales a AWS Secrets Manager; con LocalStack emulo S3 en local, de modo que el desarrollo nunca toca credenciales de producción.",
+    "monetaB6": "Construí el tooling operativo del pipeline de datos —CLIs, sincronización idempotente entre S3 y PostgreSQL, auditorías de drift— y automaticé el entrenamiento de modelos con GitLab CI sobre instancias GPU efímeras en AWS, con seguimiento en MLflow; prototipé inferencia en el borde sobre NVIDIA Jetson (YOLO con TensorRT).",
+    "contractorPeriod": "Febrero 2025 — Presente",
+    "contractorRole": "Ingeniero Full Stack y Cofundador",
+    "contractorCompany": "Bifrost Code",
+    "contractorB1": "Entrego aplicaciones web full-stack de extremo a extremo con React, Next.js, NestJS y Express, en monorepos pnpm con TypeScript y PostgreSQL; proyectos anteriores se entregaron sobre React Native, FastAPI y Django.",
+    "contractorB2": "Tres productos entregados y en operación para clientes reales: FisioApp (gestión multi-tenant de clínicas, auditada conforme a WCAG 2.1 AA), Feriu (plataforma multi-tenant de gastos compartidos) y Karaoke Balu (peticiones en tiempo real con SSE y modo kiosko).",
+    "contractorB3": "Alojo las aplicaciones de los clientes en infraestructura propia del estudio: una VM Proxmox con Ubuntu Server, Dokploy y Docker Compose, DNS en Cloudflare y servicios expuestos mediante Cloudflare Tunnels sin abrir un solo puerto entrante — una alternativa de bajo costo frente a Vercel o AWS.",
+    "rogaPeriod": "Marzo 2024 — Agosto 2025",
     "rogaRole": "Desarrollador de Software .NET",
-    "rogaB1": "Mantuve y extendí el ERP interno utilizado en 170+ sucursales y 1,750+ empleados (Mueblería El Pasito / Villarreal Muebles / Dinexpress); implementé módulos de inventario multi-sucursal, gestión de precios, cuentas por cobrar y POS en .NET Framework",
-    "rogaB2": "Diseñé la arquitectura de base de datos en SQL Server para operaciones retail multi-sucursal: procedimientos almacenados para agregación de inventario y lógica de precios, generación automatizada de reportes y envío de correos mediante SQL Server Agent",
-    "rogaB3": "Estandaricé prácticas de seguridad en el ciclo de vida del desarrollo: gestor de contraseñas, llaves de seguridad físicas y procesos formalizados de desarrollo"
+    "rogaB1": "Mantuve y extendí el ERP interno que opera en más de 170 sucursales y usan más de 1,750 empleados (Mueblería El Pasito / Villarreal Muebles / Dinexpress); construí los módulos de inventario multi-sucursal, gestión de precios, cuentas por cobrar y punto de venta en .NET Framework.",
+    "rogaB2": "Diseñé la arquitectura de base de datos en SQL Server detrás de la operación retail multi-sucursal: procedimientos almacenados para la agregación de inventario y la lógica de precios, más la generación automática de reportes y su envío por correo mediante SQL Server Agent.",
+    "rogaB3": "Estandaricé las prácticas de seguridad del ciclo de desarrollo: gestor de contraseñas compartido para el manejo de credenciales, llaves de seguridad físicas y procesos de desarrollo formalizados que el equipo sigue usando."
   },
   "skills": {
-    "title": "Habilidades <span class=\"text-primary\">Técnicas</span>",
+    "kicker": "03 · Herramientas",
+    "heading": "Habilidades técnicas",
     "languages": "Lenguajes",
-    "frontend": "Frontend",
     "backend": "Backend",
-    "cloud": "Cloud e Infraestructura",
-    "databases": "Bases de Datos",
-    "architecture": "Arquitectura"
+    "cloud": "Cloud e infraestructura",
+    "databases": "Bases de datos",
+    "frontend": "Frontend",
+    "architecture": "Arquitectura y práctica"
   },
   "projects": {
-    "title": "Proyectos <span class=\"text-primary\">Destacados</span>",
-    "scDesc": "Sistema full stack con infraestructura cloud, APIs RESTful y gestión de base de datos. Construido con FastAPI, PostgreSQL en AWS e integración con pipeline de ML.",
-    "sdDesc": "Entrenamiento con dataset personalizado para generación de imágenes. Exploración de técnicas de fine-tuning de modelos de deep learning.",
-    "galagaDesc": "Juego en Unreal Engine controlado mediante el acelerómetro del smartphone usando Processing y peticiones HTTP.",
-    "fisioDesc": "Sistema multi-tenant de gestión para clínicas de fisioterapia: pacientes, expedientes clínicos, citas, paquetes y cobros. Auditado WCAG 2.1 AA, respaldos automáticos off-site.",
-    "feriuDesc": "Plataforma multi-tenant y self-hosted de gastos compartidos con motor de liquidación estilo Splitwise, construida como monorepo pnpm NestJS + Next.js sobre PostgreSQL.",
-    "karaokeDesc": "Plataforma de peticiones de karaoke en tiempo real para eventos en vivo: cola sincronizada por SSE, panel de administración, modo kiosko de autoservicio e integración con Virtual DJ. Monorepo Express + React."
+    "kicker": "04 · Trabajo seleccionado",
+    "heading": "Proyectos",
+    "scDesc": "Sistema full stack con infraestructura cloud, APIs RESTful y un pipeline de machine learning integrado.",
+    "fisioDesc": "Gestión multi-tenant para clínicas de fisioterapia: expedientes clínicos, citas, paquetes y cobros. Auditada conforme a WCAG 2.1 AA, con respaldos automáticos fuera de sitio.",
+    "feriuDesc": "Plataforma multi-tenant y self-hosted de gastos compartidos, con motor de liquidación estilo Splitwise, construida como monorepo pnpm de NestJS y Next.js sobre PostgreSQL.",
+    "karaokeDesc": "Plataforma de peticiones de karaoke en tiempo real para eventos en vivo: cola sincronizada por SSE, panel de administración, modo kiosko de autoservicio e integración con Virtual DJ. Monorepo Express + React.",
+    "sdDesc": "Entrenamiento con dataset propio para generación de imágenes personalizadas, explorando técnicas de fine-tuning de modelos de deep learning.",
+    "galagaDesc": "Juego en Unreal Engine controlado con el acelerómetro del teléfono, comunicado mediante Processing y peticiones HTTP."
   },
   "contact": {
-    "title": "Ponerse en <span class=\"text-primary\">Contacto</span>",
-    "subtitle": "¿Quieres construir sistemas backend, infraestructura cloud o APIs escalables? Hablemos.",
-    "email": "Correo",
+    "kicker": "05 · Hablemos",
+    "heading": "Contacto",
+    "subtitle": "¿Sistemas backend, infraestructura cloud o APIs que tienen que escalar? Escríbeme y lo platicamos.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "cv": "Currículum / CV",
     "cvDesc": "Descargar PDF"
   },
   "footer": {
-    "tagline": "Ingeniero Full Stack · Backend e Infraestructura Cloud",
+    "tagline": "Ingeniero de software · Backend e infraestructura cloud",
     "copyright": "© 2026 José Chaparro. Todos los derechos reservados."
   }
 }

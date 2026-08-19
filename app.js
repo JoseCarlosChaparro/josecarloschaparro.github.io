@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeTheme();
     initializeNavigation();
     initializeScrollAnimations();
-    initializeTimelineAnimations();
     initializeLoadingScreen();
     initializeBackToTop();
 });
@@ -81,16 +80,24 @@ function initializeTheme() {
 
 function updateThemeIcon(theme) {
     const themeToggle = document.getElementById('theme-toggle');
+    const attrs = 'class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+                  'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" ' +
+                  'aria-hidden="true" focusable="false"';
+
+    // El icono muestra la acción disponible, no el estado actual:
+    // en oscuro ofrece el sol (cambiar a claro) y viceversa.
     const sunIcon = `
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+        <svg ${attrs}>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path><path d="M12 20v2"></path>
+            <path d="m4.9 4.9 1.4 1.4"></path><path d="m17.7 17.7 1.4 1.4"></path>
+            <path d="M2 12h2"></path><path d="M20 12h2"></path>
+            <path d="m6.3 17.7-1.4 1.4"></path><path d="m19.1 4.9-1.4 1.4"></path>
         </svg>
     `;
     const moonIcon = `
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+        <svg ${attrs}>
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
         </svg>
     `;
 
@@ -118,6 +125,16 @@ function initializeNavigation() {
         });
     }
 
+    // Escape cierra el menú y regresa el foco a quien lo abrió
+    if (mobileMenuToggle && mobileMenu) {
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape' || mobileMenu.classList.contains('hidden')) return;
+            mobileMenu.classList.add('hidden');
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            mobileMenuToggle.focus();
+        });
+    }
+
     // Close mobile menu when link is clicked
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -142,6 +159,13 @@ function initializeNavigation() {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+
+                // Mover el scroll no mueve el foco: sin esto, quien navega
+                // con teclado sigue en el header después de "saltar".
+                targetSection.setAttribute('tabindex', '-1');
+                targetSection.focus({ preventScroll: true });
+                targetSection.addEventListener('blur',
+                    () => targetSection.removeAttribute('tabindex'), { once: true });
             }
         });
     });
@@ -206,6 +230,10 @@ function initializeTypingAnimation() {
         timeoutId = setTimeout(type, typingSpeed);
     }
 
+    // WCAG 2.3.3: sin animación de tecleo si el sistema pide menos movimiento.
+    // El rol se muestra completo y estático — la información no se pierde.
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
     // Roles are provided by languagechange event dispatched by LanguageManager
     document.addEventListener('languagechange', ({ detail }) => {
         if (timeoutId) clearTimeout(timeoutId);
@@ -213,6 +241,12 @@ function initializeTypingAnimation() {
         roleIndex = 0;
         charIndex = 0;
         isDeleting = false;
+
+        if (prefersReducedMotion.matches) {
+            typedTextElement.textContent = roles[0] ?? '';
+            return;
+        }
+
         typedTextElement.textContent = '';
         type();
     });
@@ -245,43 +279,6 @@ function initializeScrollAnimations() {
         el.style.transitionDelay = `${index * 0.05}s`;
         observer.observe(el);
     });
-}
-
-// ============================================
-// TIMELINE ANIMATIONS
-// ============================================
-
-function initializeTimelineAnimations() {
-    const timelineLine = document.getElementById('timeline-line');
-    const timelineDots = document.querySelectorAll('.timeline-dot');
-    const experienceSection = document.getElementById('experience');
-
-    if (!timelineLine || !experienceSection) return;
-
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Animate the line
-                timelineLine.classList.add('active');
-
-                // Animate dots with stagger
-                timelineDots.forEach((dot, index) => {
-                    setTimeout(() => {
-                        dot.classList.add('active');
-                    }, 400 + (index * 300));
-                });
-
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    observer.observe(experienceSection);
 }
 
 // ============================================
@@ -387,10 +384,20 @@ class LanguageManager {
             if (value) this.#setHTML(el, value);
         });
 
-        const toggleBtn = document.getElementById('language-toggle');
-        if (toggleBtn) toggleBtn.textContent = lang.toUpperCase();
+        // Etiquetas accesibles: los botones de idioma, tema y menú no tienen
+        // texto visible, así que su nombre accesible también debe traducirse.
+        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+            const value = this.#resolve(translations, el.dataset.i18nAria);
+            if (value) el.setAttribute('aria-label', value);
+        });
+
+        // Solo el codigo visible: el <span class="sr-only"> hermano lleva la
+        // descripcion traducida y debe sobrevivir al cambio de idioma.
+        const langCode = document.getElementById('language-code');
+        if (langCode) langCode.textContent = lang.toUpperCase();
 
         document.documentElement.lang = lang;
+        if (translations.meta?.title) document.title = translations.meta.title;
         localStorage.setItem('language', lang);
         this.#currentLanguage = lang;
 
