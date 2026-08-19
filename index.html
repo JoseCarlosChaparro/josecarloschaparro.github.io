@@ -1,962 +1,608 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="José Chaparro - Full Stack Engineer specializing in backend systems, cloud infrastructure on AWS, and microservices architecture">
-    <meta name="keywords" content="José Chaparro, Full-Stack Developer, Software Engineer, Web Development, React, Next.js, .NET, NestJS, Python, AWS, Machine Learning">
+    <meta name="description" content="José Chaparro — Software engineer focused on backend systems, cloud infrastructure on AWS, and microservices architecture.">
+    <meta name="keywords" content="José Chaparro, Software Engineer, Backend Engineer, Cloud Infrastructure, AWS, Docker, FastAPI, PostgreSQL, .NET, NestJS, Next.js">
     <meta name="author" content="José Chaparro">
-    <title>José Chaparro | Full Stack Engineer</title>
+    <meta name="theme-color" content="#0b1417" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f9fcfc" media="(prefers-color-scheme: light)">
+    <title>José Chaparro | Backend &amp; Cloud Infrastructure Engineer</title>
 
-    <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicons/favicon.ico">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Tailwind Custom Config -->
+    <!-- Semantic color tokens resolve to the CSS custom properties in style.css,
+         so every utility below follows the light/dark switch automatically. -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2563eb',
-                        secondary: '#7c3aed',
+                        // OJO: no llamar 'base' a un color — chocaría con la
+                        // utilidad de tamaño text-base y la sobrescribiría.
+                        page: 'var(--c-page)',
+                        band: 'var(--c-band)',
+                        card: 'var(--c-card)',
+                        deep: 'var(--c-deep)',
+                        ink: 'var(--c-ink)',
+                        muted: 'var(--c-muted)',
+                        faint: 'var(--c-faint)',
+                        rule: 'var(--c-rule)',
+                        edge: 'var(--c-edge)',
+                        accent: 'var(--c-accent)',
+                        'accent-ink': 'var(--c-accent-ink)',
+                        'accent-soft': 'var(--c-accent-soft)'
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+                        sans: ['Manrope', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace']
                     }
                 }
             }
         }
     </script>
 
-    <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Marca que hay JS ANTES de pintar. Las animaciones de entrada solo
+         ocultan contenido cuando existe algo que pueda revelarlo: sin esto,
+         un fallo de app.js dejaría la página en blanco bajo el hero. -->
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<body class="font-sans bg-page text-ink">
 
-    <!-- Header / Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 md:h-20">
-                <!-- Logo -->
-                <a href="#hero" class="text-xl md:text-2xl font-bold">
-                    José <span class="text-primary">Chaparro</span>
+    <a href="#main" class="skip-link" data-i18n="ui.skip">Skip to content</a>
+
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-band border-b border-rule no-print" style="backdrop-filter: saturate(140%) blur(10px);">
+        <nav class="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-[72px]" aria-label="Main">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="#hero" class="font-display text-lg md:text-xl font-extrabold tracking-tight">
+                    José <span class="text-accent">Chaparro</span>
                 </a>
 
-                <!-- Desktop Navigation -->
-                <ul class="hidden md:flex space-x-8">
-                    <li><a href="#about" class="hover:text-primary transition-colors" data-i18n="nav.about">About</a></li>
-                    <li><a href="#experience" class="hover:text-primary transition-colors" data-i18n="nav.experience">Experience</a></li>
-                    <li><a href="#skills" class="hover:text-primary transition-colors" data-i18n="nav.skills">Skills</a></li>
-                    <li><a href="#projects" class="hover:text-primary transition-colors" data-i18n="nav.projects">Projects</a></li>
-                    <li><a href="#contact" class="hover:text-primary transition-colors" data-i18n="nav.contact">Contact</a></li>
+                <ul class="hidden md:flex items-center gap-8 text-[0.9375rem] font-medium text-muted">
+                    <li><a href="#about" class="hover:text-accent transition-colors" data-i18n="nav.about">About</a></li>
+                    <li><a href="#experience" class="hover:text-accent transition-colors" data-i18n="nav.experience">Experience</a></li>
+                    <li><a href="#skills" class="hover:text-accent transition-colors" data-i18n="nav.skills">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-accent transition-colors" data-i18n="nav.projects">Projects</a></li>
+                    <li><a href="#contact" class="hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a></li>
                 </ul>
 
-                <!-- Dark Mode Toggle + Mobile Menu Button -->
-                <div class="flex items-center gap-4">
-                    <button id="language-toggle" class="px-2.5 py-1 rounded-lg text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors border border-gray-200 dark:border-gray-700" aria-label="Toggle language">
-                        EN
+                <div class="flex items-center gap-2">
+                    <!-- Sin aria-label: el nombre accesible se compone del texto
+                         visible ("EN") mas la descripcion solo-lectores, para que
+                         contenga la etiqueta visible (WCAG 2.5.3 Label in Name). -->
+                    <button id="language-toggle" type="button"
+                            class="inline-flex items-center justify-center min-w-[44px] h-11 px-3 rounded-[10px] border border-edge text-[0.8125rem] font-semibold hover:text-accent hover:border-accent transition-colors">
+                        <span id="language-code">EN</span>
+                        <span class="sr-only" data-i18n="ui.languageToggle">&nbsp;Switch language</span>
                     </button>
-                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
-                        <!-- Icon will be injected by JavaScript -->
+
+                    <button id="theme-toggle" type="button"
+                            class="icon-btn border border-edge"
+                            data-i18n-aria="ui.themeToggle" aria-label="Switch colour theme">
+                        <!-- icon injected by app.js -->
                     </button>
-                    <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle mobile menu" aria-expanded="false">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+
+                    <button id="mobile-menu-toggle" type="button"
+                            class="md:hidden icon-btn border border-edge"
+                            data-i18n-aria="ui.menuToggle" aria-label="Open menu"
+                            aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true" focusable="false">
+                            <path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path>
                         </svg>
                     </button>
                 </div>
             </div>
 
-            <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <ul class="flex flex-col space-y-2">
-                    <li><a href="#about" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.about">About</a></li>
-                    <li><a href="#experience" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.experience">Experience</a></li>
-                    <li><a href="#skills" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.skills">Skills</a></li>
-                    <li><a href="#projects" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.projects">Projects</a></li>
-                    <li><a href="#contact" class="block py-2 hover:text-primary transition-colors" data-i18n="nav.contact">Contact</a></li>
+                <ul class="flex flex-col">
+                    <li><a href="#about" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.about">About</a></li>
+                    <li><a href="#experience" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.experience">Experience</a></li>
+                    <li><a href="#skills" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.skills">Skills</a></li>
+                    <li><a href="#projects" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.projects">Projects</a></li>
+                    <li><a href="#contact" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center pt-20 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div class="container mx-auto max-w-6xl">
-            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                <!-- Text Content -->
-                <div class="order-2 md:order-1 text-center md:text-left scroll-reveal">
-                    <p class="text-primary dark:text-blue-400 font-semibold mb-4 text-lg" data-i18n="hero.greeting">
-                        Hello, I'm
-                    </p>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-                        José Chaparro
-                    </h1>
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-6 min-h-[3rem]">
-                        <span id="typed-text"></span>
-                        <span class="animate-pulse">|</span>
-                    </div>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto md:mx-0" data-i18n="hero.subtitle">
-                        Full Stack Engineer with expertise in backend systems, cloud infrastructure (AWS), and microservices architecture
-                    </p>
+    <main id="main">
 
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center md:justify-start">
-                        <a href="#projects" class="btn-primary" data-i18n="ui.viewWork">
-                            View My Work
-                        </a>
-                        <a href="assets/cv/jose-chaparro-cv.pdf" download class="btn-secondary inline-flex items-center justify-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4.5 19.5h15"/>
-                            </svg>
-                            <span data-i18n="ui.downloadCV">Download CV</span>
-                        </a>
-                        <a href="#contact" class="btn-secondary" data-i18n="ui.getInTouch">
-                            Get In Touch
-                        </a>
-                    </div>
+    <!-- ============================================================
+         HERO — superficie base
+         ============================================================ -->
+    <section id="hero" class="atmos pt-24 md:pt-32 pb-16 md:pb-24 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px] grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+            <!-- Retrato: primero en el DOM en escritorio (columna izquierda),
+                 pero reordenado debajo del texto en móvil, para que la
+                 propuesta se lea sin hacer scroll. -->
+            <div class="order-2 lg:order-1 lg:col-span-5 flex flex-col gap-4 scroll-reveal">
+                <div class="rounded-2xl overflow-hidden border border-rule">
+                    <img src="./assets/images/Jose picture 1-1.JPG"
+                         alt="José Chaparro"
+                         width="520" height="520"
+                         class="w-full block aspect-square object-cover"
+                         loading="eager" fetchpriority="high" decoding="async">
                 </div>
 
-                <!-- Profile Image -->
-                <div class="order-1 md:order-2 flex justify-center scroll-reveal">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-20 animate-pulse"></div>
-                        <img src="./assets/images/Jose picture 1-1.JPG" alt="José Chaparro - Full Stack Engineer" class="relative rounded-full w-64 h-64 sm:w-80 sm:h-80 object-cover shadow-2xl ring-4 ring-white dark:ring-gray-800" loading="eager">
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="card p-5 flex flex-col gap-1.5">
+                        <span class="font-display text-3xl font-extrabold tracking-tight text-accent" data-experience-since="2024-03">2+</span>
+                        <span class="text-[0.8125rem] leading-snug font-medium text-muted" data-i18n="about.yearsExp">Years of experience</span>
+                    </div>
+                    <div class="card p-5 flex flex-col gap-1.5">
+                        <span class="font-display text-3xl font-extrabold tracking-tight text-accent">6</span>
+                        <span class="text-[0.8125rem] leading-snug font-medium text-muted" data-i18n="about.servicesRun">Services I run in production</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-20 px-4 bg-white dark:bg-gray-900">
-        <div class="container mx-auto max-w-6xl">
-            <!-- Section Header -->
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    About <span class="text-primary">Me</span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-start">
-                <!-- Text Content -->
-                <div class="space-y-6 scroll-reveal">
-                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n-html="about.p1">
-                        <span class="font-semibold text-primary">Full Stack Engineer</span> with 2+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and developing cross-platform applications.
-                    </p>
-
-                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n-html="about.p2">
-                        Currently at <span class="font-semibold">Moneta Market</span>, where I own the microservices architecture: a 6-container production platform integrating ML pipelines, event-driven webhooks, and a C# desktop app. I also work as an independent contractor building full-stack systems with <span class="font-semibold text-secondary">React, FastAPI, and PostgreSQL</span>.
-                    </p>
-                </div>
-
-                <!-- Right Column: Languages + Stats -->
-                <div class="space-y-6 scroll-reveal">
-                    <!-- Languages Card -->
-                    <div class="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 p-8 rounded-2xl">
-                        <h3 class="text-2xl font-bold mb-6" data-i18n="about.languages">Languages</h3>
-                        <div class="space-y-4">
-                            <!-- Spanish -->
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="font-semibold" data-i18n="about.spanish">Spanish</span>
-                                    <span class="text-gray-600 dark:text-gray-400" data-i18n="about.spanishLevel">Native</span>
-                                </div>
-                                <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
-                                </div>
-                            </div>
-
-                            <!-- English -->
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="font-semibold" data-i18n="about.english">English</span>
-                                    <span class="text-gray-600 dark:text-gray-400" data-i18n="about.englishLevel">Upper-Intermediate (B2)</span>
-                                </div>
-                                <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                                    <div class="h-full w-3/4 bg-gradient-to-r from-primary to-secondary"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Highlight Stats -->
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                            <div class="text-3xl font-bold text-primary mb-2" data-experience-since="2024-03">2+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="about.yearsExp">Years Experience</div>
-                        </div>
-                        <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                            <div class="text-3xl font-bold text-secondary mb-2">10+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="about.technologies">Technologies</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto max-w-6xl">
-            <!-- Section Header -->
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    <span data-i18n-html="experience.title">Work <span class="text-primary">Experience</span></span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-
-            <!-- Timeline Container -->
-            <div class="relative">
-                <!-- Vertical Line Background (hidden on mobile) -->
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-300 dark:bg-gray-700"></div>
-                <!-- Vertical Line Animated (hidden on mobile) -->
-                <div id="timeline-line" class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 timeline-line bg-gradient-to-b from-primary to-secondary"></div>
-
-                <!-- Experience Item 1 - Moneta Market (Right side) -->
-                <div class="mb-12 md:mb-16 relative scroll-reveal">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <!-- Empty space for timeline alignment -->
-                        <div class="hidden md:block"></div>
-
-                        <!-- Content -->
-                        <div class="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-primary">
-                            <!-- Date Badge -->
-                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-primary rounded-full flex items-center justify-center timeline-dot text-primary">
-                                <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
-                            </div>
-
-                            <div class="text-primary font-semibold mb-2" data-i18n="experience.mmPeriod">August 2025 - Present</div>
-                            <h3 class="text-2xl font-bold mb-2" data-i18n="experience.monetaRole">Full Stack Engineer</h3>
-                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4" data-i18n="experience.monetaCompany">Moneta Market LLC</h4>
-
-                            <ul class="space-y-3">
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB1">Architected the company's first containerized platform: 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) deployed on AWS EC2 with private networking and automated health checks</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB2">Designed a 25-table PostgreSQL schema on AWS RDS with 24 foreign keys, 34 strategic indexes, a custom idempotent migration system, and soft-delete audit trail; accessed via SSH tunnel through EC2 bastion host</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB3">Built an event-driven FastAPI webhook service integrating Label Studio with S3: Repository pattern, atomic DB/S3 rollback on failure, async connection pooling, and in-memory cache with DB fallback</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB4">Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated from Windows-only WPF) for human review of ML-labeled video frames: MVVM architecture, two-pass verification workflow, and sliding-window prefetch cache</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB5">Implemented least-privilege IAM policies and AWS Secrets Manager for credential management; used LocalStack for local S3 emulation without exposing production credentials</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.monetaB6">Built the data pipeline's operator tooling (CLIs, idempotent S3-PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT)</span>
-                                </li>
-                            </ul>
-
-                            <!-- Tech Tags -->
-                            <div class="flex flex-wrap gap-2 mt-6">
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">FastAPI</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Docker Compose</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">AWS</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">PostgreSQL</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">C# / .NET 10</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Avalonia</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Nginx</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">GitLab CI</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">MLflow</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Experience Item 2 - Bifrost Code (Left side) -->
-                <div class="mb-12 md:mb-16 relative scroll-reveal">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <!-- Content -->
-                        <div class="md:col-start-1 bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-secondary md:border-l-0 md:border-r-4 md:text-right">
-                            <!-- Date Badge -->
-                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-secondary rounded-full flex items-center justify-center timeline-dot text-secondary">
-                                <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
-                            </div>
-
-                            <div class="text-secondary font-semibold mb-2" data-i18n="experience.contractorPeriod">February 2025 - Present</div>
-                            <h3 class="text-2xl font-bold mb-2" data-i18n="experience.contractorRole">Full Stack Engineer &amp; Co-founder</h3>
-                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4" data-i18n="experience.contractorCompany">Bifrost Code — Independent Software Studio</h4>
-
-                            <ul class="space-y-3">
-                                <li class="flex items-start md:flex-row-reverse md:text-right">
-                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB1">Deliver full-stack web apps end-to-end with React, Next.js, NestJS, and Express on TypeScript pnpm monorepos with PostgreSQL; earlier delivered projects shipped with React Native, FastAPI, and Django</span>
-                                </li>
-                                <li class="flex items-start md:flex-row-reverse md:text-right">
-                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB2">Production projects for real clients: FisioApp (multi-tenant clinic management, WCAG 2.1 AA audited), Feriu (multi-tenant shared-expense platform), and Karaoke Balu (real-time karaoke request platform with SSE and kiosk mode)</span>
-                                </li>
-                                <li class="flex items-start md:flex-row-reverse md:text-right">
-                                    <svg class="w-6 h-6 text-secondary md:ml-3 mr-3 md:mr-0 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.contractorB3">Self-host client applications on the studio's own infrastructure — a Proxmox VM running Ubuntu Server with Dokploy and Docker Compose; DNS through Cloudflare and services exposed securely via Cloudflare Tunnels (no open ports), a low-cost alternative to Vercel or AWS</span>
-                                </li>
-                            </ul>
-
-                            <!-- Tech Tags -->
-                            <div class="flex flex-wrap gap-2 mt-6 md:justify-end">
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">React</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Next.js</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">NestJS</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Express.js</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">TypeScript</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">PostgreSQL</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Dokploy</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Cloudflare</span>
-                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">Proxmox</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Experience Item 3 - Grupo Roga (Right side) -->
-                <div class="mb-12 md:mb-16 relative scroll-reveal">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <!-- Empty space for timeline alignment -->
-                        <div class="hidden md:block"></div>
-
-                        <!-- Content -->
-                        <div class="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow border-l-4 border-primary">
-                            <!-- Date Badge -->
-                            <div class="absolute -left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-8 w-8 h-8 bg-primary rounded-full flex items-center justify-center timeline-dot text-primary">
-                                <div class="w-4 h-4 bg-white dark:bg-gray-900 rounded-full"></div>
-                            </div>
-
-                            <div class="text-primary font-semibold mb-2" data-i18n="experience.rogaPeriod">March 2024 - August 2025</div>
-                            <h3 class="text-2xl font-bold mb-2" data-i18n="experience.rogaRole">.NET Software Developer</h3>
-                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-4">Grupo Roga</h4>
-
-                            <ul class="space-y-3">
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB1">Maintained and extended the internal ERP used across 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress); built modules for multi-branch inventory, pricing, accounts receivable, and POS in .NET Framework</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB2">Designed SQL Server database architecture supporting multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, automated reports and email delivery via SQL Server Agent</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-gray-700 dark:text-gray-300" data-i18n="experience.rogaB3">Standardized security practices across the development lifecycle: password manager for credential handling, physical security keys, and formalized coding processes</span>
-                                </li>
-                            </ul>
-
-                            <!-- Tech Tags -->
-                            <div class="flex flex-wrap gap-2 mt-6">
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">.NET Framework</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">C#</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">SQL Server</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Stored Procedures</span>
-                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Scrum</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-4 bg-white dark:bg-gray-900">
-        <div class="container mx-auto max-w-6xl">
-            <!-- Section Header -->
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    <span data-i18n-html="skills.title">Technical <span class="text-primary">Skills</span></span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-
-            <!-- Skills Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Category 1: Languages -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
-                        </svg>
-                        <h3 class="text-xl font-bold" data-i18n="skills.languages">Languages</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Python</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">JavaScript</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">C#</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">SQL</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">HTML5 / CSS3</span>
-                    </div>
-                </div>
-
-                <!-- Category 2: Frontend -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
-                        </svg>
-                        <h3 class="text-xl font-bold" data-i18n="skills.frontend">Frontend</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Next.js</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">React</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">React Native</span>
-                    </div>
-                </div>
-
-                <!-- Category 3: Backend -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z"/>
-                        </svg>
-                        <h3 class="text-xl font-bold" data-i18n="skills.backend">Backend</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">FastAPI</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Django</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Node.js</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Express.js</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">.NET Framework</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Avalonia (.NET 10)</span>
-                    </div>
-                </div>
-
-                <!-- Category 4: Cloud & Infrastructure -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/>
-                        </svg>
-                        <h3 class="text-xl font-bold" data-i18n="skills.cloud">Cloud & Infrastructure</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">AWS</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">EC2 / RDS / S3</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">IAM</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Secrets Manager</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Docker Compose</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Nginx</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Dokploy</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Cloudflare Tunnels</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Linux / Ubuntu</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">GitHub Actions</span>
-                    </div>
-                </div>
-
-                <!-- Category 5: Databases -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
-                        </svg>
-                        <h3 class="text-xl font-bold" data-i18n="skills.databases">Databases</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">PostgreSQL</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">SQL Server</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">SQLite</span>
-                    </div>
-                </div>
-
-                <!-- Category 6: Tools -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all group scroll-reveal">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
-                        </svg>
-                        <h3 class="text-xl font-bold" data-i18n="skills.architecture">Architecture</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Microservices</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">RESTful APIs</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">MVVM</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Repository Pattern</span>
-                        <span class="px-3 py-1.5 bg-white dark:bg-gray-900 rounded-lg text-sm font-medium shadow-sm">Event-driven</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto max-w-6xl">
-            <!-- Section Header -->
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    <span data-i18n-html="projects.title">Featured <span class="text-primary">Projects</span></span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1: Smart Cooler -->
-                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
-                            </svg>
-                        </div>
-                        <!-- Status Badge -->
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProgress">In Progress</span>
-                        </div>
-                    </div>
-
-                    <!-- Project Content -->
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                            Smart Cooler Grab-and-Go
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.scDesc">
-                            Full-stack system with cloud infrastructure, RESTful APIs, and database management. Built with FastAPI, PostgreSQL on AWS, and integrated ML capabilities.
-                        </p>
-
-                        <!-- Tech Stack -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">FastAPI</span>
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">AWS</span>
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">PostgreSQL</span>
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Python</span>
-                        </div>
-
-                        <!-- CTA Button -->
-                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            <span data-i18n="ui.contactDetails">Contact for Details</span>
-                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 2: FisioApp -->
-                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                            </svg>
-                        </div>
-                        <!-- Status Badge -->
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProduction">In Production</span>
-                        </div>
-                    </div>
-
-                    <!-- Project Content -->
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                            FisioApp
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.fisioDesc">
-                            Multi-tenant management system for physiotherapy clinics: patients, clinical records, appointments, packages, and payments. WCAG 2.1 AA audited, automated off-site backups.
-                        </p>
-
-                        <!-- Tech Stack -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Next.js</span>
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">PostgreSQL</span>
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Dokploy</span>
-                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded">TypeScript</span>
-                        </div>
-
-                        <!-- CTA Button -->
-                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            <span data-i18n="ui.contactDetails">Contact for Details</span>
-                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 3: Feriu -->
-                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gradient-to-br from-secondary to-primary overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                        <!-- Status Badge -->
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProduction">In Production</span>
-                        </div>
-                    </div>
-
-                    <!-- Project Content -->
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                            Feriu
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.feriuDesc">
-                            Multi-tenant, self-hosted shared-expense platform with a Splitwise-style settlement engine, built as a NestJS + Next.js pnpm monorepo on PostgreSQL.
-                        </p>
-
-                        <!-- Tech Stack -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">NestJS</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Next.js</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">PostgreSQL</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">TypeScript</span>
-                        </div>
-
-                        <!-- CTA Button -->
-                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            <span data-i18n="ui.contactDetails">Contact for Details</span>
-                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 4: Karaoke Balu -->
-                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gradient-to-br from-secondary to-primary overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"/>
-                            </svg>
-                        </div>
-                        <!-- Status Badge -->
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.inProduction">In Production</span>
-                        </div>
-                    </div>
-
-                    <!-- Project Content -->
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                            Karaoke Balu
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.karaokeDesc">
-                            Real-time karaoke request platform for live events: SSE-synced queue, admin panel, self-serve kiosk mode, and Virtual DJ integration. Express + React monorepo.
-                        </p>
-
-                        <!-- Tech Stack -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Express.js</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">React</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">SSE</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">PostgreSQL</span>
-                        </div>
-
-                        <!-- CTA Button -->
-                        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            <span data-i18n="ui.contactDetails">Contact for Details</span>
-                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 5: Stable Diffusion -->
-                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
-                    <!-- Project Image -->
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="./assets/images/Stable difussion josecarlos otuput example.png" alt="Stable Diffusion Fine-tuning Output" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy">
-                        <!-- Status Badge -->
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.completed">Completed</span>
-                        </div>
-                    </div>
-
-                    <!-- Project Content -->
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                            Fine-Tuning Stable Diffusion
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.sdDesc">
-                            Custom dataset training for personalized image generation. Explored deep learning model fine-tuning techniques.
-                        </p>
-
-                        <!-- Tech Stack -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">AI</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Deep Learning</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Python</span>
-                        </div>
-
-                        <!-- CTA Button -->
-                        <a href="https://www.canva.com/design/DAFTMfU1h64/lsz3cp48acsOA0-ZfHQXCA/edit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            <span data-i18n="ui.viewPresentation">View Presentation</span>
-                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 3: Galaga For Everyone -->
-                <article class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group scroll-reveal">
-                    <!-- Project Image -->
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="./assets/images/galagaforeveryone.jpg" alt="Galaga For Everyone Game" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="lazy">
-                        <!-- Status Badge -->
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full" data-i18n="ui.completed">Completed</span>
-                        </div>
-                    </div>
-
-                    <!-- Project Content -->
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                            Galaga For Everyone
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-i18n="projects.galagaDesc">
-                            Unreal Engine game controlled via smartphone accelerometer using Processing and HTTP requests.
-                        </p>
-
-                        <!-- Tech Stack -->
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Unreal Engine</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Processing</span>
-                            <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Android</span>
-                        </div>
-
-                        <!-- CTA Button -->
-                        <a href="https://github.com/JoseCarlosChaparro/GalagaForEveryone" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors group/link">
-                            <span data-i18n="ui.viewGitHub">View on GitHub</span>
-                            <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 bg-white dark:bg-gray-900">
-        <div class="container mx-auto max-w-6xl">
-            <!-- Section Header -->
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                    <span data-i18n-html="contact.title">Get In <span class="text-primary">Touch</span></span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    <span data-i18n="contact.subtitle">Looking to build backend systems, cloud infrastructure, or scalable APIs? Let's connect.</span>
+            <div class="order-1 lg:order-2 lg:col-span-7 flex flex-col gap-6 scroll-reveal">
+                <p class="flex items-center gap-3 kicker" data-i18n="hero.eyebrow">
+                    Software engineer · Chihuahua, MX
                 </p>
-            </div>
 
-            <!-- Contact Cards Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <!-- Email Card -->
-                <a href="mailto:jc_chaparro@hotmail.com" class="group min-w-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
-                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-1 min-w-0">
-                            <h3 class="text-lg font-semibold mb-1" data-i18n="contact.email">Email</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors break-words">
-                                jc_chaparro@<wbr>hotmail.com
-                            </p>
-                        </div>
-                        <svg class="w-5 h-5 flex-shrink-0 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                        </svg>
-                    </div>
-                </a>
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.125rem] font-extrabold leading-[0.95] tracking-[-0.042em]">
+                    José<br>Chaparro
+                </h1>
 
-                <!-- LinkedIn Card -->
-                <a href="https://www.linkedin.com/in/jose-c-chaparro/" target="_blank" rel="noopener noreferrer" class="group min-w-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
-                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-1 min-w-0">
-                            <h3 class="text-lg font-semibold mb-1" data-i18n="contact.linkedin">LinkedIn</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors break-words">
-                                José Chaparro
-                            </p>
-                        </div>
-                        <svg class="w-5 h-5 flex-shrink-0 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
-                        </svg>
-                    </div>
-                </a>
+                <p class="font-display text-xl sm:text-2xl font-bold tracking-tight text-muted min-h-[2.25rem]">
+                    <span id="typed-text"></span><span class="text-accent" aria-hidden="true">|</span>
+                </p>
 
-                <!-- GitHub Card -->
-                <a href="https://github.com/JoseCarlosChaparro" target="_blank" rel="noopener noreferrer" class="group min-w-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
-                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-1 min-w-0">
-                            <h3 class="text-lg font-semibold mb-1" data-i18n="contact.github">GitHub</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors break-words">
-                                JoseCarlos<wbr>Chaparro
-                            </p>
-                        </div>
-                        <svg class="w-5 h-5 flex-shrink-0 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
-                        </svg>
-                    </div>
-                </a>
+                <p class="text-base sm:text-[1.1875rem] leading-relaxed text-muted max-w-[36rem]" style="text-wrap: pretty;" data-i18n="hero.lead">
+                    I build backend systems and run the infrastructure they live on. Today I own the microservices architecture at Moneta Market and co-found the software studio Bifrost Code.
+                </p>
 
-                <!-- Download CV Card -->
-                <a href="assets/cv/jose-chaparro-cv.pdf" download class="group min-w-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl hover:shadow-xl transition-all border-2 border-transparent hover:border-primary scroll-reveal">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
-                                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12v6m0 0l-3-3m3 3l3-3"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-4 flex-1 min-w-0">
-                            <h3 class="text-lg font-semibold mb-1" data-i18n="contact.cv">Resume / CV</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors" data-i18n="contact.cvDesc">
-                                Download PDF
-                            </p>
-                        </div>
-                        <svg class="w-5 h-5 flex-shrink-0 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4.5 19.5h15"/>
+                <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                    <a href="#projects" class="btn-primary" data-i18n="ui.viewWork">
+                        View my work
+                    </a>
+                    <a href="assets/cv/jose-chaparro-cv.pdf" download class="btn-secondary">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M12 3v12"></path><path d="m7 11 5 5 5-5"></path><path d="M4 21h16"></path>
                         </svg>
-                    </div>
-                </a>
+                        <span data-i18n="ui.downloadCV">Download CV</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300 py-12 px-4 mt-20 border-t-2 border-primary/20">
-        <!-- Decorative gradient line -->
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary"></div>
+    <!-- ============================================================
+         SOBRE MÍ — banda
+         ============================================================ -->
+    <div class="rule-full" aria-hidden="true"></div>
+    <section id="about" class="band py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px]">
+            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
+                <p class="kicker" data-i18n="about.kicker">01 · Background</p>
+                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="about.heading">About me</h2>
+            </header>
 
-        <div class="container mx-auto max-w-6xl">
-            <!-- Main Footer Content -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
-                <!-- Brand & Copyright -->
-                <div class="text-center md:text-left">
-                    <h3 class="text-xl font-bold mb-2">
-                        José <span class="text-primary">Chaparro</span>
-                    </h3>
-                    <p class="text-sm text-gray-400" data-i18n="footer.tagline">
-                        Full Stack Engineer · Backend & Cloud Infrastructure
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+                <div class="lg:col-span-7 flex flex-col gap-5 scroll-reveal">
+                    <p class="text-[1.0625rem] leading-relaxed text-muted" style="text-wrap: pretty;" data-i18n-html="about.p1">
+                        Software engineer with {years}+ years of production experience building backend-heavy systems in Python and .NET, deploying cloud infrastructure on AWS, and shipping cross-platform applications.
                     </p>
-                    <p class="text-xs text-gray-500 mt-2" data-i18n="footer.copyright">
-                        © 2026 José Chaparro. All rights reserved.
+                    <p class="text-[1.0625rem] leading-relaxed text-muted" style="text-wrap: pretty;" data-i18n-html="about.p2">
+                        At <strong class="font-semibold text-ink">Moneta Market</strong> I own the microservices architecture: a six-container production platform wiring together ML pipelines, event-driven webhooks and a C# desktop app. In parallel I co-found <strong class="font-semibold text-ink">Bifrost Code</strong>, a studio that ships full-stack products and self-hosts them on its own infrastructure.
                     </p>
                 </div>
 
-                <!-- Footer Navigation -->
-                <nav>
-                    <ul class="flex flex-wrap justify-center gap-6 text-sm">
-                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
-                        <li><a href="#experience" class="hover:text-primary transition-colors">Experience</a></li>
-                        <li><a href="#skills" class="hover:text-primary transition-colors">Skills</a></li>
-                        <li><a href="#projects" class="hover:text-primary transition-colors">Projects</a></li>
-                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
-                    </ul>
-                </nav>
+                <div class="lg:col-span-5 card p-7 flex flex-col gap-5 scroll-reveal">
+                    <h3 class="font-display text-lg font-bold tracking-tight" data-i18n="about.languages">Languages</h3>
 
-                <!-- Back to Top -->
-                <button id="back-to-top" class="bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white p-3 rounded-full transition-all hover:scale-110 opacity-0 pointer-events-none shadow-lg">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
-                    </svg>
-                </button>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-baseline gap-4">
+                            <span class="font-semibold text-[0.9375rem]" data-i18n="about.spanish">Spanish</span>
+                            <span class="font-mono text-xs text-faint" data-i18n="about.spanishLevel">Native</span>
+                        </div>
+                        <div class="h-1.5 rounded-full bg-band overflow-hidden">
+                            <div class="h-full w-full bg-accent"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-baseline gap-4">
+                            <span class="font-semibold text-[0.9375rem]" data-i18n="about.english">English</span>
+                            <span class="font-mono text-xs text-faint" data-i18n="about.englishLevel">Upper-intermediate (B2)</span>
+                        </div>
+                        <div class="h-1.5 rounded-full bg-band overflow-hidden">
+                            <div class="h-full w-3/4 bg-accent"></div>
+                        </div>
+                    </div>
+
+                    <p class="flex items-start gap-2 text-[0.8125rem] leading-snug font-semibold text-accent pt-1">
+                        <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                        <span data-i18n="about.workAuth">US citizen — no sponsorship required</span>
+                    </p>
+                    <p class="font-mono text-xs leading-relaxed text-faint" data-i18n="about.location">
+                        Chihuahua, Mexico · Open to remote or US relocation
+                    </p>
+
+                    <div class="flex flex-col gap-2 pt-5 border-t border-rule">
+                        <h3 class="font-display text-lg font-bold tracking-tight" data-i18n="about.education">Education</h3>
+                        <p class="font-semibold text-[0.9375rem]" data-i18n="about.degree">BSc Computer Science Engineering</p>
+                        <p class="text-[0.875rem] text-muted" data-i18n="about.university">Universidad Autónoma de Chihuahua</p>
+                        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                            <span class="text-[0.875rem] text-muted" data-i18n="about.eduDetail">Graduated by academic merit</span>
+                            <span class="font-mono text-xs text-faint" data-i18n="about.eduPeriod">2018 — 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         EXPERIENCIA — superficie base
+         ============================================================ -->
+    <div class="rule-full" aria-hidden="true"></div>
+    <section id="experience" class="py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px]">
+            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
+                <p class="kicker" data-i18n="experience.kicker">02 · Track record</p>
+                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="experience.heading">Experience</h2>
+            </header>
+
+            <!-- Cada puesto conserva sus responsabilidades completas: el
+                 detalle técnico ES el argumento, no un adorno. -->
+
+            <article class="grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 py-8 border-t border-rule scroll-reveal">
+                <div class="flex flex-col gap-1.5">
+                    <p class="font-mono text-[0.8125rem] text-faint" data-i18n="experience.mmPeriod">August 2025 — Present</p>
+                    <p class="font-mono text-[0.8125rem] text-accent" data-i18n="experience.monetaCompany">Moneta Market LLC</p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.monetaRole">Full Stack Engineer</h3>
+                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB1">Architected the company's first containerized platform: a six-service Docker Compose stack (two FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) on AWS EC2 with private networking and automated health checks.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB2">Designed a 25-table PostgreSQL schema on AWS RDS — 24 foreign keys, 34 strategic indexes, an idempotent migration system and soft-delete audit trail — reachable only through an SSH tunnel via an EC2 bastion host.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB3">Built an event-driven FastAPI webhook service linking Label Studio to S3: Repository pattern, atomic database/S3 rollback on any failure, async connection pooling and an in-memory cache with database fallback; wrote the team runbooks for operating it.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB4">Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated off Windows-only WPF) for human review of ML-labelled video frames: MVVM architecture, two-pass verification workflow and a sliding-window prefetch cache.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB5">Implemented least-privilege IAM policies, moved credentials into AWS Secrets Manager and set up the CI pipelines; LocalStack emulates S3 locally so development never touches production credentials. Co-supervise two interns alongside the lead developer.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB6">Built the data pipeline's operator tooling — CLIs, idempotent S3-to-PostgreSQL sync, drift audits — and automated model training through GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT).</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="tag">FastAPI</span><span class="tag">Docker Compose</span><span class="tag">AWS EC2 / RDS / S3</span><span class="tag">PostgreSQL</span><span class="tag">Nginx</span><span class="tag">C# · Avalonia</span><span class="tag">MLflow</span><span class="tag">GitLab CI</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 py-8 border-t border-rule scroll-reveal">
+                <div class="flex flex-col gap-1.5">
+                    <p class="font-mono text-[0.8125rem] text-faint" data-i18n="experience.contractorPeriod">February 2025 — Present</p>
+                    <p class="font-mono text-[0.8125rem] text-accent" data-i18n="experience.contractorCompany">Bifrost Code</p>
+                    <p class="text-[0.75rem] leading-snug text-faint" data-i18n="experience.contractorNote">Side project, alongside my full-time role</p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.contractorRole">Co-founder &amp; Full Stack Engineer</h3>
+                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB1">Deliver full-stack web applications end to end with React, Next.js, NestJS and Express on TypeScript pnpm monorepos backed by PostgreSQL; earlier engagements shipped on React Native, FastAPI and Django.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB2">Shipped and still operate three products for paying clients: FisioApp (multi-tenant clinic management, WCAG 2.1 AA audited), Feriu (multi-tenant shared-expense platform) and Karaoke Balu (real-time request platform with SSE and kiosk mode).</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB3">Self-host client applications on the studio's own infrastructure — a Proxmox VM running Ubuntu Server with Dokploy and Docker Compose, DNS on Cloudflare, services exposed through Cloudflare Tunnels with no inbound ports — a low-cost alternative to Vercel or AWS.</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="tag">Next.js</span><span class="tag">NestJS</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Proxmox</span><span class="tag">Dokploy</span><span class="tag">Cloudflare Tunnels</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 py-8 border-y border-rule scroll-reveal">
+                <div class="flex flex-col gap-1.5">
+                    <p class="font-mono text-[0.8125rem] text-faint" data-i18n="experience.rogaPeriod">March 2024 — August 2025</p>
+                    <p class="font-mono text-[0.8125rem] text-accent">Grupo Roga</p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.rogaRole">.NET Software Developer</h3>
+                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB1">Maintained and extended the internal ERP running across more than 170 branches and used by over 1,750 employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress), building modules for multi-branch inventory, pricing, accounts receivable and point of sale in .NET Framework.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB2">Built from scratch the module managing the field agents who visit customer homes for credit approval: full design ownership, DevExpress map controls plotting assignments geographically, and data consumed from a companion Android app.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB3">Designed the SQL Server database architecture behind multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, plus automated report generation and email delivery through SQL Server Agent.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB4">Standardised security practice across the development lifecycle: a shared password manager for credential handling, physical security keys, and formalised development processes the team still follows.</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="tag">.NET Framework</span><span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">VB.NET</span><span class="tag">SQL Server Agent</span><span class="tag">DevExpress</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         HABILIDADES — banda
+         ============================================================ -->
+    <div class="rule-full" aria-hidden="true"></div>
+    <section id="skills" class="band py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px]">
+            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
+                <p class="kicker" data-i18n="skills.kicker">03 · Toolkit</p>
+                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="skills.heading">Technical skills</h2>
+            </header>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
+                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.languages">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">C#</span><span class="tag">SQL</span>
+                    </div>
+                </div>
+                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
+                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.backend">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">FastAPI</span><span class="tag">NestJS</span><span class="tag">Django</span><span class="tag">Express</span><span class="tag">.NET</span>
+                    </div>
+                </div>
+                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
+                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.cloud">Cloud &amp; infrastructure</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">AWS EC2 / RDS / S3</span><span class="tag">IAM</span><span class="tag">Secrets Manager</span><span class="tag">Docker Compose</span><span class="tag">Nginx</span><span class="tag">Proxmox</span><span class="tag">Cloudflare Tunnels</span><span class="tag">GitHub Actions</span><span class="tag">GitLab CI/CD</span><span class="tag">Linux</span>
+                    </div>
+                </div>
+                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
+                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.databases">Databases</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">PostgreSQL</span><span class="tag">SQL Server</span><span class="tag">SQLite</span>
+                    </div>
+                </div>
+                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
+                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.frontend">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">React Native</span>
+                    </div>
+                </div>
+                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
+                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.architecture">Architecture &amp; practice</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Microservices</span><span class="tag">RESTful APIs</span><span class="tag">Event-driven</span><span class="tag">Repository pattern</span><span class="tag">MVVM</span><span class="tag">CI/CD</span><span class="tag">Git</span><span class="tag">Scrum</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PROYECTOS — superficie base
+         ============================================================ -->
+    <div class="rule-full" aria-hidden="true"></div>
+    <section id="projects" class="py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px]">
+            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
+                <p class="kicker" data-i18n="projects.kicker">04 · Selected work</p>
+                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="projects.heading">Projects</h2>
+            </header>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Smart Cooler Grab-and-Go</h3>
+                            <span class="chip" data-i18n="ui.inProgress">In progress</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.scDesc">Full-stack system with cloud infrastructure, RESTful APIs and an integrated machine-learning pipeline.</p>
+                        <a href="#contact" class="card-link">
+                            <span data-i18n="ui.contactDetails">Contact for details</span>
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+                        </a>
+                    </div>
+                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">FastAPI · AWS · PostgreSQL</p>
+                </article>
+
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">FisioApp</h3>
+                            <span class="chip" data-i18n="ui.inProduction">In production</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.fisioDesc">Multi-tenant management for physiotherapy clinics: clinical records, appointments, packages and payments. Audited against WCAG 2.1 AA, with automated off-site backups.</p>
+                        <a href="#contact" class="card-link">
+                            <span data-i18n="ui.contactDetails">Contact for details</span>
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+                        </a>
+                    </div>
+                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Next.js · PostgreSQL · Dokploy</p>
+                </article>
+
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Feriu</h3>
+                            <span class="chip" data-i18n="ui.inProduction">In production</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.feriuDesc">Multi-tenant, self-hosted shared-expense platform with a Splitwise-style settlement engine, built as a NestJS + Next.js pnpm monorepo on PostgreSQL.</p>
+                        <a href="#contact" class="card-link">
+                            <span data-i18n="ui.contactDetails">Contact for details</span>
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+                        </a>
+                    </div>
+                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">NestJS · Next.js · pnpm</p>
+                </article>
+
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Karaoke Balu</h3>
+                            <span class="chip" data-i18n="ui.inProduction">In production</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.karaokeDesc">Real-time karaoke request platform for live events: an SSE-synced queue, admin panel, self-serve kiosk mode and Virtual DJ integration. Express + React monorepo.</p>
+                        <a href="#contact" class="card-link">
+                            <span data-i18n="ui.contactDetails">Contact for details</span>
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+                        </a>
+                    </div>
+                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Express · React · SSE</p>
+                </article>
+
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Stable Diffusion fine-tuning</h3>
+                            <span class="chip" data-i18n="ui.completed">Completed</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.sdDesc">Custom dataset training for personalised image generation, exploring fine-tuning techniques for deep learning models.</p>
+                        <a href="https://www.canva.com/design/DAFTMfU1h64/lsz3cp48acsOA0-ZfHQXCA/edit" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <span data-i18n="ui.viewPresentation">View presentation</span>
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+                        </a>
+                    </div>
+                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Python · PyTorch</p>
+                </article>
+
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Galaga For Everyone</h3>
+                            <span class="chip" data-i18n="ui.completed">Completed</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.galagaDesc">Unreal Engine game controlled through a smartphone accelerometer, bridged with Processing and HTTP requests.</p>
+                        <a href="https://github.com/JoseCarlosChaparro/GalagaForEveryone" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <span data-i18n="ui.viewGitHub">View on GitHub</span>
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+                        </a>
+                    </div>
+                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Unreal Engine · Processing</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACTO — banda
+         ============================================================ -->
+    <div class="rule-full" aria-hidden="true"></div>
+    <section id="contact" class="band py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px]">
+            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
+                <p class="kicker" data-i18n="contact.kicker">05 · Get in touch</p>
+                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="contact.heading">Contact</h2>
+            </header>
+
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+                <div class="flex flex-col gap-6 scroll-reveal">
+                    <p class="text-[1.125rem] leading-relaxed text-muted max-w-[30rem]" style="text-wrap: pretty;" data-i18n="contact.subtitle">
+                        Backend systems, cloud infrastructure, or APIs that have to scale? Write to me and let's talk it through.
+                    </p>
+                    <a href="mailto:jc_chaparro@hotmail.com" class="btn-primary self-start">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"></rect><path d="m3 6.5 9 6.5 9-6.5"></path>
+                        </svg>
+                        jc_chaparro@hotmail.com
+                    </a>
+                </div>
+
+                <div class="flex flex-col gap-3 scroll-reveal">
+                    <a href="https://www.linkedin.com/in/jose-c-chaparro/" target="_blank" rel="noopener noreferrer" class="link-row">
+                        <svg class="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7.5 10.5v6"></path><path d="M7.5 7.6v.1"></path><path d="M11.5 16.5v-6"></path><path d="M11.5 13a2.5 2.5 0 0 1 5 0v3.5"></path>
+                        </svg>
+                        <span class="grow flex flex-col gap-0.5">
+                            <span class="font-semibold text-[0.9375rem]" data-i18n="contact.linkedin">LinkedIn</span>
+                            <span class="font-mono text-[0.6875rem] text-faint">in/jose-c-chaparro</span>
+                        </span>
+                        <svg class="w-4 h-4 shrink-0 text-faint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+                    </a>
+
+                    <a href="https://github.com/JoseCarlosChaparro" target="_blank" rel="noopener noreferrer" class="link-row">
+                        <svg class="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M9 19c-4.5 1.5-4.5-2.5-6.5-3"></path><path d="M15 21v-3.6a3.1 3.1 0 0 0-.9-2.4c2.9-.3 6-1.5 6-6.4a4.9 4.9 0 0 0-1.4-3.4 4.6 4.6 0 0 0-.1-3.4S17.4 1.5 15 3.2a12 12 0 0 0-6 0C6.6 1.5 5.4 1.8 5.4 1.8a4.6 4.6 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.9 8.6c0 4.9 3.1 6.1 6 6.4a3.1 3.1 0 0 0-.9 2.4V21"></path>
+                        </svg>
+                        <span class="grow flex flex-col gap-0.5">
+                            <span class="font-semibold text-[0.9375rem]" data-i18n="contact.github">GitHub</span>
+                            <span class="font-mono text-[0.6875rem] text-faint">JoseCarlosChaparro</span>
+                        </span>
+                        <svg class="w-4 h-4 shrink-0 text-faint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+                    </a>
+
+                    <a href="assets/cv/jose-chaparro-cv.pdf" download class="link-row">
+                        <svg class="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M12 3v12"></path><path d="m7 11 5 5 5-5"></path><path d="M4 21h16"></path>
+                        </svg>
+                        <span class="grow flex flex-col gap-0.5">
+                            <span class="font-semibold text-[0.9375rem]" data-i18n="contact.cv">Résumé / CV</span>
+                            <span class="font-mono text-[0.6875rem] text-faint" data-i18n="contact.cvDesc">Download PDF</span>
+                        </span>
+                        <svg class="w-4 h-4 shrink-0 text-faint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"></path><path d="m7 11 5 5 5-5"></path><path d="M4 21h16"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER — superficie profunda
+         ============================================================ -->
+    <div class="rule-full" aria-hidden="true"></div>
+    <footer class="bg-deep py-10 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px]">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8 pb-8">
+                <div class="flex flex-col gap-2">
+                    <p class="font-display text-lg font-extrabold tracking-tight">José Chaparro</p>
+                    <p class="text-[0.875rem] text-muted" data-i18n="footer.tagline">Software engineer · Backend &amp; cloud infrastructure</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-8 sm:gap-10">
+                    <nav aria-label="Footer">
+                        <ul class="flex flex-col gap-2 text-[0.875rem] text-muted">
+                            <li><a href="#about" class="footer-link" data-i18n="nav.about">About</a></li>
+                            <li><a href="#experience" class="footer-link" data-i18n="nav.experience">Experience</a></li>
+                            <li><a href="#projects" class="footer-link" data-i18n="nav.projects">Projects</a></li>
+                            <li><a href="#contact" class="footer-link" data-i18n="nav.contact">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <ul class="flex gap-2 items-start">
+                        <li><a href="https://github.com/JoseCarlosChaparro" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
+                            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.5 1.5-4.5-2.5-6.5-3"></path><path d="M15 21v-3.6a3.1 3.1 0 0 0-.9-2.4c2.9-.3 6-1.5 6-6.4a4.9 4.9 0 0 0-1.4-3.4 4.6 4.6 0 0 0-.1-3.4S17.4 1.5 15 3.2a12 12 0 0 0-6 0C6.6 1.5 5.4 1.8 5.4 1.8a4.6 4.6 0 0 0-.1 3.4A4.9 4.9 0 0 0 3.9 8.6c0 4.9 3.1 6.1 6 6.4a3.1 3.1 0 0 0-.9 2.4V21"></path></svg>
+                        </a></li>
+                        <li><a href="https://www.linkedin.com/in/jose-c-chaparro/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
+                            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7.5 10.5v6"></path><path d="M7.5 7.6v.1"></path><path d="M11.5 16.5v-6"></path><path d="M11.5 13a2.5 2.5 0 0 1 5 0v3.5"></path></svg>
+                        </a></li>
+                        <li><a href="mailto:jc_chaparro@hotmail.com" class="icon-btn" aria-label="Email">
+                            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"></rect><path d="m3 6.5 9 6.5 9-6.5"></path></svg>
+                        </a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Social Links -->
-            <div class="flex justify-center gap-6 pt-6 border-t border-gray-700">
-                <a href="https://github.com/JoseCarlosChaparro" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors" aria-label="GitHub">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/jose-c-chaparro/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors" aria-label="LinkedIn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                <a href="mailto:jc_chaparro@hotmail.com" class="text-gray-400 hover:text-primary transition-colors" aria-label="Email">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-                    </svg>
-                </a>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-6 border-t border-rule">
+                <p class="font-mono text-[0.6875rem] text-faint" data-i18n="footer.copyright">© 2026 José Chaparro. All rights reserved.</p>
+                <p class="font-mono text-[0.6875rem] text-faint">josechaparro.com</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <button id="back-to-top" type="button"
+            class="no-print fixed bottom-6 right-6 z-40 icon-btn bg-card border border-edge opacity-0 pointer-events-none transition-opacity"
+            data-i18n-aria="ui.backToTop" aria-label="Back to top">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 20V6"></path><path d="m6 12 6-6 6 6"></path>
+        </svg>
+    </button>
+
     <script src="app.js"></script>
 </body>
 

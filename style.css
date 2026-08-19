@@ -1,21 +1,389 @@
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
+/* ============================================================
+   José Chaparro — sistema de diseño "Bandas"
+   ------------------------------------------------------------
+   Los colores viven como custom properties semánticas y se
+   exponen a Tailwind desde tailwind.config (en index.html), así
+   que `bg-band`, `text-muted`, etc. cambian solos con el tema.
+
+   Cada valor se derivó en oklch y se verificó contra WCAG 2.1 AA
+   antes de convertirlo a hex; el oklch original queda en el
+   comentario para poder re-afinar la paleta sin perder la
+   relación entre tonos. Ratios medidos (peor caso de cada rol):
+
+     texto principal    14.5:1 oscuro · 14.8:1 claro   (min 4.5)
+     texto secundario    8.6:1 oscuro ·  7.1:1 claro   (min 4.5)
+     texto terciario     6.0:1 oscuro ·  5.4:1 claro   (min 4.5)
+     enlaces y acento   10.6:1 oscuro ·  5.2:1 claro   (min 4.5)
+     texto en botón     11.6:1 oscuro ·  6.2:1 claro   (min 4.5)
+     borde de control    3.3:1 oscuro ·  3.5:1 claro   (min 3.0)
+
+   --c-rule es la línea divisoria decorativa. NO cumple 3:1 a
+   propósito: WCAG 1.4.11 aplica a componentes de interfaz y a
+   gráficos necesarios para entender el contenido, no a
+   separadores decorativos. Todo borde que delimita un control
+   usa --c-edge, que sí cumple.
+   ============================================================ */
+
+:root {
+    /* tema claro (por defecto del documento) */
+    --c-page:        #f9fcfc;  /* oklch(0.988 0.003 210) */
+    --c-band:        #edf2f3;  /* oklch(0.958 0.006 210) */
+    --c-card:        #ffffff;  /* oklch(1.000 0.000 210) */
+    --c-deep:        #e4ebed;  /* oklch(0.935 0.008 212) */
+    --c-ink:         #10191b;  /* oklch(0.205 0.014 215) */
+    --c-muted:       #454e4f;  /* oklch(0.415 0.012 212) */
+    --c-faint:       #566062;  /* oklch(0.480 0.012 212) */
+    --c-rule:        #cad1d2;  /* oklch(0.855 0.008 212) — decorativa */
+    --c-edge:        #7e888a;  /* oklch(0.620 0.012 212) — bordes de control */
+    --c-accent:      #0c6c68;  /* oklch(0.480 0.080 190) */
+    --c-accent-ink:  #fcfefe;  /* oklch(0.995 0.002 210) */
+    --c-accent-soft: #cff0eb;  /* oklch(0.930 0.035 185) */
+
+    --atmos-glow:  rgba(12, 108, 104, 0.13);
+    --atmos-grain: rgba(16, 25, 27, 0.10);
 }
 
-/* Loading animation overlay */
+.dark {
+    --c-page:        #0b1417;  /* oklch(0.185 0.014 215) */
+    --c-band:        #111b1d;  /* oklch(0.213 0.015 215) */
+    --c-card:        #172123;  /* oklch(0.238 0.015 215) */
+    --c-deep:        #070f11;  /* oklch(0.160 0.013 215) */
+    --c-ink:         #ecf1f2;  /* oklch(0.955 0.005 210) */
+    --c-muted:       #b4bcbe;  /* oklch(0.790 0.010 210) */
+    --c-faint:       #959d9f;  /* oklch(0.690 0.010 210) */
+    --c-rule:        #2f3a3d;  /* oklch(0.340 0.015 215) — decorativa */
+    --c-edge:        #657174;  /* oklch(0.540 0.015 215) — bordes de control */
+    --c-accent:      #68e4c6;  /* oklch(0.840 0.120 175) */
+    --c-accent-ink:  #0e181b;  /* oklch(0.200 0.016 215) */
+    --c-accent-soft: #072d25;  /* oklch(0.270 0.045 175) */
+
+    --atmos-glow:  rgba(58, 150, 132, 0.20);
+    --atmos-grain: rgba(190, 210, 212, 0.09);
+}
+
+html {
+    scroll-behavior: smooth;
+    /* el header fijo mide 64-80px; evita que el ancla quede debajo */
+    scroll-padding-top: 5.5rem;
+}
+
+body {
+    background-color: var(--c-page);
+    color: var(--c-ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   FOCO VISIBLE — WCAG 2.4.7 / 2.4.11
+   Un solo anillo para todo lo enfocable. El acento supera 3:1
+   contra las cuatro superficies, así que se ve en cualquier
+   sección y en ambos temas.
+   ============================================================ */
+
+:focus-visible {
+    outline: 3px solid var(--c-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Nada de quitar el foco sin reemplazo */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Texto solo para lectores de pantalla. Tailwind trae .sr-only, pero se
+   define aquí también para que el nombre accesible siga siendo correcto
+   aunque el CDN de Tailwind falle. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Salto al contenido — WCAG 2.4.1 */
+.skip-link {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10px;
+    background-color: var(--c-accent);
+    color: var(--c-accent-ink);
+    font-weight: 700;
+    font-size: 0.875rem;
+    transform: translateY(-160%);
+    transition: transform 0.18s ease-out;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   ATMÓSFERA DEL HERO
+   Un resplandor y un grano fino. Las dos capas son
+   decorativas y quedan fuera del árbol de accesibilidad.
+   ============================================================ */
+
+.atmos {
+    position: relative;
+    isolation: isolate;
+    /* El resplandor sobresale del recuadro a propósito; sin recorte generaba
+       scroll horizontal (WCAG 1.4.10). `clip` recorta sin crear un contenedor
+       de scroll, a diferencia de `hidden`. */
+    overflow: hidden;
+    overflow: clip;
+}
+
+.atmos::before,
+.atmos::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.atmos::before {
+    top: -14rem;
+    left: -10rem;
+    width: 46rem;
+    height: 40rem;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, var(--atmos-glow), transparent);
+}
+
+.atmos::after {
+    inset: 0;
+    background-image: radial-gradient(var(--atmos-grain) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+}
+
+/* ============================================================
+   BANDAS
+   La división entre secciones es un cambio de superficie a
+   sangre completa más una regla fina. Al no depender de
+   márgenes, sobrevive intacta en móvil.
+   ============================================================ */
+
+.band {
+    background-color: var(--c-band);
+}
+
+.rule-full {
+    height: 1px;
+    background-color: var(--c-rule);
+}
+
+/* ============================================================
+   BOTONES
+   Altura mínima 48px: por encima del piso de 44px para blancos
+   táctiles, y con área suficiente en móvil.
+   ============================================================ */
+
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 48px;
+    padding: 0.875rem 1.625rem;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    text-align: center;
+    transition: background-color 0.18s ease, color 0.18s ease,
+                border-color 0.18s ease, transform 0.18s ease;
+}
+
+.btn-primary {
+    background-color: var(--c-accent);
+    color: var(--c-accent-ink);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: var(--c-edge);
+    color: var(--c-ink);
+    font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   PIEZAS RECURRENTES
+   ============================================================ */
+
+/* Antetítulo de sección: "01 · Trayectoria" */
+.kicker {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+}
+
+.card {
+    background-color: var(--c-card);
+    border-radius: 16px;
+}
+
+/* Etiqueta de tecnología */
+.tag {
+    display: inline-block;
+    padding: 0.3125rem 0.5625rem;
+    border-radius: 6px;
+    background-color: var(--c-band);
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.6875rem;
+    color: var(--c-muted);
+}
+
+/* Dentro de una banda, las etiquetas usan la superficie de tarjeta
+   para no perderse contra el fondo de la propia banda */
+.band .tag {
+    background-color: var(--c-card);
+}
+
+/* Chip de estado de proyecto */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3125rem 0.625rem;
+    border-radius: 999px;
+    background-color: var(--c-accent-soft);
+    color: var(--c-accent);
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.65rem;
+    white-space: nowrap;
+}
+
+/* Fila de enlace de contacto / redes */
+.link-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 60px;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    background-color: var(--c-card);
+    color: var(--c-ink);
+    transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.link-row:hover {
+    transform: translateX(3px);
+}
+
+/* Botón cuadrado de icono — 44px, el piso de blanco táctil */
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: var(--c-muted);
+    transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.icon-btn:hover {
+    background-color: var(--c-card);
+    color: var(--c-accent);
+}
+
+/* Enlace de acción al pie de una tarjeta de proyecto.
+   44px de alto: por encima del mínimo de 24px de WCAG 2.5.8 (AA) y en el
+   piso cómodo para el dedo. */
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.5rem;
+    min-height: 44px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--c-accent);
+    transition: gap 0.18s ease;
+}
+
+.card-link:hover {
+    gap: 0.75rem;
+}
+
+/* Enlaces de lista en el footer: 19px de alto quedaban por debajo del
+   mínimo; 32px + el gap de la lista los separa con holgura. */
+.footer-link {
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    color: var(--c-muted);
+    transition: color 0.18s ease;
+}
+
+.footer-link:hover {
+    color: var(--c-accent);
+}
+
+/* Enlaces de texto en prosa */
+.prose-link {
+    color: var(--c-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ============================================================
+   ANIMACIONES DE SCROLL
+   ============================================================ */
+
+/* Sin JS el contenido se muestra tal cual: solo la clase .js (puesta en el
+   <head>) autoriza a esconderlo, porque solo entonces hay quien lo revele. */
+.js .scroll-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+}
+
+.js .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   PANTALLA DE CARGA
+   ============================================================ */
+
 .loading-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    inset: 0;
+    background-color: var(--c-page);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition: opacity 0.5s ease-out;
+    transition: opacity 0.4s ease-out;
 }
 
 .loading-overlay.fade-out {
@@ -23,183 +391,78 @@ html {
     pointer-events: none;
 }
 
-/* Spinner */
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid rgba(37, 99, 235, 0.2);
-    border-top-color: #2563eb;
+    width: 42px;
+    height: 42px;
+    border: 3px solid var(--c-rule);
+    border-top-color: var(--c-accent);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.9s linear infinite;
 }
 
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
 
-/* Gradient text */
-.gradient-text {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+/* ============================================================
+   BARRA DE DESPLAZAMIENTO
+   ============================================================ */
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.dark ::-webkit-scrollbar-track {
-    background: #1f2937;
+    background-color: var(--c-band);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #2563eb;
+    background-color: var(--c-edge);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #7c3aed;
+    background-color: var(--c-accent);
 }
 
-/* Scroll reveal animations */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Buttons.
-   Written as plain CSS on purpose: the Tailwind CDN runtime only expands
-   @apply inside <style type="text/tailwindcss">, never in a linked .css file. */
-.btn-primary,
-.btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid transparent;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    text-align: center;
-    white-space: nowrap;
-    flex-shrink: 0;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s,
-                box-shadow 0.2s, transform 0.2s;
-}
-
-.btn-primary:hover,
-.btn-secondary:hover {
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    transform: scale(1.05);
-}
-
-.btn-primary:active,
-.btn-secondary:active {
-    transform: scale(0.95);
-}
-
-.btn-primary {
-    background-color: #2563eb;
-    border-color: #2563eb;
-    color: #ffffff;
-}
-
-.btn-primary:hover {
-    background-color: #1d4ed8;
-    border-color: #1d4ed8;
-}
-
-.btn-secondary {
-    background-color: transparent;
-    border-color: #2563eb;
-    color: #2563eb;
-}
-
-.btn-secondary:hover {
-    background-color: #2563eb;
-    color: #ffffff;
-}
-
-.dark .btn-secondary {
-    border-color: #60a5fa;
-    color: #60a5fa;
-}
-
-.dark .btn-secondary:hover {
-    background-color: #60a5fa;
-    color: #111827;
-}
+/* ============================================================
+   MOVIMIENTO REDUCIDO — WCAG 2.3.3
+   Se apaga todo lo animado, incluida la revelación por scroll:
+   sin esto el contenido se quedaría invisible (opacity 0).
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-    .btn-primary,
-    .btn-secondary {
-        transition: none;
+    html {
+        scroll-behavior: auto;
     }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    .js .scroll-reveal {
+        opacity: 1;
+        transform: none;
+    }
+
     .btn-primary:hover,
     .btn-secondary:hover,
-    .btn-primary:active,
-    .btn-secondary:active {
+    .link-row:hover {
         transform: none;
     }
 }
 
-/* Timeline animations */
-.timeline-line {
-    height: 0;
-    transition: height 0.8s ease-out;
-}
+/* ============================================================
+   IMPRESIÓN
+   ============================================================ */
 
-.timeline-line.active {
-    height: 100%;
-}
-
-.timeline-dot {
-    transform: scale(0);
-    transition: transform 0.5s ease-out;
-}
-
-.timeline-dot.active {
-    transform: scale(1);
-}
-
-.timeline-dot::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: currentColor;
-    opacity: 0;
-    animation: pulse-ring 2s ease-out infinite;
-}
-
-.timeline-dot.active::before {
-    opacity: 0.3;
-}
-
-@keyframes pulse-ring {
-    0% {
-        transform: scale(0.8);
-        opacity: 0.3;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.1;
-    }
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
+@media print {
+    .no-print { display: none !important; }
+    body { background: #fff; color: #000; }
+    .js .scroll-reveal { opacity: 1; transform: none; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.75em; }
 }
