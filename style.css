@@ -252,13 +252,21 @@ body {
 
 /* Etiqueta de tecnología */
 .tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
     padding: 0.3125rem 0.5625rem;
     border-radius: 6px;
     background-color: var(--c-band);
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.6875rem;
     color: var(--c-muted);
+}
+
+/* Devicon glyphs inside skill tags: monochrome, inherit the chip color */
+.tag i[class^="devicon-"] {
+    font-size: 0.8125rem;
+    line-height: 1;
 }
 
 /* Dentro de una banda, las etiquetas usan la superficie de tarjeta
