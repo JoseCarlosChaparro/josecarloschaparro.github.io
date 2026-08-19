@@ -68,16 +68,28 @@ def main(pdf):
         r"\s*[–—\-]{1,2}\s*(Present|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4}|\d{4})\s*$"
     )
     print()
-    orphans = [(i + 1, l.strip()) for i, l in enumerate(lines) if date_only.match(l)]
+    # Un periodo en renglón propio solo es un problema si la línea anterior NO
+    # es el puesto o el título al que pertenece. Los datos de un parser real
+    # (OpenResume) mostraron que cuando la línea de arriba es el puesto, la
+    # asociación sale bien; marcar todos los casos era un falso positivo.
+    ANCHORS = ("Engineer", "Developer", "Bachelor", "Master", "Analyst",
+               "Manager", "Architect", "Intern", "Co-founder")
+    orphans = []
+    for i, l in enumerate(lines):
+        if not date_only.match(l):
+            continue
+        prev = next((lines[j].strip() for j in range(i - 1, -1, -1) if lines[j].strip()), "")
+        if not any(a in prev for a in ANCHORS):
+            orphans.append((i + 1, l.strip()))
     if orphans:
-        print(f"{BAD} {len(orphans)} periodo(s) en un renglón propio, sin el puesto al lado:")
+        print(f"{BAD} {len(orphans)} periodo(s) sueltos, sin puesto ni título en la línea anterior:")
         for n, txt in orphans:
             prev = next((lines[j].strip() for j in range(n - 2, -1, -1) if lines[j].strip()), "")
             print(f"        línea {n}: {txt!r}")
             print(f"           el parser lo asociará a: {prev[:70]!r}")
         problems += 1
     else:
-        print(f"{OK} ningún periodo quedó huérfano")
+        print(f"{OK} todo periodo suelto queda debajo de su puesto o título")
 
     # ---- 4. Daño de codificación (ligaduras, acentos) ----
     print()

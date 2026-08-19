@@ -54,7 +54,7 @@
 % ----- Helper commands -----
 % ATS: keep "Title, Company ... Dates" on one physical line so parsers pair them correctly
 \newcommand{\role}[4]{%
-    \noindent\textbf{#1}, \textit{#2} {\textcolor{subtle}{$\cdot$ #3}}%
+    \noindent\textbf{#1}, \textit{#2} \hfill \textcolor{subtle}{#3}%
     \if\relax\detokenize{#4}\relax\else\\{\textcolor{subtle}{\textit{#4}}}\fi
     \par\vspace{1pt}
 }
@@ -71,11 +71,11 @@
 
 % ----- Header (ATS-friendly: plain text, no glyphs) -----
 \begin{center}
-    {\Huge\bfseries\color{accent} José Carlos Chaparro}\\[1pt]
+    {\Huge\bfseries\color{accent} JOSÉ CARLOS CHAPARRO}\\[1pt]
     {\large Full Stack Engineer}\\[4pt]
     \footnotesize
     +52 614 215 2635 | \href{mailto:jc_chaparro@hotmail.com}{jc\_chaparro@hotmail.com} | \href{https://www.linkedin.com/in/jose-c-chaparro/}{linkedin.com/in/jose-c-chaparro} | \href{https://github.com/JoseCarlosChaparro}{github.com/JoseCarlosChaparro} | \href{https://www.josechaparro.com}{josechaparro.com}\\[1pt]
-    Mexico-based $\cdot$ Open to remote / US relocation $\cdot$ \textbf{US Citizen (no sponsorship required)} $\cdot$ Spanish (native) / English (B2, upper-intermediate)
+    Chihuahua, MX $\cdot$ Open to remote / US relocation $\cdot$ \textbf{US Citizen (no sponsorship required)} $\cdot$ Spanish (native) / English (B2, upper-intermediate)
 \end{center}
 
 % ----- Professional Profile -----
@@ -126,7 +126,7 @@ Full Stack Engineer with 2+ years of production experience building backend syst
 % ----- Education -----
 \section*{Education}
 
-\noindent\textbf{Bachelor of Science in Computer Science Engineering} {\textcolor{subtle}{$\cdot$ 2018 -- 2023}}\\
-Universidad Autónoma de Chihuahua -- GPA 9.2/10, graduated by academic merit
+\noindent\textbf{Bachelor of Science in Computer Science Engineering} \hfill \textcolor{subtle}{2018 -- 2023}\\
+Autonomous University of Chihuahua (Universidad Autónoma de Chihuahua) -- GPA 9.2/10, graduated by academic merit
 
 \end{document}
