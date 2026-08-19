@@ -60,36 +60,23 @@ def main(pdf):
             problems += 1
 
     # ---- 3. El fallo clásico: fechas huérfanas ----
-    # \hfill abre un hueco horizontal grande y el extractor lo interpreta como
-    # salto de línea, así que el puesto y su periodo terminan en renglones
-    # distintos y el parser los empareja mal.
+    # Un parser real (OpenResume) empareja por coordenadas X/Y, así que la vista
+    # fiel es pdftotext -layout: ahí "Empresa ..... Periodo" comparten renglón.
+    # Un periodo que aun en -layout queda en renglón propio sí está huérfano.
     date_only = re.compile(
         r"^\s*((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4}|\d{4})"
         r"\s*[–—\-]{1,2}\s*(Present|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4}|\d{4})\s*$"
     )
     print()
-    # Un periodo en renglón propio solo es un problema si la línea anterior NO
-    # es el puesto o el título al que pertenece. Los datos de un parser real
-    # (OpenResume) mostraron que cuando la línea de arriba es el puesto, la
-    # asociación sale bien; marcar todos los casos era un falso positivo.
-    ANCHORS = ("Engineer", "Developer", "Bachelor", "Master", "Analyst",
-               "Manager", "Architect", "Intern", "Co-founder")
-    orphans = []
-    for i, l in enumerate(lines):
-        if not date_only.match(l):
-            continue
-        prev = next((lines[j].strip() for j in range(i - 1, -1, -1) if lines[j].strip()), "")
-        if not any(a in prev for a in ANCHORS):
-            orphans.append((i + 1, l.strip()))
+    layout_lines = run("pdftotext", "-layout", pdf, "-").splitlines()
+    orphans = [(i + 1, l.strip()) for i, l in enumerate(layout_lines) if date_only.match(l)]
     if orphans:
-        print(f"{BAD} {len(orphans)} periodo(s) sueltos, sin puesto ni título en la línea anterior:")
+        print(f"{BAD} {len(orphans)} periodo(s) sueltos, sin texto acompañante en su renglón visual:")
         for n, txt in orphans:
-            prev = next((lines[j].strip() for j in range(n - 2, -1, -1) if lines[j].strip()), "")
             print(f"        línea {n}: {txt!r}")
-            print(f"           el parser lo asociará a: {prev[:70]!r}")
         problems += 1
     else:
-        print(f"{OK} todo periodo suelto queda debajo de su puesto o título")
+        print(f"{OK} cada periodo comparte renglón visual con su empresa o escuela")
 
     # ---- 4. Daño de codificación (ligaduras, acentos) ----
     print()
@@ -104,7 +91,7 @@ def main(pdf):
 
     # ---- 5. Encabezados que el parser usa para segmentar ----
     print()
-    expected = ["Professional Profile", "Technical Skills", "Work Experience", "Education"]
+    expected = ["Professional Summary", "Technical Skills", "Work Experience", "Education"]
     for h in expected:
         print(f"{OK if h in raw else BAD} encabezado {h!r}")
         if h not in raw:

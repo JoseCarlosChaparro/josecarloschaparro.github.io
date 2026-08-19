@@ -13,13 +13,16 @@
 % ----- Packages -----
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[top=0.42in,bottom=0.42in,left=0.65in,right=0.65in]{geometry}
+\usepackage[top=0.35in,bottom=0.35in,left=0.5in,right=0.5in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{microtype}
-\usepackage[default]{lato}
+% ATS: Latin Modern embeds PostScript names like "LMSans10-Bold"; parsers detect
+% bold by checking the font name, and Lato's "SFSX..." names made every bold
+% invisible to them (broken name/company/subsection detection in OpenResume).
+\usepackage{lmodern}
 \renewcommand*\familydefault{\sfdefault}
 
 % ----- Colors -----
@@ -40,8 +43,8 @@
 \titleformat{\section}
     {\large\bfseries\color{accent}}
     {}{0pt}
-    {}[\vspace{2pt}\color{rule}\hrule height 0.5pt\vspace{3pt}]
-\titlespacing*{\section}{0pt}{2pt}{0pt}
+    {}[\vspace{1pt}\color{rule}\hrule height 0.5pt\vspace{2pt}]
+\titlespacing*{\section}{0pt}{1pt}{0pt}
 
 \titleformat{\subsection}
     {\normalsize\bfseries}
@@ -52,16 +55,20 @@
 \setlist[itemize]{leftmargin=11pt, itemsep=0pt, topsep=0pt, parsep=0pt}
 
 % ----- Helper commands -----
-% ATS: keep "Title, Company ... Dates" on one physical line so parsers pair them correctly
+% ATS: bold company + date on line 1, job title alone on line 2. Parsers score
+% company by boldness and job title by exact keyword match; gluing
+% "Title, Company" into one line merges them into a single text item where
+% "Engineer," (with comma) no longer matches the keyword list.
 \newcommand{\role}[4]{%
-    \noindent\textbf{#1}, \textit{#2} \hfill \textcolor{subtle}{#3}%
+    \noindent\textbf{#2} \hfill \textcolor{subtle}{#3}\\
+    #1%
     \if\relax\detokenize{#4}\relax\else\\{\textcolor{subtle}{\textit{#4}}}\fi
     \par\vspace{1pt}
 }
 
 \newcommand{\skillcat}[2]{\noindent\textbf{#1:} #2\par\vspace{1pt}}
 
-\linespread{1.0}
+\linespread{0.96}
 \pagenumbering{gobble}
 \setlength{\parindent}{0pt}
 
@@ -72,14 +79,17 @@
 % ----- Header (ATS-friendly: plain text, no glyphs) -----
 \begin{center}
     {\Huge\bfseries\color{accent} JOSÉ CARLOS CHAPARRO}\\[1pt]
-    {\large Full Stack Engineer}\\[4pt]
+    {\large Full Stack Engineer}\\[2pt]
     \footnotesize
     +52 614 215 2635 | \href{mailto:jc_chaparro@hotmail.com}{jc\_chaparro@hotmail.com} | \href{https://www.linkedin.com/in/jose-c-chaparro/}{linkedin.com/in/jose-c-chaparro} | \href{https://github.com/JoseCarlosChaparro}{github.com/JoseCarlosChaparro} | \href{https://www.josechaparro.com}{josechaparro.com}\\[1pt]
     Chihuahua, MX $\cdot$ Open to remote / US relocation $\cdot$ \textbf{US Citizen (no sponsorship required)} $\cdot$ Spanish (native) / English (B2, upper-intermediate)
 \end{center}
 
-% ----- Professional Profile -----
-\section*{Professional Profile}
+% ----- Professional Summary -----
+% ATS: "Summary" is a section keyword parsers know; "Profile" is not, so the
+% bold "Professional Profile" heading leaked into the profile block and
+% outscored the actual name in name detection.
+\section*{Professional Summary}
 Full Stack Engineer with 2+ years of production experience building backend systems in Python (FastAPI) and .NET (C\#, VB.NET) on AWS and Linux. Shipped a containerized ML platform from scratch; previously maintained an ERP serving 170+ branches and 1,750+ employees. Owns the full SDLC: requirements, coding, QA, deployment, and production support.
 
 % ----- Technical Skills -----
@@ -116,17 +126,25 @@ Full Stack Engineer with 2+ years of production experience building backend syst
 \end{itemize}
 
 % ----- Selected Projects -----
-\section*{Selected Projects (Bifrost Code, in production)}
+% ATS: section-title detection needs a short keyword heading; the old
+% "Selected Projects (Bifrost Code, in production)" never registered as a
+% section, so projects were swallowed by Work Experience.
+\section*{Selected Projects}
+{\textcolor{subtle}{\textit{Bifrost Code side projects, running in production}}}\par\vspace{1pt}
 \begin{itemize}
-    \item \textbf{FisioApp} -- multi-tenant clinic management (patients, clinical records, appointments, payments); Next.js + PostgreSQL, WCAG 2.1 AA audited, automated off-site backups via cron to Backblaze B2.
-    \item \textbf{Feriu} -- multi-tenant shared-expense platform (Splitwise-style settlement engine); NestJS + Next.js monorepo, PostgreSQL.
-    \item \textbf{Karaoke Balu} -- real-time karaoke request platform (SSE-synced queue, kiosk mode, Virtual DJ integration); Express + React.
+    \item \textbf{FisioApp:} multi-tenant clinic management (patients, clinical records, appointments, payments); Next.js + PostgreSQL, WCAG 2.1 AA audited, automated off-site backups via cron to Backblaze B2.
+    \item \textbf{Feriu:} multi-tenant shared-expense platform (Splitwise-style settlement engine); NestJS + Next.js monorepo, PostgreSQL.
+    \item \textbf{Karaoke Balu:} real-time karaoke request platform (SSE-synced queue, kiosk mode, Virtual DJ integration); Express + React.
 \end{itemize}
 
 % ----- Education -----
 \section*{Education}
 
-\noindent\textbf{Bachelor of Science in Computer Science Engineering} \hfill \textcolor{subtle}{2018 -- 2023}\\
-Autonomous University of Chihuahua (Universidad Autónoma de Chihuahua) -- GPA 9.2/10, graduated by academic merit
+% ATS: school line must carry a school keyword ("University") and no digits;
+% the GPA glued to the university name zeroed out its score and School came
+% back empty.
+\noindent\textbf{Autonomous University of Chihuahua} \hfill \textcolor{subtle}{2018 -- 2023}\\
+Bachelor of Science in Computer Science Engineering\\
+GPA 9.2/10 (Universidad Autónoma de Chihuahua), graduated by academic merit
 
 \end{document}
