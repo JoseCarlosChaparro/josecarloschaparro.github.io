@@ -230,9 +230,25 @@
                         </div>
                     </div>
 
-                    <p class="font-mono text-xs leading-relaxed text-faint pt-1" data-i18n="about.location">
-                        Chihuahua, Mexico · Available for backend and infrastructure work
+                    <p class="flex items-start gap-2 text-[0.8125rem] leading-snug font-semibold text-accent pt-1">
+                        <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                        <span data-i18n="about.workAuth">US citizen — no sponsorship required</span>
                     </p>
+                    <p class="font-mono text-xs leading-relaxed text-faint" data-i18n="about.location">
+                        Chihuahua, Mexico · Open to remote or US relocation
+                    </p>
+
+                    <div class="flex flex-col gap-2 pt-5 border-t border-rule">
+                        <h3 class="font-display text-lg font-bold tracking-tight" data-i18n="about.education">Education</h3>
+                        <p class="font-semibold text-[0.9375rem]" data-i18n="about.degree">BSc Computer Science Engineering</p>
+                        <p class="text-[0.875rem] text-muted" data-i18n="about.university">Universidad Autónoma de Chihuahua</p>
+                        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                            <span class="text-[0.875rem] text-muted" data-i18n="about.eduDetail">GPA 9.2/10 · Graduated by academic merit</span>
+                            <span class="font-mono text-xs text-faint" data-i18n="about.eduPeriod">2018 — 2023</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -262,9 +278,9 @@
                     <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB1">Architected the company's first containerized platform: a six-service Docker Compose stack (two FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) on AWS EC2 with private networking and automated health checks.</span></li>
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB2">Designed a 25-table PostgreSQL schema on AWS RDS — 24 foreign keys, 34 strategic indexes, an idempotent migration system and soft-delete audit trail — reachable only through an SSH tunnel via an EC2 bastion host.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB3">Built an event-driven FastAPI webhook service linking Label Studio to S3, using the Repository pattern, atomic DB/S3 rollback on failure, async connection pooling and an in-memory cache with database fallback.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB3">Built an event-driven FastAPI webhook service linking Label Studio to S3: Repository pattern, atomic database/S3 rollback on any failure, async connection pooling and an in-memory cache with database fallback; wrote the team runbooks for operating it.</span></li>
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB4">Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated off Windows-only WPF) for human review of ML-labelled video frames: MVVM architecture, two-pass verification workflow and a sliding-window prefetch cache.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB5">Implemented least-privilege IAM policies and moved credentials into AWS Secrets Manager; used LocalStack to emulate S3 locally so development never touches production credentials.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB5">Implemented least-privilege IAM policies, moved credentials into AWS Secrets Manager and set up the CI pipelines; LocalStack emulates S3 locally so development never touches production credentials. Co-supervise two interns alongside the lead developer.</span></li>
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB6">Built the data pipeline's operator tooling — CLIs, idempotent S3-to-PostgreSQL sync, drift audits — and automated model training through GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT).</span></li>
                     </ul>
                     <div class="flex flex-wrap gap-2 pt-1">
@@ -277,9 +293,10 @@
                 <div class="flex flex-col gap-1.5">
                     <p class="font-mono text-[0.8125rem] text-faint" data-i18n="experience.contractorPeriod">February 2025 — Present</p>
                     <p class="font-mono text-[0.8125rem] text-accent" data-i18n="experience.contractorCompany">Bifrost Code</p>
+                    <p class="text-[0.75rem] leading-snug text-faint" data-i18n="experience.contractorNote">Side project, alongside my full-time role</p>
                 </div>
                 <div class="flex flex-col gap-4">
-                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.contractorRole">Full Stack Engineer &amp; Co-founder</h3>
+                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.contractorRole">Co-founder &amp; Full Stack Engineer</h3>
                     <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB1">Deliver full-stack web applications end to end with React, Next.js, NestJS and Express on TypeScript pnpm monorepos backed by PostgreSQL; earlier engagements shipped on React Native, FastAPI and Django.</span></li>
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB2">Shipped and still operate three products for paying clients: FisioApp (multi-tenant clinic management, WCAG 2.1 AA audited), Feriu (multi-tenant shared-expense platform) and Karaoke Balu (real-time request platform with SSE and kiosk mode).</span></li>
@@ -300,11 +317,12 @@
                     <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.rogaRole">.NET Software Developer</h3>
                     <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB1">Maintained and extended the internal ERP running across more than 170 branches and used by over 1,750 employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress), building modules for multi-branch inventory, pricing, accounts receivable and point of sale in .NET Framework.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB2">Designed the SQL Server database architecture behind multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, plus automated report generation and email delivery through SQL Server Agent.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB3">Standardised security practice across the development lifecycle: a shared password manager for credential handling, physical security keys, and formalised development processes the team still follows.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB2">Built from scratch the module managing the field agents who visit customer homes for credit approval: full design ownership, DevExpress map controls plotting assignments geographically, and data consumed from a companion Android app.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB3">Designed the SQL Server database architecture behind multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, plus automated report generation and email delivery through SQL Server Agent.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB4">Standardised security practice across the development lifecycle: a shared password manager for credential handling, physical security keys, and formalised development processes the team still follows.</span></li>
                     </ul>
                     <div class="flex flex-wrap gap-2 pt-1">
-                        <span class="tag">.NET Framework</span><span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">VB.NET</span><span class="tag">SQL Server Agent</span>
+                        <span class="tag">.NET Framework</span><span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">VB.NET</span><span class="tag">SQL Server Agent</span><span class="tag">DevExpress</span>
                     </div>
                 </div>
             </article>
