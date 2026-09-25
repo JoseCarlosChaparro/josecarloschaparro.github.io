@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Content Security Policy. script-src carries the hash of the inline
+         <head> script; tools/stamp_assets.py recomputes it on every build.
+         frame-ancestors cannot be set from a meta tag: it is sent as a header
+         by Cloudflare (see the Cloudflare guide). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-w6Y8ah0O9VbClVAqfGaX/WOWc4nImXbXdmw5s+0VKIQ='; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
     <meta name="description" content="José Chaparro, full stack engineer: React, Next.js and TypeScript front ends, Python and .NET backends, and cloud infrastructure on AWS.">
     <meta name="keywords" content="José Chaparro, Full Stack Engineer, React, Next.js, TypeScript, FastAPI, .NET, PostgreSQL, AWS, Docker">
     <meta name="author" content="José Chaparro">
@@ -61,16 +66,18 @@
     </script>
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css">
+    <!-- Fonts and icons are self-hosted: nothing on the critical path, and no
+         visitor request, goes to a third party. The two faces seen first are
+         preloaded so the first paint does not wait for the stylesheet. -->
+    <link rel="preload" href="./assets/fonts/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fonts/manrope-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="./assets/css/fonts.css?v=4a98780e56">
+    <link rel="stylesheet" href="./assets/css/icons.css?v=d2fc61a4ef">
     <link rel="stylesheet" href="style.css?v=3c57e33598">
     <!-- Tailwind is compiled ahead of time (npm run build:css). It loads after
          style.css on purpose: the in-browser CDN used to inject its styles last,
          so utilities such as md:hidden must keep winning over component rules. -->
-    <link rel="stylesheet" href="./assets/css/tailwind.css?v=5e0dc54f29">
+    <link rel="stylesheet" href="./assets/css/tailwind.css?v=4f41be5713">
 
     <!-- Marca que hay JS ANTES de pintar. Las animaciones de entrada solo
          ocultan contenido cuando existe algo que pueda revelarlo: sin esto,
@@ -171,11 +178,16 @@
                  propuesta se lea sin hacer scroll. -->
             <div class="order-2 lg:order-1 lg:col-span-5 flex flex-col gap-4 scroll-reveal">
                 <div class="rounded-2xl overflow-hidden border border-rule" data-intro style="--intro: 1">
-                    <img src="./assets/images/jose-portrait-2025.jpg"
-                         alt="José Chaparro"
-                         width="520" height="520"
-                         class="w-full block aspect-square object-cover"
-                         loading="eager" fetchpriority="high" decoding="async">
+                    <picture>
+                        <source type="image/webp"
+                                srcset="./assets/images/jose-portrait-2025-480.webp 480w, ./assets/images/jose-portrait-2025-720.webp 720w, ./assets/images/jose-portrait-2025-1040.webp 1040w"
+                                sizes="(min-width: 1024px) 460px, calc(100vw - 40px)">
+                        <img src="./assets/images/jose-portrait-2025-720.jpg"
+                             alt="José Chaparro"
+                             width="520" height="520"
+                             class="w-full block aspect-square object-cover"
+                             loading="eager" fetchpriority="high" decoding="async">
+                    </picture>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3" data-intro style="--intro: 3">
@@ -635,7 +647,7 @@
         </svg>
     </button>
 
-    <script src="app.js?v=3acfb9257d"></script>
+    <script src="app.js?v=cfaa898562"></script>
 </body>
 
 </html>
