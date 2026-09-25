@@ -3,7 +3,9 @@
   "private": true,
   "description": "Personal site: static HTML with Tailwind CSS compiled ahead of time.",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --minify"
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --minify",
+    "stamp": "python3 tools/stamp_assets.py",
+    "build": "npm run build:css && npm run stamp"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
