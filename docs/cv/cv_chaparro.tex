@@ -36,7 +36,9 @@
     urlcolor=accent,
     linkcolor=accent,
     pdftitle={Jose Chaparro - Full Stack Engineer CV},
-    pdfauthor={Jose Carlos Chaparro Morales}
+    pdfauthor={Jose Carlos Chaparro Morales},
+    pdfsubject={Resume: Full Stack Engineer},
+    pdfkeywords={Full Stack Engineer, React, Next.js, TypeScript, FastAPI, .NET, PostgreSQL, AWS, Docker}
 }
 
 % ----- Section style -----
@@ -94,12 +96,12 @@ Full Stack Engineer with 2+ years of production experience: React, Next.js and T
 
 % ----- Technical Skills -----
 \section*{Technical Skills}
-\skillcat{Programming Languages}{Python, JavaScript, TypeScript, C\#, SQL}
-\skillcat{Backend}{FastAPI, NestJS, Express (Node.js), Django, .NET Framework}
+\skillcat{Programming Languages}{TypeScript, JavaScript, Python, C\#, SQL}
 \skillcat{Frontend}{React, Next.js, Tailwind CSS, React Native, Avalonia (desktop)}
+\skillcat{Backend}{FastAPI, NestJS, Express (Node.js), Django, .NET Framework}
 \skillcat{Databases}{PostgreSQL, SQL Server, SQLite}
-\skillcat{Computer Vision \& Edge}{Ultralytics YOLO, TensorRT, ONNX, OpenCV, NVIDIA Jetson}
 \skillcat{Cloud \& DevOps}{AWS (EC2, RDS, S3, IAM, Secrets Manager), Docker, Docker Compose, Nginx, Cloudflare, Dokploy, Backblaze B2, Git, GitHub Actions, GitLab CI/CD, Linux}
+\skillcat{Computer Vision \& Edge}{Ultralytics YOLO, TensorRT, ONNX, OpenCV, NVIDIA Jetson}
 
 % ----- Work Experience -----
 \section*{Work Experience}
@@ -107,17 +109,17 @@ Full Stack Engineer with 2+ years of production experience: React, Next.js and T
 \role{Full Stack Engineer}{Moneta Market}{August 2025 -- Present}{}
 \begin{itemize}
     \item Architected the company's first containerized platform on AWS EC2 (Linux): 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) replacing manual deployment with reproducible automation.
-    \item Designed a 25-table PostgreSQL schema on AWS RDS (24 foreign keys, 34 indexes, idempotent migrations, soft-delete audit trail) accessed via SSH tunnel through EC2 bastion host.
+    \item Designed a 25-table PostgreSQL schema on AWS RDS (24 foreign keys, 34 indexes, idempotent migrations, soft-delete audit trail) accessed through an SSH tunnel via an EC2 bastion host.
     \item Built an event-driven FastAPI webhook integrating Label Studio with S3: atomic DB/S3 rollback, async connection pooling, in-memory cache with DB fallback; wrote team runbooks.
-    \item Developed a cross-platform C\# desktop app (.NET 10, Avalonia, migrated from WPF) for ML-frame human review: MVVM, two-pass verification, sliding-window prefetch cache.
-    \item Built the pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking.
+    \item Developed a cross-platform C\# desktop app (.NET 10, Avalonia, migrated from WPF) for human review of ML-labeled frames: MVVM, two-pass verification, sliding-window prefetch cache.
+    \item Built the data pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking.
     \item Built an on-device vision pipeline on NVIDIA Jetson Orin Nano (TensorRT FP16, 60 fps tracking, SIFT camera recalibration) that counts products taken from a retail cooler; its evaluation harness set the production frame-rate and image-format requirements.
-    \item Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3 and CI pipelines; co-supervised 2 interns and led them after the lead developer left.
+    \item Led two interns after the lead developer left (co-supervised them before); set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3 and CI pipelines.
 \end{itemize}
 
 \role{Co-founder \& Full Stack Engineer}{Bifrost Code}{February 2025 -- Present}{independent software studio; side project in my own time, alongside the full-time Moneta Market role}
 \begin{itemize}
-    \item Deliver full-stack web apps end-to-end (React, Next.js, NestJS, Express on TypeScript pnpm monorepos, PostgreSQL), self-hosted on the studio's own infrastructure -- Proxmox VM (Ubuntu Server) with Dokploy, Docker Compose health checks, and Cloudflare Tunnels, a low-cost alternative to Vercel/AWS. Earlier projects shipped with FastAPI, Django and React Native.
+    \item Deliver full-stack web apps end-to-end (React, Next.js, NestJS, Express on TypeScript pnpm monorepos, PostgreSQL), self-hosted on the studio's own infrastructure -- Proxmox VM (Ubuntu Server) with Dokploy, Docker Compose health checks and Cloudflare Tunnels, a low-cost alternative to Vercel/AWS. Earlier projects shipped with FastAPI, Django and React Native.
 \end{itemize}
 
 \role{.NET Software Developer}{Grupo Roga}{March 2024 -- August 2025}{}
@@ -147,6 +149,6 @@ Full Stack Engineer with 2+ years of production experience: React, Next.js and T
 % back empty.
 \noindent\textbf{Autonomous University of Chihuahua} \hfill \textcolor{subtle}{2018 -- 2023}\\
 Bachelor of Science in Computer Science Engineering\\
-GPA 9.2/10 (Universidad Autónoma de Chihuahua), graduated by academic merit
+GPA 9.2/10 (Universidad Autónoma de Chihuahua); degree awarded by academic merit
 
 \end{document}
