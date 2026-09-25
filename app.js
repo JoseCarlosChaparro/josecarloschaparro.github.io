@@ -3,6 +3,9 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Before any await, so fetching the locales never delays it
+    initializePreloader();
+
     // Register languagechange listeners before firing the event
     initializeTypingAnimation();
     initializeExperienceCounter();
@@ -13,7 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeTheme();
     initializeNavigation();
     initializeScrollAnimations();
-    initializeLoadingScreen();
     initializeBackToTop();
 });
 
@@ -285,27 +287,29 @@ function initializeScrollAnimations() {
 // LOADING SCREEN
 // ============================================
 
-function initializeLoadingScreen() {
-    const loadingOverlay = document.createElement('div');
-    loadingOverlay.className = 'loading-overlay';
-    loadingOverlay.innerHTML = '<div class="spinner"></div>';
-    document.body.prepend(loadingOverlay);
+// Long enough for the stack to assemble and the name to be read.
+const PRELOADER_MIN_VISIBLE_MS = 1100;
+const PRELOADER_FADE_MS = 300;
 
-    const hideOverlay = () => {
-        setTimeout(() => {
-            loadingOverlay.classList.add('fade-out');
-            setTimeout(() => loadingOverlay.remove(), 500);
-        }, 500);
-    };
+function initializePreloader() {
+    const root = document.documentElement;
+    if (!root.classList.contains('preload')) return;
 
-    // If the window has already fired the load event by the time we run
-    // (common when async init like fetching locales finishes after load),
-    // hide immediately. Otherwise wait for it.
-    if (document.readyState === 'complete') {
-        hideOverlay();
-    } else {
-        window.addEventListener('load', hideOverlay, { once: true });
-    }
+    const pageLoaded = document.readyState === 'complete'
+        ? Promise.resolve()
+        : new Promise((resolve) => window.addEventListener('load', resolve, { once: true }));
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    // Counted from when the <head> script turned the preloader on, so the
+    // animation always gets its time however long the page took to arrive.
+    const shownAt = window.preloaderShownAt ?? performance.now();
+    const minimumShown = new Promise((resolve) =>
+        setTimeout(resolve, Math.max(0, PRELOADER_MIN_VISIBLE_MS - (performance.now() - shownAt))));
+
+    Promise.all([pageLoaded, fontsReady, minimumShown]).then(() => {
+        root.classList.add('preloader-done');
+        setTimeout(() => root.classList.remove('preload', 'preloader-done'), PRELOADER_FADE_MS);
+        try { sessionStorage.setItem('preloaderSeen', '1'); } catch (error) { /* storage blocked */ }
+    });
 }
 
 // ============================================
