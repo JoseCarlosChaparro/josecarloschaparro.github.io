@@ -289,6 +289,8 @@ function initializeScrollAnimations() {
 
 // Long enough for the stack to assemble and the name to be read.
 const PRELOADER_MIN_VISIBLE_MS = 1100;
+// A slow network lifts the curtain anyway; the page fills in behind it.
+const PRELOADER_MAX_WAIT_MS = 2000;
 // Curtain lift (0.8 s) plus the last hero piece entering (delay 4 x 90 +
 // 250 ms, then 750 ms): .preload stays until both are done so no transition
 // is cut short when its rules go away.
@@ -298,17 +300,23 @@ function initializePreloader() {
     const root = document.documentElement;
     if (!root.classList.contains('preload')) return;
 
-    const pageLoaded = document.readyState === 'complete'
-        ? Promise.resolve()
-        : new Promise((resolve) => window.addEventListener('load', resolve, { once: true }));
-    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
     // Counted from when the <head> script turned the preloader on, so the
     // animation always gets its time however long the page took to arrive.
     const shownAt = window.preloaderShownAt ?? performance.now();
-    const minimumShown = new Promise((resolve) =>
-        setTimeout(resolve, Math.max(0, PRELOADER_MIN_VISIBLE_MS - (performance.now() - shownAt))));
+    const untilShownFor = (ms) => new Promise((resolve) =>
+        setTimeout(resolve, Math.max(0, ms - (performance.now() - shownAt))));
 
-    Promise.all([pageLoaded, fontsReady, minimumShown]).then(() => {
+    // Only what the first screen needs: the fonts and the hero portrait.
+    // Waiting for the load event would also wait for images further down.
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    const heroImage = document.querySelector('#hero img');
+    const heroReady = heroImage ? heroImage.decode().catch(() => undefined) : Promise.resolve();
+    const firstScreenReady = Promise.race([
+        Promise.all([fontsReady, heroReady]),
+        untilShownFor(PRELOADER_MAX_WAIT_MS),
+    ]);
+
+    Promise.all([firstScreenReady, untilShownFor(PRELOADER_MIN_VISIBLE_MS)]).then(() => {
         root.classList.add('preloader-done');
         setTimeout(() => root.classList.remove('preload', 'preloader-done'), PRELOADER_SETTLE_MS);
         try { sessionStorage.setItem('preloaderSeen', '1'); } catch (error) { /* storage blocked */ }

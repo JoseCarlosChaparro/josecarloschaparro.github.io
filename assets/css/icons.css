@@ -1,0 +1,39 @@
+/* Devicon v2.17.0 (MIT License, Copyright (c) 2015 konpa,
+   https://github.com/devicons/devicon), subset to the 24 icons this
+   site uses. After adding an icon, rebuild the subset from the upstream
+   devicon.ttf with pyftsubset and add its ::before rule here. */
+
+@font-face {
+    font-family: "devicon";
+    src: url("../fonts/devicon-subset.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^=devicon-],[class*=" devicon-"]{font-family:"devicon" !important;speak:never;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+.devicon-cloudflare-plain::before { content: "\e976"; }
+.devicon-csharp-plain::before { content: "\e9a0"; }
+.devicon-django-plain::before { content: "\e9bd"; }
+.devicon-docker-plain::before { content: "\e9c3"; }
+.devicon-dot-net-plain::before { content: "\e9ca"; }
+.devicon-express-original::before { content: "\e9ec"; }
+.devicon-fastapi-plain::before { content: "\e9ef"; }
+.devicon-git-plain::before { content: "\ea2d"; }
+.devicon-githubactions-plain::before { content: "\ed6b"; }
+.devicon-gitlab-plain::before { content: "\ea2b"; }
+.devicon-javascript-plain::before { content: "\ea81"; }
+.devicon-linux-plain::before { content: "\eac9"; }
+.devicon-microsoftsqlserver-plain::before { content: "\eaea"; }
+.devicon-nestjs-plain::before { content: "\eb09"; }
+.devicon-nextjs-plain::before { content: "\eb14"; }
+.devicon-nginx-original::before { content: "\eb15"; }
+.devicon-opencv-plain::before { content: "\eb48"; }
+.devicon-postgresql-plain::before { content: "\eb79"; }
+.devicon-proxmox-plain::before { content: "\ed7b"; }
+.devicon-python-plain::before { content: "\eb9c"; }
+.devicon-react-original::before { content: "\ebbc"; }
+.devicon-sqlite-plain::before { content: "\ec1e"; }
+.devicon-tailwindcss-original::before { content: "\ec39"; }
+.devicon-typescript-plain::before { content: "\ec63"; }
