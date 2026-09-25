@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Content Security Policy. script-src carries the hash of the inline
+         <head> script; tools/stamp_assets.py recomputes it on every build.
+         frame-ancestors cannot be set from a meta tag: it is sent as a header
+         by Cloudflare (see the Cloudflare guide). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-w6Y8ah0O9VbClVAqfGaX/WOWc4nImXbXdmw5s+0VKIQ='; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
     <meta name="description" content="José Chaparro, full stack engineer: React, Next.js and TypeScript front ends, Python and .NET backends, and cloud infrastructure on AWS.">
     <meta name="keywords" content="José Chaparro, Full Stack Engineer, React, Next.js, TypeScript, FastAPI, .NET, PostgreSQL, AWS, Docker">
     <meta name="author" content="José Chaparro">
