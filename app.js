@@ -417,7 +417,8 @@ class LanguageManager {
         if (this.#cache[lang]) return this.#cache[lang];
 
         try {
-            const response = await fetch(`locales/${lang}.json`);
+            // Revalidate with the server so a deploy never serves stale copy.
+            const response = await fetch(`locales/${lang}.json`, { cache: 'no-cache' });
             const data = await response.json();
             this.#cache[lang] = data;
             return data;
