@@ -13,48 +13,17 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicons/favicon.ico">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Semantic color tokens resolve to the CSS custom properties in style.css,
-         so every utility below follows the light/dark switch automatically. -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        // OJO: no llamar 'base' a un color — chocaría con la
-                        // utilidad de tamaño text-base y la sobrescribiría.
-                        page: 'var(--c-page)',
-                        band: 'var(--c-band)',
-                        card: 'var(--c-card)',
-                        deep: 'var(--c-deep)',
-                        ink: 'var(--c-ink)',
-                        muted: 'var(--c-muted)',
-                        faint: 'var(--c-faint)',
-                        rule: 'var(--c-rule)',
-                        edge: 'var(--c-edge)',
-                        accent: 'var(--c-accent)',
-                        'accent-ink': 'var(--c-accent-ink)',
-                        'accent-soft': 'var(--c-accent-soft)'
-                    },
-                    fontFamily: {
-                        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
-                        sans: ['Manrope', 'system-ui', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- Tailwind is compiled ahead of time (npm run build:css). It loads after
+         style.css on purpose: the in-browser CDN used to inject its styles last,
+         so utilities such as md:hidden must keep winning over component rules. -->
+    <link rel="stylesheet" href="./assets/css/tailwind.css">
 
     <!-- Marca que hay JS ANTES de pintar. Las animaciones de entrada solo
          ocultan contenido cuando existe algo que pueda revelarlo: sin esto,

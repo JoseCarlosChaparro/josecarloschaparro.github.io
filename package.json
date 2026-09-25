@@ -1,0 +1,11 @@
+{
+  "name": "josechaparro-site",
+  "private": true,
+  "description": "Personal site: static HTML with Tailwind CSS compiled ahead of time.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
