@@ -88,7 +88,8 @@
     "cloud": "Cloud & infrastructure",
     "databases": "Databases",
     "frontend": "Frontend",
-    "architecture": "Architecture & practice"
+    "architecture": "Architecture & practice",
+    "vision": "Computer vision & edge"
   },
   "projects": {
     "kicker": "04 · Selected work",

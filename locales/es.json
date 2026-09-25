@@ -88,7 +88,8 @@
     "cloud": "Cloud e infraestructura",
     "databases": "Bases de datos",
     "frontend": "Frontend",
-    "architecture": "Arquitectura y práctica"
+    "architecture": "Arquitectura y práctica",
+    "vision": "Visión por computadora y edge"
   },
   "projects": {
     "kicker": "04 · Trabajo seleccionado",

@@ -98,6 +98,7 @@ Full Stack Engineer with 2+ years of production experience building backend syst
 \skillcat{Backend}{FastAPI, NestJS, Express (Node.js), Django, .NET Framework}
 \skillcat{Frontend}{React, React Native, Next.js}
 \skillcat{Databases}{PostgreSQL, SQL Server, SQLite}
+\skillcat{Computer Vision \& Edge}{Ultralytics YOLO, TensorRT, ONNX, OpenCV, NVIDIA Jetson}
 \skillcat{Cloud \& DevOps}{AWS (EC2, RDS, S3, IAM, Secrets Manager), Docker, Docker Compose, Nginx, Cloudflare, Dokploy, Backblaze B2, Git, GitHub Actions, GitLab CI/CD, Linux}
 
 % ----- Work Experience -----
@@ -111,19 +112,19 @@ Full Stack Engineer with 2+ years of production experience building backend syst
     \item Developed a cross-platform C\# desktop app (.NET 10, Avalonia, migrated from WPF) for ML-frame human review: MVVM, two-pass verification, sliding-window prefetch cache.
     \item Built the pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking.
     \item Built an on-device vision pipeline on NVIDIA Jetson Orin Nano (TensorRT FP16, 60 fps tracking, SIFT camera recalibration) that counts products taken from a retail cooler; its evaluation harness set the production frame-rate and image-format requirements.
-    \item Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3, and CI pipelines; co-supervise 2 interns with the lead developer.
+    \item Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3 and CI pipelines; co-supervise 2 interns.
 \end{itemize}
 
 \role{Co-founder \& Full Stack Engineer}{Bifrost Code}{February 2025 -- Present}{independent software studio; side project in my own time, alongside the full-time Moneta Market role}
 \begin{itemize}
-    \item Deliver full-stack web apps end-to-end (React, Next.js, NestJS, Express on TypeScript pnpm monorepos, PostgreSQL), self-hosted on the studio's own infrastructure -- Proxmox VM (Ubuntu Server) with Dokploy, Docker Compose health checks, and Cloudflare Tunnels, a low-cost production alternative to Vercel/AWS. Earlier delivered projects shipped with FastAPI, Django, and React Native.
+    \item Deliver full-stack web apps end-to-end (React, Next.js, NestJS, Express on TypeScript pnpm monorepos, PostgreSQL), self-hosted on the studio's own infrastructure -- Proxmox VM (Ubuntu Server) with Dokploy, Docker Compose health checks, and Cloudflare Tunnels, a low-cost alternative to Vercel/AWS. Earlier projects shipped with FastAPI, Django and React Native.
 \end{itemize}
 
 \role{.NET Software Developer}{Grupo Roga}{March 2024 -- August 2025}{}
 \begin{itemize}
-    \item Maintained and extended a mission-critical VB.NET ERP serving 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress), spanning POS, multi-branch inventory, pricing, and accounts receivable modules on .NET Framework.
+    \item Maintained and extended a mission-critical VB.NET ERP serving 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress), spanning POS, inventory, pricing and accounts receivable on .NET Framework.
     \item Built from scratch an ERP module managing the field agents who visit customer homes for credit approval: full design ownership, DevExpress map controls plotting assignments geographically, consuming data from a companion Android app.
-    \item Designed SQL Server architecture for multi-branch retail: stored procedures for inventory aggregation and pricing, plus procedures composing the HTML report emails with Chilkat and handing them to the delivery service, eliminating manual report compilation for operations.
+    \item Designed SQL Server stored procedures for multi-branch inventory aggregation and pricing, and automated HTML report emails (Chilkat), eliminating manual report compilation for operations.
 \end{itemize}
 
 % ----- Selected Projects -----
