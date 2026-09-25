@@ -289,7 +289,10 @@ function initializeScrollAnimations() {
 
 // Long enough for the stack to assemble and the name to be read.
 const PRELOADER_MIN_VISIBLE_MS = 1100;
-const PRELOADER_FADE_MS = 300;
+// Curtain lift (0.8 s) plus the last hero piece entering (delay 4 x 90 +
+// 250 ms, then 750 ms): .preload stays until both are done so no transition
+// is cut short when its rules go away.
+const PRELOADER_SETTLE_MS = 1400;
 
 function initializePreloader() {
     const root = document.documentElement;
@@ -307,7 +310,7 @@ function initializePreloader() {
 
     Promise.all([pageLoaded, fontsReady, minimumShown]).then(() => {
         root.classList.add('preloader-done');
-        setTimeout(() => root.classList.remove('preload', 'preloader-done'), PRELOADER_FADE_MS);
+        setTimeout(() => root.classList.remove('preload', 'preloader-done'), PRELOADER_SETTLE_MS);
         try { sessionStorage.setItem('preloaderSeen', '1'); } catch (error) { /* storage blocked */ }
     });
 }
