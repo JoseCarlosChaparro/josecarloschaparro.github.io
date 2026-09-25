@@ -109,7 +109,8 @@ Full Stack Engineer with 2+ years of production experience building backend syst
     \item Designed a 25-table PostgreSQL schema on AWS RDS (24 foreign keys, 34 indexes, idempotent migrations, soft-delete audit trail) accessed via SSH tunnel through EC2 bastion host.
     \item Built an event-driven FastAPI webhook integrating Label Studio with S3: atomic DB/S3 rollback, async connection pooling, in-memory cache with DB fallback; wrote team runbooks.
     \item Developed a cross-platform C\# desktop app (.NET 10, Avalonia, migrated from WPF) for ML-frame human review: MVVM, two-pass verification, sliding-window prefetch cache.
-    \item Built the pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking; prototyped edge inference on NVIDIA Jetson (YOLO on TensorRT).
+    \item Built the pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking.
+    \item Built an on-device vision pipeline on NVIDIA Jetson Orin Nano (TensorRT FP16, 60 fps tracking, SIFT camera recalibration) that counts products taken from a retail cooler; its evaluation harness set the production frame-rate and image-format requirements.
     \item Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3, and CI pipelines; co-supervise 2 interns with the lead developer.
 \end{itemize}
 
