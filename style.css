@@ -380,36 +380,98 @@ body {
 }
 
 /* ============================================================
-   PANTALLA DE CARGA
+   PRELOADER: the stack assembles (infra, API, UI), then the name
+   ------------------------------------------------------------
+   Shown only when the inline script in <head> adds .preload (JS on,
+   first visit of the session, motion allowed). app.js dismisses it as
+   soon as the page is ready; the delayed exit animation below retires
+   it on its own if app.js never runs, so it can never block the page.
    ============================================================ */
 
-.loading-overlay {
+#preloader {
+    display: none;
+}
+
+.preload #preloader {
     position: fixed;
     inset: 0;
-    background-color: var(--c-page);
+    z-index: 9999;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.4s ease-out;
+    gap: 28px;
+    background-color: var(--c-page);
+    animation: preloader-out 0.35s ease-out 1.6s forwards;
 }
 
-.loading-overlay.fade-out {
+.preload.preloader-done #preloader {
+    animation: preloader-out 0.3s ease-out forwards;
+}
+
+.preloader-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: min(280px, 70vw);
+}
+
+.preloader-layer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
     opacity: 0;
-    pointer-events: none;
+    transform: translateY(12px);
+    animation: preloader-layer-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--layer) * 120ms) forwards;
 }
 
-.spinner {
-    width: 42px;
-    height: 42px;
-    border: 3px solid var(--c-rule);
-    border-top-color: var(--c-accent);
-    border-radius: 50%;
-    animation: spin 0.9s linear infinite;
+.preloader-layer span {
+    width: 3.5rem;
+    text-align: right;
+    font: 500 0.75rem/1 "JetBrains Mono", ui-monospace, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-muted);
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+.preloader-layer i {
+    flex: 1;
+    height: 10px;
+    border-radius: 6px;
+    background-color: var(--c-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: preloader-bar-fill 0.4s ease-out calc(var(--layer) * 120ms + 120ms) forwards;
+}
+
+.preloader-name {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    letter-spacing: -0.03em;
+    color: var(--c-ink);
+    opacity: 0;
+    animation: preloader-name-in 0.3s ease-out 0.55s forwards;
+}
+
+.preloader-name span {
+    color: var(--c-accent);
+}
+
+@keyframes preloader-layer-in {
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes preloader-bar-fill {
+    to { transform: scaleX(1); }
+}
+
+@keyframes preloader-name-in {
+    to { opacity: 1; }
+}
+
+@keyframes preloader-out {
+    to { opacity: 0; visibility: hidden; }
 }
 
 /* ============================================================

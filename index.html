@@ -75,10 +75,28 @@
     <!-- Marca que hay JS ANTES de pintar. Las animaciones de entrada solo
          ocultan contenido cuando existe algo que pueda revelarlo: sin esto,
          un fallo de app.js dejaría la página en blanco bajo el hero. -->
-    <script>document.documentElement.classList.add('js');</script>
+    <script>
+        document.documentElement.classList.add('js');
+        // Preloader only on the first visit of the session and when motion is allowed.
+        try {
+            if (!sessionStorage.getItem('preloaderSeen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.documentElement.classList.add('preload');
+                window.preloaderShownAt = performance.now();
+            }
+        } catch (error) { /* storage blocked: skip the preloader */ }
+    </script>
 </head>
 
 <body class="font-sans bg-page text-ink">
+
+    <div id="preloader" aria-hidden="true">
+        <div class="preloader-stack">
+            <div class="preloader-layer" style="--layer: 2"><span>UI</span><i></i></div>
+            <div class="preloader-layer" style="--layer: 1"><span>API</span><i></i></div>
+            <div class="preloader-layer" style="--layer: 0"><span>Infra</span><i></i></div>
+        </div>
+        <p class="preloader-name">José <span>Chaparro</span></p>
+    </div>
 
     <a href="#main" class="skip-link" data-i18n="ui.skip">Skip to content</a>
 
