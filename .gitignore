@@ -14,3 +14,6 @@ playwright-report/
 blob-report/
 playwright/.local-browsers/
 test-results/
+
+# Node
+node_modules/
