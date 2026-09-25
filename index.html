@@ -96,6 +96,7 @@
             <div class="preloader-layer" style="--layer: 0"><span>Infra</span><i></i></div>
         </div>
         <p class="preloader-name">José <span>Chaparro</span></p>
+        <span class="preloader-progress"></span>
     </div>
 
     <a href="#main" class="skip-link" data-i18n="ui.skip">Skip to content</a>
@@ -169,7 +170,7 @@
                  pero reordenado debajo del texto en móvil, para que la
                  propuesta se lea sin hacer scroll. -->
             <div class="order-2 lg:order-1 lg:col-span-5 flex flex-col gap-4 scroll-reveal">
-                <div class="rounded-2xl overflow-hidden border border-rule">
+                <div class="rounded-2xl overflow-hidden border border-rule" data-intro style="--intro: 1">
                     <img src="./assets/images/jose-portrait-2025.jpg"
                          alt="José Chaparro"
                          width="520" height="520"
@@ -177,7 +178,7 @@
                          loading="eager" fetchpriority="high" decoding="async">
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-2 gap-3" data-intro style="--intro: 3">
                     <div class="card p-5 flex flex-col gap-1.5">
                         <span class="font-display text-3xl font-extrabold tracking-tight text-accent" data-experience-since="2024-03">2+</span>
                         <span class="text-[0.8125rem] leading-snug font-medium text-muted" data-i18n="about.yearsExp">Years of experience</span>
@@ -190,19 +191,19 @@
             </div>
 
             <div class="order-1 lg:order-2 lg:col-span-7 flex flex-col gap-6 scroll-reveal">
-                <p class="flex items-center gap-3 kicker" data-i18n="hero.eyebrow">Full stack engineer · Chihuahua, MX</p>
+                <p class="flex items-center gap-3 kicker" data-i18n="hero.eyebrow" data-intro style="--intro: 0">Full stack engineer · Chihuahua, MX</p>
 
-                <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.125rem] font-extrabold leading-[0.95] tracking-[-0.042em]">
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.125rem] font-extrabold leading-[0.95] tracking-[-0.042em]" data-intro style="--intro: 1">
                     José<br>Chaparro
                 </h1>
 
-                <p class="font-display text-xl sm:text-2xl font-bold tracking-tight text-muted min-h-[2.25rem]">
+                <p class="font-display text-xl sm:text-2xl font-bold tracking-tight text-muted min-h-[2.25rem]" data-intro style="--intro: 2">
                     <span id="typed-text"></span><span class="text-accent" aria-hidden="true">|</span>
                 </p>
 
-                <p class="text-base sm:text-[1.1875rem] leading-relaxed text-muted max-w-[36rem]" style="text-wrap: pretty;" data-i18n="hero.lead">I build full-stack products end to end: React and Next.js interfaces in TypeScript, the APIs and data behind them, and the infrastructure they run on. I designed and built the microservices platform at Moneta Market and co-founded the software studio Bifrost Code.</p>
+                <p class="text-base sm:text-[1.1875rem] leading-relaxed text-muted max-w-[36rem]" style="text-wrap: pretty; --intro: 3;" data-i18n="hero.lead" data-intro>I build full-stack products end to end: React and Next.js interfaces in TypeScript, the APIs and data behind them, and the infrastructure they run on. I designed and built the microservices platform at Moneta Market and co-founded the software studio Bifrost Code.</p>
 
-                <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                <div class="flex flex-col sm:flex-row gap-3 pt-1" data-intro style="--intro: 4">
                     <a href="#projects" class="btn-primary" data-i18n="ui.viewWork">
                         View my work
                     </a>
