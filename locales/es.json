@@ -65,7 +65,8 @@
     "monetaB3": "Construí un servicio de webhooks event-driven en FastAPI que integra Label Studio con S3: rollback atómico entre base de datos y S3 ante cualquier fallo, pooling asíncrono de conexiones y caché en memoria con respaldo en base de datos; documenté los runbooks de operación del equipo.",
     "monetaB4": "Desarrollé una aplicación de escritorio multiplataforma en C# (.NET 10 con Avalonia, migrada desde un WPF que solo corría en Windows) para la revisión humana de frames etiquetados por el modelo: arquitectura MVVM, flujo de verificación en dos pasadas y caché de prefetch con ventana deslizante.",
     "monetaB5": "Implementé políticas IAM de menor privilegio, moví las credenciales a AWS Secrets Manager y levanté los pipelines de CI; con LocalStack emulo S3 en local, de modo que el desarrollo nunca toca credenciales de producción. Co-superviso a dos becarios junto con el lead developer.",
-    "monetaB6": "Construí el tooling operativo del pipeline de datos —CLIs, sincronización idempotente entre S3 y PostgreSQL, auditorías de drift— y automaticé el entrenamiento de modelos con GitLab CI sobre instancias GPU efímeras en AWS, con seguimiento en MLflow; prototipé inferencia en el borde sobre NVIDIA Jetson (YOLO con TensorRT).",
+    "monetaB6": "Construí el tooling operativo del pipeline de datos —CLIs, sincronización idempotente entre S3 y PostgreSQL, auditorías de drift— y automaticé el entrenamiento de modelos con GitLab CI sobre instancias GPU efímeras en AWS, con seguimiento en MLflow.",
+    "monetaB7": "Construí un pipeline de visión por computadora en el dispositivo (NVIDIA Jetson Orin Nano) que cuenta e identifica los productos que un cliente toma de un refrigerador de retail: detección y clasificación en dos etapas sobre TensorRT FP16, tracking multiobjeto a 60 fps y recalibración automática de cámaras por homografía SIFT; diseñé su arnés de evaluación (validación dejando un día fuera, umbrales registrados de antemano, pruebas de estabilidad), que fijó los requisitos de fps y formato de imagen para producción.",
     "contractorPeriod": "Febrero 2025 — Presente",
     "contractorRole": "Cofundador e Ingeniero Full Stack",
     "contractorCompany": "Bifrost Code",
@@ -87,7 +88,8 @@
     "cloud": "Cloud e infraestructura",
     "databases": "Bases de datos",
     "frontend": "Frontend",
-    "architecture": "Arquitectura y práctica"
+    "architecture": "Arquitectura y práctica",
+    "vision": "Visión por computadora y edge"
   },
   "projects": {
     "kicker": "04 · Trabajo seleccionado",
