@@ -1,10 +1,20 @@
 % =============================================================================
-% Jose Carlos Chaparro, Full Stack Engineer CV
+% Jose Carlos Chaparro, CV
 % Single-column ATS-friendly layout
-% Compile with: pdflatex cv_chaparro.tex
+%
+% Two versions from one source:
+%   pdflatex cv_chaparro.tex           -> full stack version
+%   pdflatex cv_chaparro_backend.tex   -> backend / infrastructure version
+% Every fact lives once, as a macro, in the "Facts" block below; each version
+% only chooses the headline, the summary and the ORDER of skills and bullets.
+% Correct a fact there and both versions pick it up.
 % =============================================================================
 
 \documentclass[10pt,letterpaper]{article}
+
+% cv_chaparro_backend.tex defines \backendvariant before \input-ing this file.
+\newif\ifbackend
+\ifdefined\backendvariant\backendtrue\fi
 
 % ----- ATS: map every glyph (ligatures included) to proper Unicode in the PDF text layer -----
 \input{glyphtounicode}
@@ -35,11 +45,21 @@
     colorlinks=true,
     urlcolor=accent,
     linkcolor=accent,
+    pdfauthor={Jose Carlos Chaparro Morales}
+}
+\ifbackend
+\hypersetup{
+    pdftitle={Jose Chaparro - Software Engineer, Backend and Infrastructure CV},
+    pdfsubject={Resume: Software Engineer, Backend and Infrastructure},
+    pdfkeywords={Backend Engineer, Python, FastAPI, PostgreSQL, SQL Server, AWS, Docker, Linux, .NET}
+}
+\else
+\hypersetup{
     pdftitle={Jose Chaparro - Full Stack Engineer CV},
-    pdfauthor={Jose Carlos Chaparro Morales},
     pdfsubject={Resume: Full Stack Engineer},
     pdfkeywords={Full Stack Engineer, React, Next.js, TypeScript, FastAPI, .NET, PostgreSQL, AWS, Docker}
 }
+\fi
 
 % ----- Section style -----
 \titleformat{\section}
@@ -70,6 +90,40 @@
 
 \newcommand{\skillcat}[2]{\noindent\textbf{#1:} #2\par\vspace{1pt}}
 
+
+% =============================================================================
+% Facts. Written once; both versions reorder them. Bullets lead with the
+% result, then the evidence.
+% =============================================================================
+
+% ----- Moneta Market -----
+\newcommand{\mmPlatform}{Replaced manual deployments with the company's first containerized platform: 6 services on AWS EC2 (Linux) run with Docker Compose (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy).}
+\newcommand{\mmVision}{Built an on-device vision pipeline on NVIDIA Jetson Orin Nano that counts products taken from a retail cooler (TensorRT FP16, 60 fps tracking, SIFT camera recalibration); its evaluation harness set the production frame-rate and image-format requirements.}
+\newcommand{\mmLead}{Led the team's two interns after the lead developer left, having co-supervised them before.}
+\newcommand{\mmSchema}{Designed the 25-table PostgreSQL schema on AWS RDS that the operation runs on (24 foreign keys, 34 indexes, idempotent migrations, soft-delete audit trail), reachable only through an SSH tunnel via an EC2 bastion host.}
+\newcommand{\mmWebhook}{Built an event-driven FastAPI webhook between Label Studio and S3 with atomic DB/S3 rollback, async connection pooling and an in-memory cache with DB fallback; wrote the team runbooks.}
+\newcommand{\mmDesktop}{Migrated the frame-review desktop app from Windows-only WPF to cross-platform C\# (.NET 10, Avalonia): MVVM, two-pass verification, sliding-window prefetch cache.}
+\newcommand{\mmTooling}{Built the data pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking.}
+\newcommand{\mmSecurity}{Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3 and the CI pipelines.}
+
+% ----- Bifrost Code -----
+\newcommand{\bfProducts}{Ship and run three client products in production (FisioApp, Feriu, Karaoke Balu) end to end on TypeScript pnpm monorepos: React, Next.js, NestJS, Express, PostgreSQL. Earlier projects shipped with FastAPI, Django and React Native.}
+\newcommand{\bfHosting}{Self-host every client app on the studio's own infrastructure as a low-cost alternative to Vercel/AWS: Proxmox VM (Ubuntu Server), Dokploy, Docker Compose health checks and Cloudflare Tunnels.}
+
+% ----- Grupo Roga -----
+\newcommand{\rgERP}{Maintained and extended a mission-critical VB.NET ERP used by 1,750+ employees across 170+ branches (Mueblería El Pasito / Villarreal Muebles / Dinexpress): POS, inventory, pricing and accounts receivable on .NET Framework.}
+\newcommand{\rgAgents}{Designed and built from scratch the ERP module for the field agents who visit customer homes for credit approval, with DevExpress maps plotting assignments and data from a companion Android app.}
+\newcommand{\rgSQL}{Designed SQL Server stored procedures for multi-branch inventory aggregation and pricing, and automated HTML report emails (Chilkat), eliminating manual report compilation for operations.}
+
+% ----- Skills -----
+\newcommand{\skLangFS}{\skillcat{Programming Languages}{TypeScript, JavaScript, Python, C\#, SQL}}
+\newcommand{\skLangBE}{\skillcat{Programming Languages}{Python, C\#, SQL, TypeScript, JavaScript}}
+\newcommand{\skFrontend}{\skillcat{Frontend}{React, Next.js, Tailwind CSS, React Native, Avalonia (desktop)}}
+\newcommand{\skBackend}{\skillcat{Backend}{FastAPI, NestJS, Express (Node.js), Django, .NET Framework}}
+\newcommand{\skData}{\skillcat{Databases}{PostgreSQL, SQL Server, SQLite}}
+\newcommand{\skCloud}{\skillcat{Cloud \& DevOps}{AWS (EC2, RDS, S3, IAM, Secrets Manager), Docker, Docker Compose, Nginx, Cloudflare, Dokploy, Backblaze B2, Git, GitHub Actions, GitLab CI/CD, Linux}}
+\newcommand{\skVision}{\skillcat{Computer Vision \& Edge}{Ultralytics YOLO, TensorRT, ONNX, OpenCV, NVIDIA Jetson}}
+
 \linespread{0.96}
 \pagenumbering{gobble}
 \setlength{\parindent}{0pt}
@@ -81,7 +135,7 @@
 % ----- Header (ATS-friendly: plain text, no glyphs) -----
 \begin{center}
     {\Huge\bfseries\color{accent} JOSÉ CARLOS CHAPARRO}\\[1pt]
-    {\large Full Stack Engineer}\\[2pt]
+    {\large \ifbackend Software Engineer $\cdot$ Backend \& Infrastructure\else Full Stack Engineer\fi}\\[2pt]
     \footnotesize
     +52 614 215 2635 | \href{mailto:jc_chaparro@hotmail.com}{jc\_chaparro@hotmail.com} | \href{https://www.linkedin.com/in/jose-c-chaparro/}{linkedin.com/in/jose-c-chaparro} | \href{https://github.com/JoseCarlosChaparro}{github.com/JoseCarlosChaparro} | \href{https://www.josechaparro.com}{https://www.josechaparro.com}\\[1pt]
     Chihuahua, MX $\cdot$ Open to remote / US relocation $\cdot$ \textbf{US Citizen (no sponsorship required)} $\cdot$ Spanish (native) / English (B2, upper-intermediate)
@@ -92,41 +146,68 @@
 % bold "Professional Profile" heading leaked into the profile block and
 % outscored the actual name in name detection.
 \section*{Professional Summary}
-Full Stack Engineer with 2+ years of production experience: React, Next.js and TypeScript front ends, Python (FastAPI) and .NET (C\#, VB.NET) backends, and infrastructure on AWS and Linux. Designed and built a containerized ML platform and an on-device vision pipeline; previously maintained an ERP serving 170+ branches and 1,750+ employees. Works across the full SDLC and led two interns after the lead developer's departure.
+\ifbackend
+Software engineer focused on backend systems, data and the infrastructure they run on. Designed and built Moneta Market's production platform, six containerized services on AWS EC2 with a 25-table PostgreSQL schema on RDS, and led the team's two interns after the lead developer left. Previously extended a VB.NET ERP used by 1,750+ employees across 170+ retail branches, including its SQL Server stored procedures. Self-hosts client products on Proxmox, Docker and Cloudflare Tunnels.
+\else
+Full stack engineer who builds products end to end and runs the infrastructure under them. Designed and built Moneta Market's production platform, six containerized services on AWS, plus an on-device computer-vision pipeline on NVIDIA Jetson, and led the team's two interns after the lead developer left. Co-founded Bifrost Code, which ships and self-hosts three client products in production. Previously extended an ERP used by 1,750+ employees across 170+ retail branches.
+\fi
 
 % ----- Technical Skills -----
 \section*{Technical Skills}
-\skillcat{Programming Languages}{TypeScript, JavaScript, Python, C\#, SQL}
-\skillcat{Frontend}{React, Next.js, Tailwind CSS, React Native, Avalonia (desktop)}
-\skillcat{Backend}{FastAPI, NestJS, Express (Node.js), Django, .NET Framework}
-\skillcat{Databases}{PostgreSQL, SQL Server, SQLite}
-\skillcat{Cloud \& DevOps}{AWS (EC2, RDS, S3, IAM, Secrets Manager), Docker, Docker Compose, Nginx, Cloudflare, Dokploy, Backblaze B2, Git, GitHub Actions, GitLab CI/CD, Linux}
-\skillcat{Computer Vision \& Edge}{Ultralytics YOLO, TensorRT, ONNX, OpenCV, NVIDIA Jetson}
+\ifbackend
+\skLangBE \skBackend \skData \skCloud \skFrontend \skVision
+\else
+\skLangFS \skFrontend \skBackend \skData \skCloud \skVision
+\fi
 
 % ----- Work Experience -----
 \section*{Work Experience}
 
 \role{Full Stack Engineer}{Moneta Market}{August 2025 -- Present}{}
 \begin{itemize}
-    \item Architected the company's first containerized platform on AWS EC2 (Linux): 6-service Docker Compose stack (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) replacing manual deployment with reproducible automation.
-    \item Designed a 25-table PostgreSQL schema on AWS RDS (24 foreign keys, 34 indexes, idempotent migrations, soft-delete audit trail) accessed through an SSH tunnel via an EC2 bastion host.
-    \item Built an event-driven FastAPI webhook integrating Label Studio with S3: atomic DB/S3 rollback, async connection pooling, in-memory cache with DB fallback; wrote team runbooks.
-    \item Developed a cross-platform C\# desktop app (.NET 10, Avalonia, migrated from WPF) for human review of ML-labeled frames: MVVM, two-pass verification, sliding-window prefetch cache.
-    \item Built the data pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking.
-    \item Built an on-device vision pipeline on NVIDIA Jetson Orin Nano (TensorRT FP16, 60 fps tracking, SIFT camera recalibration) that counts products taken from a retail cooler; its evaluation harness set the production frame-rate and image-format requirements.
-    \item Led two interns after the lead developer left (co-supervised them before); set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3 and CI pipelines.
+\ifbackend
+    \item \mmPlatform
+    \item \mmSchema
+    \item \mmWebhook
+    \item \mmLead
+    \item \mmSecurity
+    \item \mmTooling
+    \item \mmVision
+    \item \mmDesktop
+\else
+    \item \mmPlatform
+    \item \mmVision
+    \item \mmLead
+    \item \mmSchema
+    \item \mmWebhook
+    \item \mmDesktop
+    \item \mmTooling
+    \item \mmSecurity
+\fi
 \end{itemize}
 
 \role{Co-founder \& Full Stack Engineer}{Bifrost Code}{February 2025 -- Present}{independent software studio; side project in my own time, alongside the full-time Moneta Market role}
 \begin{itemize}
-    \item Deliver full-stack web apps end-to-end (React, Next.js, NestJS, Express on TypeScript pnpm monorepos, PostgreSQL), self-hosted on the studio's own infrastructure -- Proxmox VM (Ubuntu Server) with Dokploy, Docker Compose health checks and Cloudflare Tunnels, a low-cost alternative to Vercel/AWS. Earlier projects shipped with FastAPI, Django and React Native.
+\ifbackend
+    \item \bfHosting
+    \item \bfProducts
+\else
+    \item \bfProducts
+    \item \bfHosting
+\fi
 \end{itemize}
 
 \role{.NET Software Developer}{Grupo Roga}{March 2024 -- August 2025}{}
 \begin{itemize}
-    \item Maintained and extended a mission-critical VB.NET ERP serving 170+ branches and 1,750+ employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress), spanning POS, inventory, pricing and accounts receivable on .NET Framework.
-    \item Built from scratch an ERP module managing the field agents who visit customer homes for credit approval: full design ownership, DevExpress map controls plotting assignments geographically, consuming data from a companion Android app.
-    \item Designed SQL Server stored procedures for multi-branch inventory aggregation and pricing, and automated HTML report emails (Chilkat), eliminating manual report compilation for operations.
+\ifbackend
+    \item \rgERP
+    \item \rgSQL
+    \item \rgAgents
+\else
+    \item \rgERP
+    \item \rgAgents
+    \item \rgSQL
+\fi
 \end{itemize}
 
 % ----- Selected Projects -----
