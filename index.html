@@ -9,12 +9,12 @@
          frame-ancestors cannot be set from a meta tag: it is sent as a header
          by Cloudflare (see the Cloudflare guide). -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-w6Y8ah0O9VbClVAqfGaX/WOWc4nImXbXdmw5s+0VKIQ='; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
-    <meta name="description" content="José Chaparro, full stack engineer: React, Next.js and TypeScript front ends, Python and .NET backends, and cloud infrastructure on AWS.">
+    <meta name="description" content="José Chaparro, full stack engineer: React and Next.js front ends, Python and .NET backends, PostgreSQL and AWS. US citizen in Chihuahua, Mexico, open to remote roles.">
     <meta name="keywords" content="José Chaparro, Full Stack Engineer, React, Next.js, TypeScript, FastAPI, .NET, PostgreSQL, AWS, Docker">
     <meta name="author" content="José Chaparro">
     <meta name="theme-color" content="#0b1417" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f9fcfc" media="(prefers-color-scheme: light)">
-    <title>José Chaparro | Full Stack Engineer</title>
+    <title>José Chaparro | Full Stack Engineer · Backend &amp; Cloud</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicons/favicon.ico">
 
@@ -23,8 +23,8 @@
     <!-- Link previews (LinkedIn, WhatsApp, Slack, X) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.josechaparro.com/">
-    <meta property="og:title" content="José Chaparro | Full Stack Engineer">
-    <meta property="og:description" content="José Chaparro, full stack engineer: React, Next.js and TypeScript front ends, Python and .NET backends, and cloud infrastructure on AWS.">
+    <meta property="og:title" content="José Chaparro | Full Stack Engineer · Backend &amp; Cloud">
+    <meta property="og:description" content="José Chaparro, full stack engineer: React and Next.js front ends, Python and .NET backends, PostgreSQL and AWS. US citizen in Chihuahua, Mexico, open to remote roles.">
     <meta property="og:image" content="https://www.josechaparro.com/assets/images/og-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -32,8 +32,8 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="es_MX">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="José Chaparro | Full Stack Engineer">
-    <meta name="twitter:description" content="José Chaparro, full stack engineer: React, Next.js and TypeScript front ends, Python and .NET backends, and cloud infrastructure on AWS.">
+    <meta name="twitter:title" content="José Chaparro | Full Stack Engineer · Backend &amp; Cloud">
+    <meta name="twitter:description" content="José Chaparro, full stack engineer: React and Next.js front ends, Python and .NET backends, PostgreSQL and AWS. US citizen in Chihuahua, Mexico, open to remote roles.">
     <meta name="twitter:image" content="https://www.josechaparro.com/assets/images/og-card.jpg">
 
     <script type="application/ld+json">
@@ -73,11 +73,11 @@
     <link rel="preload" href="./assets/fonts/manrope-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="./assets/css/fonts.css?v=4a98780e56">
     <link rel="stylesheet" href="./assets/css/icons.css?v=d2fc61a4ef">
-    <link rel="stylesheet" href="style.css?v=3c57e33598">
+    <link rel="stylesheet" href="style.css?v=a5d8d8636b">
     <!-- Tailwind is compiled ahead of time (npm run build:css). It loads after
          style.css on purpose: the in-browser CDN used to inject its styles last,
          so utilities such as md:hidden must keep winning over component rules. -->
-    <link rel="stylesheet" href="./assets/css/tailwind.css?v=4f41be5713">
+    <link rel="stylesheet" href="./assets/css/tailwind.css?v=e4598652e0">
 
     <!-- Marca que hay JS ANTES de pintar. Las animaciones de entrada solo
          ocultan contenido cuando existe algo que pueda revelarlo: sin esto,
@@ -119,11 +119,10 @@
                 </a>
 
                 <ul class="hidden md:flex items-center gap-8 text-[0.9375rem] font-medium text-muted">
-                    <li><a href="#about" class="hover:text-accent transition-colors" data-i18n="nav.about">About</a></li>
-                    <li><a href="#experience" class="hover:text-accent transition-colors" data-i18n="nav.experience">Experience</a></li>
-                    <li><a href="#skills" class="hover:text-accent transition-colors" data-i18n="nav.skills">Skills</a></li>
-                    <li><a href="#projects" class="hover:text-accent transition-colors" data-i18n="nav.projects">Projects</a></li>
-                    <li><a href="#contact" class="hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a></li>
+                    <li><a href="#work" class="inline-flex items-center min-h-[44px] hover:text-accent transition-colors" data-i18n="nav.work">Work</a></li>
+                    <li><a href="#experience" class="inline-flex items-center min-h-[44px] hover:text-accent transition-colors" data-i18n="nav.experience">Experience</a></li>
+                    <li><a href="#skills" class="inline-flex items-center min-h-[44px] hover:text-accent transition-colors" data-i18n="nav.skills">Skills</a></li>
+                    <li><a href="#contact" class="inline-flex items-center min-h-[44px] hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a></li>
                 </ul>
 
                 <div class="flex items-center gap-2">
@@ -155,10 +154,9 @@
 
             <div id="mobile-menu" class="hidden md:hidden pb-4">
                 <ul class="flex flex-col">
-                    <li><a href="#about" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.about">About</a></li>
+                    <li><a href="#work" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.work">Work</a></li>
                     <li><a href="#experience" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.experience">Experience</a></li>
                     <li><a href="#skills" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.skills">Skills</a></li>
-                    <li><a href="#projects" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.projects">Projects</a></li>
                     <li><a href="#contact" class="flex items-center min-h-[48px] text-[0.9375rem] font-medium text-muted hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </div>
@@ -168,169 +166,204 @@
     <main id="main">
 
     <!-- ============================================================
-         HERO — superficie base
+         HERO — la propuesta de valor va antes que el nombre; las pruebas
+         de escala reemplazan al contador de años, y los datos que más
+         pesan para un puesto remoto en EE. UU. quedan a la vista.
          ============================================================ -->
-    <section id="hero" class="atmos pt-24 md:pt-32 pb-16 md:pb-24 px-5 sm:px-8 lg:px-[72px]">
-        <div class="mx-auto max-w-[1280px] grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <section id="hero" class="atmos pt-28 md:pt-36 pb-16 md:pb-20 px-5 sm:px-8 lg:px-[72px]">
+        <div class="mx-auto max-w-[1280px]">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                <div class="lg:col-span-8 flex flex-col gap-6 scroll-reveal">
+                    <p class="kicker" data-i18n="hero.eyebrow" data-intro style="--intro: 0">Full stack engineer · Backend · Cloud</p>
 
-            <!-- Retrato: primero en el DOM en escritorio (columna izquierda),
-                 pero reordenado debajo del texto en móvil, para que la
-                 propuesta se lea sin hacer scroll. -->
-            <div class="order-2 lg:order-1 lg:col-span-5 flex flex-col gap-4 scroll-reveal">
-                <div class="rounded-2xl overflow-hidden border border-rule" data-intro style="--intro: 1">
-                    <picture>
-                        <source type="image/webp"
-                                srcset="./assets/images/jose-portrait-2025-480.webp 480w, ./assets/images/jose-portrait-2025-720.webp 720w, ./assets/images/jose-portrait-2025-1040.webp 1040w"
-                                sizes="(min-width: 1024px) 460px, calc(100vw - 40px)">
-                        <img src="./assets/images/jose-portrait-2025-720.jpg"
-                             alt="José Chaparro"
-                             width="520" height="520"
-                             class="w-full block aspect-square object-cover"
-                             loading="eager" fetchpriority="high" decoding="async">
-                    </picture>
-                </div>
+                    <h1 class="flex flex-col gap-3" data-intro style="--intro: 1">
+                        <span class="font-display text-xl sm:text-2xl font-bold tracking-tight text-muted">José Chaparro</span>
+                        <span class="font-display text-[2.5rem] sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.03] tracking-[-0.038em]" style="text-wrap: balance;" data-i18n="hero.headline">I build production software, and the infrastructure it runs on.</span>
+                    </h1>
 
-                <div class="grid grid-cols-2 gap-3" data-intro style="--intro: 3">
-                    <div class="card p-5 flex flex-col gap-1.5">
-                        <span class="font-display text-3xl font-extrabold tracking-tight text-accent" data-experience-since="2024-03">2+</span>
-                        <span class="text-[0.8125rem] leading-snug font-medium text-muted" data-i18n="about.yearsExp">Years of experience</span>
-                    </div>
-                    <div class="card p-5 flex flex-col gap-1.5">
-                        <span class="font-display text-3xl font-extrabold tracking-tight text-accent">6</span>
-                        <span class="text-[0.8125rem] leading-snug font-medium text-muted" data-i18n="about.servicesRun">Services I run in production</span>
-                    </div>
-                </div>
-            </div>
+                    <p class="text-base sm:text-[1.1875rem] leading-relaxed text-muted max-w-[40rem]" style="text-wrap: pretty; --intro: 2;" data-intro data-i18n="hero.lead">React and Next.js on the front, Python and .NET behind it, PostgreSQL and AWS underneath. I designed the production platform at Moneta Market and run client products through my studio, Bifrost Code.</p>
 
-            <div class="order-1 lg:order-2 lg:col-span-7 flex flex-col gap-6 scroll-reveal">
-                <p class="flex items-center gap-3 kicker" data-i18n="hero.eyebrow" data-intro style="--intro: 0">Full stack engineer · Chihuahua, MX</p>
+                    <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 max-w-[40rem] text-[0.875rem] font-medium" data-intro style="--intro: 3">
+                        <li class="flex items-center gap-2 text-accent font-semibold"><svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"></path></svg><span data-i18n="hero.factCitizen">US citizen — no visa sponsorship needed</span></li>
+                        <li class="flex items-center gap-2 text-muted"><span class="w-1.5 h-1.5 rounded-full bg-faint shrink-0" aria-hidden="true"></span><span data-i18n="hero.factRemote">Open to remote or US relocation</span></li>
+                        <li class="flex items-center gap-2 text-muted"><span class="w-1.5 h-1.5 rounded-full bg-faint shrink-0" aria-hidden="true"></span><span data-i18n="hero.factLocation">Based in Chihuahua, Mexico</span></li>
+                        <li class="flex items-center gap-2 text-muted"><span class="w-1.5 h-1.5 rounded-full bg-faint shrink-0" aria-hidden="true"></span><span data-i18n="hero.factLanguages">English B2 · Spanish native</span></li>
+                    </ul>
 
-                <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.125rem] font-extrabold leading-[0.95] tracking-[-0.042em]" data-intro style="--intro: 1">
-                    José<br>Chaparro
-                </h1>
-
-                <p class="font-display text-xl sm:text-2xl font-bold tracking-tight text-muted min-h-[2.25rem]" data-intro style="--intro: 2">
-                    <span id="typed-text"></span><span class="text-accent" aria-hidden="true">|</span>
-                </p>
-
-                <p class="text-base sm:text-[1.1875rem] leading-relaxed text-muted max-w-[36rem]" style="text-wrap: pretty; --intro: 3;" data-i18n="hero.lead" data-intro>I build full-stack products end to end: React and Next.js interfaces in TypeScript, the APIs and data behind them, and the infrastructure they run on. I designed and built the microservices platform at Moneta Market and co-founded the software studio Bifrost Code.</p>
-
-                <div class="flex flex-col sm:flex-row gap-3 pt-1" data-intro style="--intro: 4">
-                    <a href="#projects" class="btn-primary" data-i18n="ui.viewWork">
-                        View my work
-                    </a>
-                    <a href="assets/cv/jose-chaparro-cv.pdf" download class="btn-secondary">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                            <path d="M12 3v12"></path><path d="m7 11 5 5 5-5"></path><path d="M4 21h16"></path>
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2" data-intro style="--intro: 4">
+                        <a href="mailto:jc_chaparro@hotmail.com" class="btn-primary">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"></rect><path d="m3 6.5 9 6.5 9-6.5"></path>
                         </svg>
-                        <span data-i18n="ui.downloadCV">Download CV</span>
-                    </a>
+                            <span data-i18n="ui.emailMe">Email me</span>
+                        </a>
+                        <a href="assets/cv/jose-chaparro-cv.pdf" download class="btn-secondary">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"></path><path d="m7 11 5 5 5-5"></path><path d="M4 21h16"></path></svg>
+                            <span data-i18n="ui.downloadCV">Download CV</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 flex justify-start lg:justify-end scroll-reveal" data-intro style="--intro: 2">
+                    <div class="w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[340px] rounded-2xl overflow-hidden border border-rule">
+                        <picture>
+                            <source type="image/webp"
+                                    srcset="./assets/images/jose-headshot-320.webp 320w, ./assets/images/jose-headshot-460.webp 460w"
+                                    sizes="(min-width: 1024px) 340px, 300px">
+                            <img src="./assets/images/jose-headshot-460.jpg"
+                                 alt="José Chaparro"
+                                 width="460" height="460"
+                                 class="w-full block aspect-square object-cover"
+                                 loading="eager" fetchpriority="high" decoding="async">
+                        </picture>
+                    </div>
                 </div>
             </div>
+
+            <ul class="grid sm:grid-cols-3 gap-3 mt-12 md:mt-16" data-intro style="--intro: 5">
+                <li class="card p-6 flex flex-col gap-2">
+                    <span class="font-display text-4xl font-extrabold tracking-tight text-accent">1,750+</span>
+                    <span class="text-[0.875rem] leading-snug font-medium text-muted" data-i18n="hero.stat1">employees across 170+ branches use the ERP I extended</span>
+                </li>
+                <li class="card p-6 flex flex-col gap-2">
+                    <span class="font-display text-4xl font-extrabold tracking-tight text-accent">3</span>
+                    <span class="text-[0.875rem] leading-snug font-medium text-muted" data-i18n="hero.stat2">client products I built, live in production</span>
+                </li>
+                <li class="card p-6 flex flex-col gap-2">
+                    <span class="font-display text-4xl font-extrabold tracking-tight text-accent">60 fps</span>
+                    <span class="text-[0.875rem] leading-snug font-medium text-muted" data-i18n="hero.stat3">on-device product tracking I built on NVIDIA Jetson</span>
+                </li>
+            </ul>
         </div>
     </section>
 
     <!-- ============================================================
-         SOBRE MÍ — banda
+         TRABAJO — banda. Va antes que la experiencia: es la prueba.
          ============================================================ -->
     <div class="rule-full" aria-hidden="true"></div>
-    <section id="about" class="band py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
+    <section id="work" class="band py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
         <div class="mx-auto max-w-[1280px]">
-            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
-                <p class="kicker" data-i18n="about.kicker">01 · Background</p>
-                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="about.heading">About me</h2>
+            <header class="flex flex-col gap-3 pb-10 scroll-reveal">
+                <p class="kicker" data-i18n="work.kicker">01 · Selected work</p>
+                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="work.heading">What I've built</h2>
+                <p class="text-[1.0625rem] leading-relaxed text-muted max-w-[44rem]" style="text-wrap: pretty;" data-i18n="work.intro">Most of this is employer or client work, so the code is private. I'm glad to walk through any of it on a call.</p>
             </header>
 
-            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-                <div class="lg:col-span-7 flex flex-col gap-5 scroll-reveal">
-                    <p class="text-[1.0625rem] leading-relaxed text-muted" style="text-wrap: pretty;" data-i18n-html="about.p1">Full stack engineer with 2+ years of production experience: TypeScript front ends in React and Next.js, backends in Python and .NET, and cloud infrastructure on AWS.</p>
-                    <p class="text-[1.0625rem] leading-relaxed text-muted" style="text-wrap: pretty;" data-i18n-html="about.p2">At <strong class="font-semibold text-ink">Moneta Market</strong> I designed and built the microservices platform: six containers in production wiring together ML pipelines, event-driven webhooks and a C# desktop app, plus an on-device computer-vision pipeline on NVIDIA Jetson. When the lead developer left, I led the team's two interns. In parallel I co-founded <strong class="font-semibold text-ink">Bifrost Code</strong>, a studio that ships full-stack products and self-hosts them on its own infrastructure.</p>
-                </div>
-
-                <div class="lg:col-span-5 card p-7 flex flex-col gap-5 scroll-reveal">
-                    <h3 class="font-display text-lg font-bold tracking-tight" data-i18n="about.languages">Languages</h3>
-
-                    <div class="flex flex-col gap-2">
-                        <div class="flex justify-between items-baseline gap-4">
-                            <span class="font-semibold text-[0.9375rem]" data-i18n="about.spanish">Spanish</span>
-                            <span class="font-mono text-xs text-faint" data-i18n="about.spanishLevel">Native</span>
+            <div class="grid lg:grid-cols-2 gap-4">
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-5 p-7 md:p-8 grow">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex flex-col gap-1.5">
+                                <p class="font-mono text-[0.75rem] text-faint" data-i18n="work.scContext">Moneta Market · Computer vision</p>
+                                <h3 class="font-display text-2xl font-bold tracking-[-0.03em] leading-tight" data-i18n="work.scTitle">Grab-and-go cooler vision</h3>
+                            </div>
+                            <span class="chip" data-i18n="ui.inProgress">In progress</span>
                         </div>
-                        <div class="h-1.5 rounded-full bg-band overflow-hidden">
-                            <div class="h-full w-full bg-accent"></div>
-                        </div>
+                        <p class="text-[1.0625rem] leading-relaxed text-ink" style="text-wrap: pretty;" data-i18n="work.scProblem">An unattended retail cooler has to know which products each customer takes, with no cashier.</p>
+                        <ul class="flex flex-col gap-2.5 text-[0.9375rem] leading-relaxed text-muted">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="work.scB1">Two-stage detection and classification running on an NVIDIA Jetson Orin Nano, optimized with TensorRT FP16.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="work.scB2">Multi-object tracking at 60 fps, with automatic camera recalibration through SIFT homography.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="work.scB3">The evaluation harness (leave-one-day-out validation, pre-registered thresholds) that set the production frame-rate and image-format requirements.</span></li>
+                        </ul>
                     </div>
-
-                    <div class="flex flex-col gap-2">
-                        <div class="flex justify-between items-baseline gap-4">
-                            <span class="font-semibold text-[0.9375rem]" data-i18n="about.english">English</span>
-                            <span class="font-mono text-xs text-faint" data-i18n="about.englishLevel">Upper-intermediate (B2)</span>
+                    <p class="font-mono text-[0.75rem] text-faint px-7 md:px-8 py-4 border-t border-rule">NVIDIA Jetson · TensorRT · YOLO · OpenCV</p>
+                </article>
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-5 p-7 md:p-8 grow">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex flex-col gap-1.5">
+                                <p class="font-mono text-[0.75rem] text-faint" data-i18n="work.fisioContext">Bifrost Code · Client product</p>
+                                <h3 class="font-display text-2xl font-bold tracking-[-0.03em] leading-tight">FisioApp</h3>
+                            </div>
+                            <span class="chip" data-i18n="ui.inProduction">In production</span>
                         </div>
-                        <div class="h-1.5 rounded-full bg-band overflow-hidden">
-                            <div class="h-full w-3/4 bg-accent"></div>
-                        </div>
+                        <p class="text-[1.0625rem] leading-relaxed text-ink" style="text-wrap: pretty;" data-i18n="work.fisioProblem">Physiotherapy clinics need one place for patient records, appointments, treatment packages and payments, with each clinic's data kept apart.</p>
+                        <ul class="flex flex-col gap-2.5 text-[0.9375rem] leading-relaxed text-muted">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="work.fisioB1">Multi-tenant Next.js application on PostgreSQL covering clinical records, scheduling, packages and payments.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="work.fisioB2">Audited against WCAG 2.1 AA.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="work.fisioB3">Self-hosted on the studio's own infrastructure behind Cloudflare Tunnels, with automated off-site backups to Backblaze B2.</span></li>
+                        </ul>
                     </div>
-
-                    <p class="flex items-start gap-2 text-[0.8125rem] leading-snug font-semibold text-accent pt-1">
-                        <svg class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                            <path d="M20 6 9 17l-5-5"></path>
-                        </svg>
-                        <span data-i18n="about.workAuth">US citizen — no sponsorship required</span>
-                    </p>
-                    <p class="font-mono text-xs leading-relaxed text-faint" data-i18n="about.location">
-                        Chihuahua, Mexico · Open to remote or US relocation
-                    </p>
-
-                    <div class="flex flex-col gap-2 pt-5 border-t border-rule">
-                        <h3 class="font-display text-lg font-bold tracking-tight" data-i18n="about.education">Education</h3>
-                        <p class="font-semibold text-[0.9375rem]" data-i18n="about.degree">BSc Computer Science Engineering</p>
-                        <p class="text-[0.875rem] text-muted" data-i18n="about.university">Universidad Autónoma de Chihuahua</p>
-                        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                            <span class="text-[0.875rem] text-muted" data-i18n="about.eduDetail">Degree awarded by academic merit</span>
-                            <span class="font-mono text-xs text-faint" data-i18n="about.eduPeriod">2018 — 2023</span>
-                        </div>
-                    </div>
-                </div>
+                    <p class="font-mono text-[0.75rem] text-faint px-7 md:px-8 py-4 border-t border-rule">Next.js · PostgreSQL · Dokploy · Backblaze B2</p>
+                </article>
             </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 mt-4">
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex flex-col gap-1">
+                                <p class="font-mono text-[0.75rem] text-faint" data-i18n="work.feriuContext">Bifrost Code · Client product</p>
+                                <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Feriu</h3>
+                            </div>
+                            <span class="chip" data-i18n="ui.inProduction">In production</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="work.feriuDesc">Multi-tenant, self-hosted shared-expense platform with a Splitwise-style settlement engine, built as a NestJS + Next.js pnpm monorepo on PostgreSQL.</p>
+                    </div>
+                    <p class="font-mono text-[0.75rem] text-faint px-6 py-3.5 border-t border-rule">NestJS · Next.js · PostgreSQL</p>
+                </article>
+                <article class="card flex flex-col scroll-reveal">
+                    <div class="flex flex-col gap-3 p-6 grow">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex flex-col gap-1">
+                                <p class="font-mono text-[0.75rem] text-faint" data-i18n="work.karaokeContext">Bifrost Code · Client product</p>
+                                <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Karaoke Balu</h3>
+                            </div>
+                            <span class="chip" data-i18n="ui.inProduction">In production</span>
+                        </div>
+                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="work.karaokeDesc">Real-time karaoke request platform for live events: an SSE-synced queue, admin panel, self-serve kiosk mode and Virtual DJ integration. Express + React monorepo.</p>
+                    </div>
+                    <p class="font-mono text-[0.75rem] text-faint px-6 py-3.5 border-t border-rule">Express · React · SSE</p>
+                </article>
+            </div>
+
+            <p class="text-[0.9375rem] leading-relaxed text-muted mt-8 scroll-reveal" style="text-wrap: pretty;" data-i18n-html="work.earlier">Earlier work: <a class="prose-link" href="https://github.com/JoseCarlosChaparro/GalagaForEveryone" target="_blank" rel="noopener noreferrer">Galaga For Everyone</a>, an Unreal Engine game played with a phone's accelerometer, and Stable Diffusion fine-tuning on a custom dataset.</p>
         </div>
     </section>
 
     <!-- ============================================================
-         EXPERIENCIA — superficie base
+         EXPERIENCIA — superficie base. Una línea de impacto por puesto
+         para quien lee en segundos; el detalle completo se conserva,
+         con lo menos urgente detrás de un <details>.
          ============================================================ -->
     <div class="rule-full" aria-hidden="true"></div>
     <section id="experience" class="py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
         <div class="mx-auto max-w-[1280px]">
-            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
-                <p class="kicker" data-i18n="experience.kicker">02 · Track record</p>
-                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="experience.heading">Experience</h2>
+            <header class="flex flex-col gap-3 pb-10 scroll-reveal">
+                <p class="kicker" data-i18n="experience.kicker">02 · Experience</p>
+                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="experience.heading">Where I've worked</h2>
             </header>
 
-            <!-- Cada puesto conserva sus responsabilidades completas: el
-                 detalle técnico ES el argumento, no un adorno. -->
-
-            <article class="grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 py-8 border-t border-rule scroll-reveal">
+            <article class="grid md:grid-cols-[190px_1fr] gap-4 md:gap-10 py-9 border-t border-rule scroll-reveal">
                 <div class="flex flex-col gap-1.5">
                     <p class="font-mono text-[0.8125rem] text-faint" data-i18n="experience.mmPeriod">August 2025 — Present</p>
                     <p class="font-mono text-[0.8125rem] text-accent" data-i18n="experience.monetaCompany">Moneta Market LLC</p>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.monetaRole">Full Stack Engineer</h3>
-                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB1">Architected the company's first containerized platform: a six-service Docker Compose stack (two FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy) on AWS EC2, replacing manual deployment with reproducible automation.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB2">Designed a 25-table PostgreSQL schema on AWS RDS — 24 foreign keys, 34 strategic indexes, an idempotent migration system and soft-delete audit trail — reachable only through an SSH tunnel via an EC2 bastion host.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB3">Built an event-driven FastAPI webhook service linking Label Studio to S3: atomic database/S3 rollback on any failure, async connection pooling and an in-memory cache with database fallback; wrote the team runbooks for operating it.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB4">Developed a cross-platform C# desktop app (.NET 10, Avalonia, migrated off Windows-only WPF) for human review of ML-labelled video frames: MVVM architecture, two-pass verification workflow and a sliding-window prefetch cache.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB5">Implemented least-privilege IAM policies, moved credentials into AWS Secrets Manager and set up the CI pipelines; LocalStack emulates S3 locally so development never touches production credentials. Co-supervised two interns and led them after the lead developer's departure.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB6">Built the data pipeline's operator tooling — CLIs, idempotent S3-to-PostgreSQL sync, drift audits — and automated model training through GitLab CI on ephemeral AWS GPU instances with MLflow tracking.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB7">Built an on-device computer-vision pipeline on NVIDIA Jetson Orin Nano that counts and identifies the products a customer takes from a retail cooler: two-stage detection and classification on TensorRT FP16, multi-object tracking at 60 fps and automatic camera recalibration via SIFT homography; designed its evaluation harness (leave-one-day-out validation, pre-registered thresholds, stability tests), which established the frame-rate and image-format requirements for production.</span></li>
+                    <p class="text-[1.0625rem] leading-relaxed text-ink max-w-[46rem]" style="text-wrap: pretty;" data-i18n="experience.monetaSummary">Designed and built the company's production platform (six services on AWS, the database behind it and an on-device vision pipeline) and led the team's two interns after the lead developer left.</p>
+                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted max-w-[46rem]">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB1">Replaced manual deployments with the company's first containerized platform: six services on AWS EC2 (two FastAPI microservices, Label Studio, MLflow, Nginx) brought up reproducibly with Docker Compose.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB7">Built an on-device computer-vision pipeline on NVIDIA Jetson Orin Nano that identifies the products a customer takes from a retail cooler, plus the evaluation harness that set its production requirements.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB2">Designed the PostgreSQL schema the operation runs on: 25 tables on AWS RDS with 24 foreign keys, 34 indexes, idempotent migrations and a soft-delete audit trail, reachable only through an SSH bastion.</span></li>
                     </ul>
-                    <div class="flex flex-wrap gap-2 pt-1">
-                        <span class="tag">FastAPI</span><span class="tag">Docker Compose</span><span class="tag">AWS EC2 / RDS / S3</span><span class="tag">PostgreSQL</span><span class="tag">Nginx</span><span class="tag">C# · Avalonia</span><span class="tag">MLflow</span><span class="tag">GitLab CI</span><span class="tag">TensorRT</span><span class="tag">NVIDIA Jetson</span><span class="tag">OpenCV</span>
-                    </div>
+                    <details class="more">
+                        <summary class="more-toggle">
+                            <span class="when-closed" data-i18n="experience.monetaMore">Show 4 more</span>
+                            <span class="when-open" data-i18n="ui.showLess">Show less</span>
+                        </summary>
+                        <ul class="flex flex-col gap-3 pt-3 text-[0.9375rem] leading-relaxed text-muted">
+                            <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB3">Built an event-driven FastAPI webhook service between Label Studio and S3 that keeps the two consistent when a step fails: atomic rollback across database and S3, async connection pooling, a cache with database fallback. Wrote the runbooks to operate it.</span></li>
+                            <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB4">Moved the frame-review desktop app off Windows-only WPF to cross-platform C# (.NET 10, Avalonia): MVVM, two-pass verification and a sliding-window prefetch cache.</span></li>
+                            <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB5">Locked down access with least-privilege IAM, AWS Secrets Manager and LocalStack, so development never touches production credentials; set up the CI pipelines.</span></li>
+                            <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB6">Built the data pipeline's operator tooling (CLIs, idempotent S3-to-PostgreSQL sync, drift audits) and automated model training in GitLab CI on ephemeral AWS GPU instances, tracked in MLflow.</span></li>
+                        </ul>
+                    </details>
+                    <div class="flex flex-wrap gap-2 pt-1"><span class="tag">FastAPI</span><span class="tag">Docker Compose</span><span class="tag">AWS EC2 / RDS / S3</span><span class="tag">PostgreSQL</span><span class="tag">Nginx</span><span class="tag">NVIDIA Jetson</span><span class="tag">TensorRT</span><span class="tag">C# · Avalonia</span><span class="tag">GitLab CI</span></div>
                 </div>
             </article>
 
-            <article class="grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 py-8 border-t border-rule scroll-reveal">
+            <article class="grid md:grid-cols-[190px_1fr] gap-4 md:gap-10 py-9 border-t border-rule scroll-reveal">
                 <div class="flex flex-col gap-1.5">
                     <p class="font-mono text-[0.8125rem] text-faint" data-i18n="experience.contractorPeriod">February 2025 — Present</p>
                     <p class="font-mono text-[0.8125rem] text-accent" data-i18n="experience.contractorCompany">Bifrost Code</p>
@@ -338,216 +371,103 @@
                 </div>
                 <div class="flex flex-col gap-4">
                     <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.contractorRole">Co-founder &amp; Full Stack Engineer</h3>
-                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB1">Deliver full-stack web applications end to end with React, Next.js, NestJS and Express on TypeScript pnpm monorepos backed by PostgreSQL; earlier engagements shipped on React Native, FastAPI and Django.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB2">Shipped and still operate three products for paying clients: FisioApp (multi-tenant clinic management, WCAG 2.1 AA audited), Feriu (multi-tenant shared-expense platform) and Karaoke Balu (real-time request platform with SSE and kiosk mode).</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB3">Self-host client applications on the studio's own infrastructure — a Proxmox VM running Ubuntu Server with Dokploy and Docker Compose health checks, DNS on Cloudflare, services exposed through Cloudflare Tunnels with no inbound ports — a low-cost alternative to Vercel or AWS.</span></li>
+                    <p class="text-[1.0625rem] leading-relaxed text-ink max-w-[46rem]" style="text-wrap: pretty;" data-i18n="experience.contractorSummary">Co-founded a studio that designs, builds and hosts web products for clients; three of them run in production today.</p>
+                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted max-w-[46rem]">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB2">Shipped three products that still run for real clients: FisioApp (multi-tenant clinic management, audited against WCAG 2.1 AA), Feriu (multi-tenant shared expenses) and Karaoke Balu (real-time requests over SSE, kiosk mode).</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB1">Deliver end to end on TypeScript pnpm monorepos: React and Next.js front ends, NestJS and Express APIs, PostgreSQL. Earlier projects shipped on React Native, FastAPI and Django.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB3">Host every client app on the studio's own infrastructure as a low-cost alternative to Vercel or AWS: Proxmox and Ubuntu Server, Dokploy and Docker Compose with health checks, Cloudflare Tunnels with no inbound ports open.</span></li>
                     </ul>
-                    <div class="flex flex-wrap gap-2 pt-1">
-                        <span class="tag">Next.js</span><span class="tag">NestJS</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Proxmox</span><span class="tag">Dokploy</span><span class="tag">Cloudflare Tunnels</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1"><span class="tag">Next.js</span><span class="tag">NestJS</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Proxmox</span><span class="tag">Dokploy</span><span class="tag">Cloudflare Tunnels</span></div>
                 </div>
             </article>
 
-            <article class="grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 py-8 border-y border-rule scroll-reveal">
+            <article class="grid md:grid-cols-[190px_1fr] gap-4 md:gap-10 py-9 border-t border-rule scroll-reveal">
                 <div class="flex flex-col gap-1.5">
                     <p class="font-mono text-[0.8125rem] text-faint" data-i18n="experience.rogaPeriod">March 2024 — August 2025</p>
                     <p class="font-mono text-[0.8125rem] text-accent">Grupo Roga</p>
                 </div>
                 <div class="flex flex-col gap-4">
                     <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.rogaRole">.NET Software Developer</h3>
-                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted">
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB1">Maintained and extended the internal ERP running across more than 170 branches and used by over 1,750 employees (Mueblería El Pasito / Villarreal Muebles / Dinexpress), spanning point-of-sale, multi-branch inventory, pricing and accounts receivable modules in .NET Framework.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB2">Built from scratch the module managing the field agents who visit customer homes for credit approval: full design ownership, DevExpress map controls plotting assignments geographically, and data consumed from a companion Android app.</span></li>
-                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB3">Designed the SQL Server database architecture behind multi-branch retail operations: stored procedures for inventory aggregation and pricing logic, plus automated report generation and email delivery through SQL Server Agent.</span></li>
+                    <p class="text-[1.0625rem] leading-relaxed text-ink max-w-[46rem]" style="text-wrap: pretty;" data-i18n="experience.rogaSummary">Kept the ERP of a retail group with 170+ branches running and growing, and designed new modules for it from scratch.</p>
+                    <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted max-w-[46rem]">
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB1">Extended the ERP running 170+ branches and used by 1,750+ employees (Mueblería El Pasito, Villarreal Muebles, Dinexpress) across point of sale, multi-branch inventory, pricing and accounts receivable, in .NET Framework.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB2">Designed and built from scratch the module that manages field agents visiting customer homes for credit approval, with DevExpress maps plotting assignments and data from a companion Android app.</span></li>
+                        <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB3">Designed the SQL Server layer behind multi-branch operations (stored procedures for inventory aggregation and pricing, and HTML report emails composed with Chilkat), replacing manual report compilation.</span></li>
                     </ul>
-                    <div class="flex flex-wrap gap-2 pt-1">
-                        <span class="tag">.NET Framework</span><span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">VB.NET</span><span class="tag">SQL Server Agent</span><span class="tag">Chilkat</span><span class="tag">DevExpress</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1"><span class="tag">.NET Framework</span><span class="tag">VB.NET</span><span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">SQL Server Agent</span><span class="tag">Chilkat</span><span class="tag">DevExpress</span></div>
                 </div>
             </article>
+
+            <div class="grid md:grid-cols-[190px_1fr] gap-4 md:gap-10 py-9 border-b border-rule scroll-reveal">
+                <div class="flex flex-col gap-1.5">
+                    <p class="font-mono text-[0.8125rem] text-faint">2018 — 2023</p>
+                    <p class="font-mono text-[0.8125rem] text-accent" data-i18n="edu.label">Education</p>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="edu.degree">BSc Computer Science Engineering</h3>
+                    <p class="text-[0.9375rem] text-muted" data-i18n="edu.school">Autonomous University of Chihuahua (UACH) · Degree awarded by academic merit</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- ============================================================
-         HABILIDADES — banda
+         HABILIDADES — banda, en filas compactas por categoría
          ============================================================ -->
     <div class="rule-full" aria-hidden="true"></div>
     <section id="skills" class="band py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
         <div class="mx-auto max-w-[1280px]">
-            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
+            <header class="flex flex-col gap-3 pb-10 scroll-reveal">
                 <p class="kicker" data-i18n="skills.kicker">03 · Toolkit</p>
-                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="skills.heading">Technical skills</h2>
+                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="skills.heading">Technical skills</h2>
             </header>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
-                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.languages">Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag"><i class="devicon-python-plain" aria-hidden="true"></i>Python</span><span class="tag"><i class="devicon-javascript-plain" aria-hidden="true"></i>JavaScript</span><span class="tag"><i class="devicon-typescript-plain" aria-hidden="true"></i>TypeScript</span><span class="tag"><i class="devicon-csharp-plain" aria-hidden="true"></i>C#</span><span class="tag">SQL</span>
-                    </div>
+            <div class="border-b border-rule scroll-reveal">
+                <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
+                    <h3 class="font-display text-base font-bold tracking-tight pt-1" data-i18n="skills.languages">Languages</h3>
+                    <div class="flex flex-wrap gap-2"><span class="tag"><i class="devicon-python-plain" aria-hidden="true"></i>Python</span><span class="tag"><i class="devicon-javascript-plain" aria-hidden="true"></i>JavaScript</span><span class="tag"><i class="devicon-typescript-plain" aria-hidden="true"></i>TypeScript</span><span class="tag"><i class="devicon-csharp-plain" aria-hidden="true"></i>C#</span><span class="tag">SQL</span></div>
                 </div>
-                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
-                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.backend">Backend</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag"><i class="devicon-fastapi-plain" aria-hidden="true"></i>FastAPI</span><span class="tag"><i class="devicon-nestjs-plain" aria-hidden="true"></i>NestJS</span><span class="tag"><i class="devicon-django-plain" aria-hidden="true"></i>Django</span><span class="tag"><i class="devicon-express-original" aria-hidden="true"></i>Express</span><span class="tag"><i class="devicon-dot-net-plain" aria-hidden="true"></i>.NET</span>
-                    </div>
+                <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
+                    <h3 class="font-display text-base font-bold tracking-tight pt-1" data-i18n="skills.frontend">Frontend</h3>
+                    <div class="flex flex-wrap gap-2"><span class="tag"><i class="devicon-react-original" aria-hidden="true"></i>React</span><span class="tag"><i class="devicon-nextjs-plain" aria-hidden="true"></i>Next.js</span><span class="tag"><i class="devicon-tailwindcss-original" aria-hidden="true"></i>Tailwind CSS</span><span class="tag"><i class="devicon-react-original" aria-hidden="true"></i>React Native</span><span class="tag">Avalonia (desktop)</span></div>
                 </div>
-                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
-                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.cloud">Cloud &amp; infrastructure</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag">AWS EC2 / RDS / S3</span><span class="tag">IAM</span><span class="tag">Secrets Manager</span><span class="tag"><i class="devicon-docker-plain" aria-hidden="true"></i>Docker Compose</span><span class="tag"><i class="devicon-nginx-original" aria-hidden="true"></i>Nginx</span><span class="tag"><i class="devicon-proxmox-plain" aria-hidden="true"></i>Proxmox</span><span class="tag"><i class="devicon-cloudflare-plain" aria-hidden="true"></i>Cloudflare Tunnels</span><span class="tag"><i class="devicon-githubactions-plain" aria-hidden="true"></i>GitHub Actions</span><span class="tag"><i class="devicon-gitlab-plain" aria-hidden="true"></i>GitLab CI/CD</span><span class="tag"><i class="devicon-linux-plain" aria-hidden="true"></i>Linux</span>
-                    </div>
+                <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
+                    <h3 class="font-display text-base font-bold tracking-tight pt-1" data-i18n="skills.backend">Backend</h3>
+                    <div class="flex flex-wrap gap-2"><span class="tag"><i class="devicon-fastapi-plain" aria-hidden="true"></i>FastAPI</span><span class="tag"><i class="devicon-nestjs-plain" aria-hidden="true"></i>NestJS</span><span class="tag"><i class="devicon-django-plain" aria-hidden="true"></i>Django</span><span class="tag"><i class="devicon-express-original" aria-hidden="true"></i>Express</span><span class="tag"><i class="devicon-dot-net-plain" aria-hidden="true"></i>.NET</span></div>
                 </div>
-                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
-                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.databases">Databases</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag"><i class="devicon-postgresql-plain" aria-hidden="true"></i>PostgreSQL</span><span class="tag"><i class="devicon-microsoftsqlserver-plain" aria-hidden="true"></i>SQL Server</span><span class="tag"><i class="devicon-sqlite-plain" aria-hidden="true"></i>SQLite</span>
-                    </div>
+                <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
+                    <h3 class="font-display text-base font-bold tracking-tight pt-1" data-i18n="skills.databases">Databases</h3>
+                    <div class="flex flex-wrap gap-2"><span class="tag"><i class="devicon-postgresql-plain" aria-hidden="true"></i>PostgreSQL</span><span class="tag"><i class="devicon-microsoftsqlserver-plain" aria-hidden="true"></i>SQL Server</span><span class="tag"><i class="devicon-sqlite-plain" aria-hidden="true"></i>SQLite</span></div>
                 </div>
-                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
-                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.frontend">Frontend</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag"><i class="devicon-react-original" aria-hidden="true"></i>React</span><span class="tag"><i class="devicon-nextjs-plain" aria-hidden="true"></i>Next.js</span><span class="tag"><i class="devicon-tailwindcss-original" aria-hidden="true"></i>Tailwind CSS</span><span class="tag"><i class="devicon-react-original" aria-hidden="true"></i>React Native</span><span class="tag">Avalonia (desktop)</span>
-                    </div>
+                <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
+                    <h3 class="font-display text-base font-bold tracking-tight pt-1" data-i18n="skills.cloud">Cloud &amp; infrastructure</h3>
+                    <div class="flex flex-wrap gap-2"><span class="tag">AWS EC2 / RDS / S3</span><span class="tag">IAM</span><span class="tag">Secrets Manager</span><span class="tag"><i class="devicon-docker-plain" aria-hidden="true"></i>Docker Compose</span><span class="tag"><i class="devicon-nginx-original" aria-hidden="true"></i>Nginx</span><span class="tag"><i class="devicon-proxmox-plain" aria-hidden="true"></i>Proxmox</span><span class="tag"><i class="devicon-cloudflare-plain" aria-hidden="true"></i>Cloudflare Tunnels</span><span class="tag"><i class="devicon-githubactions-plain" aria-hidden="true"></i>GitHub Actions</span><span class="tag"><i class="devicon-gitlab-plain" aria-hidden="true"></i>GitLab CI/CD</span><span class="tag"><i class="devicon-linux-plain" aria-hidden="true"></i>Linux</span></div>
                 </div>
-                <div class="card p-6 flex flex-col gap-4 scroll-reveal">
-                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.architecture">Architecture &amp; practice</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag">Microservices</span><span class="tag">RESTful APIs</span><span class="tag">Event-driven</span><span class="tag">MVVM</span><span class="tag">CI/CD</span><span class="tag"><i class="devicon-git-plain" aria-hidden="true"></i>Git</span><span class="tag">Scrum</span>
-                    </div>
+                <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
+                    <h3 class="font-display text-base font-bold tracking-tight pt-1" data-i18n="skills.vision">Computer vision &amp; edge</h3>
+                    <div class="flex flex-wrap gap-2"><span class="tag">Ultralytics YOLO</span><span class="tag">TensorRT</span><span class="tag">ONNX</span><span class="tag"><i class="devicon-opencv-plain" aria-hidden="true"></i>OpenCV</span><span class="tag">NVIDIA Jetson</span></div>
                 </div>
-                <div class="card p-6 flex flex-col gap-4 scroll-reveal sm:col-span-2 lg:col-span-3">
-                    <h3 class="font-display text-base font-bold tracking-tight" data-i18n="skills.vision">Computer vision &amp; edge</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag">Ultralytics YOLO</span><span class="tag">TensorRT</span><span class="tag">ONNX</span><span class="tag"><i class="devicon-opencv-plain" aria-hidden="true"></i>OpenCV</span><span class="tag">NVIDIA Jetson</span>
-                    </div>
+                <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
+                    <h3 class="font-display text-base font-bold tracking-tight pt-1" data-i18n="skills.architecture">Architecture &amp; practice</h3>
+                    <div class="flex flex-wrap gap-2"><span class="tag">Microservices</span><span class="tag">RESTful APIs</span><span class="tag">Event-driven</span><span class="tag">MVVM</span><span class="tag">CI/CD</span><span class="tag"><i class="devicon-git-plain" aria-hidden="true"></i>Git</span><span class="tag">Scrum</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         PROYECTOS — superficie base
+         CONTACTO — superficie base
          ============================================================ -->
     <div class="rule-full" aria-hidden="true"></div>
-    <section id="projects" class="py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
+    <section id="contact" class="py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
         <div class="mx-auto max-w-[1280px]">
-            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
-                <p class="kicker" data-i18n="projects.kicker">04 · Selected work</p>
-                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="projects.heading">Projects</h2>
-            </header>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                <article class="card flex flex-col scroll-reveal">
-                    <div class="flex flex-col gap-3 p-6 grow">
-                        <div class="flex items-start justify-between gap-3">
-                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight" data-i18n="projects.scTitle">Grab-and-go cooler vision</h3>
-                            <span class="chip" data-i18n="ui.inProgress">In progress</span>
-                        </div>
-                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.scDesc">Computer vision for an unattended retail cooler: an on-device pipeline on NVIDIA Jetson that detects, tracks and identifies the products a customer takes, with the evaluation harness behind its production requirements.</p>
-                        <a href="#contact" class="card-link">
-                            <span data-i18n="ui.contactDetails">Contact for details</span>
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
-                        </a>
-                    </div>
-                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">FastAPI · AWS · PostgreSQL</p>
-                </article>
-
-                <article class="card flex flex-col scroll-reveal">
-                    <div class="flex flex-col gap-3 p-6 grow">
-                        <div class="flex items-start justify-between gap-3">
-                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">FisioApp</h3>
-                            <span class="chip" data-i18n="ui.inProduction">In production</span>
-                        </div>
-                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.fisioDesc">Multi-tenant management for physiotherapy clinics: clinical records, appointments, packages and payments. Audited against WCAG 2.1 AA, with automated off-site backups via cron to Backblaze B2.</p>
-                        <a href="#contact" class="card-link">
-                            <span data-i18n="ui.contactDetails">Contact for details</span>
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
-                        </a>
-                    </div>
-                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Next.js · PostgreSQL · Dokploy</p>
-                </article>
-
-                <article class="card flex flex-col scroll-reveal">
-                    <div class="flex flex-col gap-3 p-6 grow">
-                        <div class="flex items-start justify-between gap-3">
-                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Feriu</h3>
-                            <span class="chip" data-i18n="ui.inProduction">In production</span>
-                        </div>
-                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.feriuDesc">Multi-tenant, self-hosted shared-expense platform with a Splitwise-style settlement engine, built as a NestJS + Next.js pnpm monorepo on PostgreSQL.</p>
-                        <a href="#contact" class="card-link">
-                            <span data-i18n="ui.contactDetails">Contact for details</span>
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
-                        </a>
-                    </div>
-                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">NestJS · Next.js · pnpm</p>
-                </article>
-
-                <article class="card flex flex-col scroll-reveal">
-                    <div class="flex flex-col gap-3 p-6 grow">
-                        <div class="flex items-start justify-between gap-3">
-                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Karaoke Balu</h3>
-                            <span class="chip" data-i18n="ui.inProduction">In production</span>
-                        </div>
-                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.karaokeDesc">Real-time karaoke request platform for live events: an SSE-synced queue, admin panel, self-serve kiosk mode and Virtual DJ integration. Express + React monorepo.</p>
-                        <a href="#contact" class="card-link">
-                            <span data-i18n="ui.contactDetails">Contact for details</span>
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
-                        </a>
-                    </div>
-                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Express · React · SSE</p>
-                </article>
-
-                <article class="card flex flex-col scroll-reveal">
-                    <div class="flex flex-col gap-3 p-6 grow">
-                        <div class="flex items-start justify-between gap-3">
-                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Stable Diffusion fine-tuning</h3>
-                            <span class="chip" data-i18n="ui.completed">Completed</span>
-                        </div>
-                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.sdDesc">Custom dataset training for personalised image generation, exploring fine-tuning techniques for deep learning models.</p>
-                        <a href="#contact" class="card-link">
-                            <span data-i18n="ui.contactDetails">Contact for details</span>
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
-                        </a>
-                    </div>
-                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Python · PyTorch</p>
-                </article>
-
-                <article class="card flex flex-col scroll-reveal">
-                    <div class="flex flex-col gap-3 p-6 grow">
-                        <div class="flex items-start justify-between gap-3">
-                            <h3 class="font-display text-lg font-bold tracking-[-0.03em] leading-tight">Galaga For Everyone</h3>
-                            <span class="chip" data-i18n="ui.completed">Completed</span>
-                        </div>
-                        <p class="text-[0.9375rem] leading-relaxed text-muted grow" style="text-wrap: pretty;" data-i18n="projects.galagaDesc">Unreal Engine game controlled through a smartphone accelerometer, bridged with Processing and HTTP requests.</p>
-                        <a href="https://github.com/JoseCarlosChaparro/GalagaForEveryone" target="_blank" rel="noopener noreferrer" class="card-link">
-                            <span data-i18n="ui.viewGitHub">View on GitHub</span>
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
-                        </a>
-                    </div>
-                    <p class="font-mono text-[0.6875rem] text-faint px-6 py-3 border-t border-rule">Unreal Engine · Processing</p>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         CONTACTO — banda
-         ============================================================ -->
-    <div class="rule-full" aria-hidden="true"></div>
-    <section id="contact" class="band py-16 md:py-24 px-5 sm:px-8 lg:px-[72px]">
-        <div class="mx-auto max-w-[1280px]">
-            <header class="flex flex-col gap-3 pb-9 scroll-reveal">
-                <p class="kicker" data-i18n="contact.kicker">05 · Get in touch</p>
-                <h2 class="font-display text-3xl md:text-[2.125rem] font-bold tracking-[-0.035em]" data-i18n="contact.heading">Contact</h2>
+            <header class="flex flex-col gap-3 pb-10 scroll-reveal">
+                <p class="kicker" data-i18n="contact.kicker">04 · Contact</p>
+                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="contact.heading">Let's talk</h2>
             </header>
 
             <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
                 <div class="flex flex-col gap-6 scroll-reveal">
-                    <p class="text-[1.125rem] leading-relaxed text-muted max-w-[30rem]" style="text-wrap: pretty;" data-i18n="contact.subtitle">Building a product end to end, from the interface to the infrastructure? Write to me and let's talk it through.</p>
+                    <p class="text-[1.125rem] leading-relaxed text-muted max-w-[32rem]" style="text-wrap: pretty;" data-i18n="contact.subtitle">Hiring for a full stack, backend or infrastructure role? I'm a US citizen based in Chihuahua, open to remote work or relocating to the US. Email is the fastest way to reach me.</p>
                     <a href="mailto:jc_chaparro@hotmail.com" class="btn-primary self-start">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                             <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"></rect><path d="m3 6.5 9 6.5 9-6.5"></path>
@@ -611,9 +531,9 @@
                 <div class="flex flex-col sm:flex-row gap-8 sm:gap-10">
                     <nav aria-label="Footer">
                         <ul class="flex flex-col gap-2 text-[0.875rem] text-muted">
-                            <li><a href="#about" class="footer-link" data-i18n="nav.about">About</a></li>
+                            <li><a href="#work" class="footer-link" data-i18n="nav.work">Work</a></li>
                             <li><a href="#experience" class="footer-link" data-i18n="nav.experience">Experience</a></li>
-                            <li><a href="#projects" class="footer-link" data-i18n="nav.projects">Projects</a></li>
+                            <li><a href="#skills" class="footer-link" data-i18n="nav.skills">Skills</a></li>
                             <li><a href="#contact" class="footer-link" data-i18n="nav.contact">Contact</a></li>
                         </ul>
                     </nav>
