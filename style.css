@@ -583,3 +583,49 @@ body {
     .js .scroll-reveal { opacity: 1; transform: none; }
     a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.75em; }
 }
+
+/* ============================================================
+   "VER MÁS" EN EXPERIENCIA
+   <details> nativo: teclado, foco y estado expandido/colapsado
+   los resuelve el navegador y los anuncia al lector de pantalla.
+   Solo se cambia el texto visible según el estado.
+   ============================================================ */
+
+.more-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--c-accent);
+}
+
+.more-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.more-toggle::after {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.18s ease;
+}
+
+.more[open] > .more-toggle::after {
+    transform: translateY(2px) rotate(-135deg);
+}
+
+.more .when-open,
+.more[open] .when-closed {
+    display: none;
+}
+
+.more[open] .when-open {
+    display: inline;
+}
