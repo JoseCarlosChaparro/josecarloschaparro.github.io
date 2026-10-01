@@ -77,7 +77,7 @@
          components layer, so utilities such as md:hidden win over component
          rules such as .icon-btn. Loading it separately would leave it
          unlayered, and unlayered CSS beats every layer. -->
-    <link rel="stylesheet" href="./assets/css/tailwind.css?v=69db61376f">
+    <link rel="stylesheet" href="./assets/css/tailwind.css?v=1438e96198">
 
     <!-- Marca que hay JS ANTES de pintar. Las animaciones de entrada solo
          ocultan contenido cuando existe algo que pueda revelarlo: sin esto,
@@ -178,7 +178,7 @@
 
                     <h1 class="flex flex-col gap-3" data-intro style="--intro: 1">
                         <span class="font-display text-xl sm:text-2xl font-bold tracking-tight text-muted">José Chaparro</span>
-                        <span class="font-display text-[2.5rem] sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.03] tracking-[-0.038em]" style="text-wrap: balance;" data-i18n="hero.headline">I build production software, and the infrastructure it runs on.</span>
+                        <span class="font-display text-[2.5rem] sm:text-5xl lg:text-[3.75rem] font-extrabold leading-[1.03] sm:leading-none tracking-[-0.038em]" style="text-wrap: balance;" data-i18n="hero.headline">I build production software, and the infrastructure it runs on.</span>
                     </h1>
 
                     <p class="text-base sm:text-[1.1875rem] leading-relaxed text-muted max-w-160" style="text-wrap: pretty; --intro: 2;" data-intro data-i18n="hero.lead">React and Next.js on the front, Python and .NET behind it, PostgreSQL and AWS underneath. I designed the production platform at Moneta Market and run client products through my studio, Bifrost Code.</p>
@@ -245,7 +245,7 @@
         <div class="mx-auto max-w-[1280px]">
             <header class="flex flex-col gap-3 pb-10 scroll-reveal">
                 <p class="kicker" data-i18n="work.kicker">01 · Selected work</p>
-                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="work.heading">What I've built</h2>
+                <h2 class="font-display text-3xl md:text-[2.25rem] md:leading-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="work.heading">What I've built</h2>
                 <p class="text-[1.0625rem] leading-relaxed text-muted max-w-176" style="text-wrap: pretty;" data-i18n="work.intro">Most of this is employer or client work, so the code is private. I'm glad to walk through any of it on a call.</p>
             </header>
 
@@ -331,7 +331,7 @@
         <div class="mx-auto max-w-[1280px]">
             <header class="flex flex-col gap-3 pb-10 scroll-reveal">
                 <p class="kicker" data-i18n="experience.kicker">02 · Experience</p>
-                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="experience.heading">Where I've worked</h2>
+                <h2 class="font-display text-3xl md:text-[2.25rem] md:leading-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="experience.heading">Where I've worked</h2>
             </header>
 
             <article class="grid md:grid-cols-[190px_1fr] gap-4 md:gap-10 py-9 border-t border-rule scroll-reveal">
@@ -340,7 +340,7 @@
                     <p class="font-mono text-[0.8125rem] text-accent" data-i18n="experience.monetaCompany">Moneta Market LLC</p>
                 </div>
                 <div class="flex flex-col gap-4">
-                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.monetaRole">Full Stack Engineer</h3>
+                    <h3 class="font-display text-xl md:text-[1.375rem] md:leading-[1.75rem] font-bold tracking-[-0.028em]" data-i18n="experience.monetaRole">Full Stack Engineer</h3>
                     <p class="text-[1.0625rem] leading-relaxed text-ink max-w-184" style="text-wrap: pretty;" data-i18n="experience.monetaSummary">Designed and built the company's production platform (six services on AWS, the database behind it and an on-device vision pipeline) and led the team's two interns after the lead developer left.</p>
                     <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted max-w-184">
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.monetaB1">Replaced manual deployments with the company's first containerized platform: six services on AWS EC2 (two FastAPI microservices, Label Studio, MLflow, Nginx) brought up reproducibly with Docker Compose.</span></li>
@@ -370,7 +370,7 @@
                     <p class="text-[0.75rem] leading-snug text-faint" data-i18n="experience.contractorNote">Side project, alongside my full-time role</p>
                 </div>
                 <div class="flex flex-col gap-4">
-                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.contractorRole">Co-founder &amp; Full Stack Engineer</h3>
+                    <h3 class="font-display text-xl md:text-[1.375rem] md:leading-[1.75rem] font-bold tracking-[-0.028em]" data-i18n="experience.contractorRole">Co-founder &amp; Full Stack Engineer</h3>
                     <p class="text-[1.0625rem] leading-relaxed text-ink max-w-184" style="text-wrap: pretty;" data-i18n="experience.contractorSummary">Co-founded a studio that designs, builds and hosts web products for clients; three of them run in production today.</p>
                     <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted max-w-184">
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.contractorB2">Shipped three products that still run for real clients: FisioApp (multi-tenant clinic management, audited against WCAG 2.1 AA), Feriu (multi-tenant shared expenses) and Karaoke Balu (real-time requests over SSE, kiosk mode).</span></li>
@@ -387,7 +387,7 @@
                     <p class="font-mono text-[0.8125rem] text-accent">Grupo Roga</p>
                 </div>
                 <div class="flex flex-col gap-4">
-                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="experience.rogaRole">.NET Software Developer</h3>
+                    <h3 class="font-display text-xl md:text-[1.375rem] md:leading-[1.75rem] font-bold tracking-[-0.028em]" data-i18n="experience.rogaRole">.NET Software Developer</h3>
                     <p class="text-[1.0625rem] leading-relaxed text-ink max-w-184" style="text-wrap: pretty;" data-i18n="experience.rogaSummary">Kept the ERP of a retail group with 170+ branches running and growing, and designed new modules for it from scratch.</p>
                     <ul class="flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-muted max-w-184">
                         <li class="flex gap-3"><span class="text-accent shrink-0 pt-0.5" aria-hidden="true">—</span><span data-i18n="experience.rogaB1">Extended the ERP running 170+ branches and used by 1,750+ employees (Mueblería El Pasito, Villarreal Muebles, Dinexpress) across point of sale, multi-branch inventory, pricing and accounts receivable, in .NET Framework.</span></li>
@@ -404,7 +404,7 @@
                     <p class="font-mono text-[0.8125rem] text-accent" data-i18n="edu.label">Education</p>
                 </div>
                 <div class="flex flex-col gap-1.5">
-                    <h3 class="font-display text-xl md:text-[1.375rem] font-bold tracking-[-0.028em]" data-i18n="edu.degree">BSc Computer Science Engineering</h3>
+                    <h3 class="font-display text-xl md:text-[1.375rem] md:leading-[1.75rem] font-bold tracking-[-0.028em]" data-i18n="edu.degree">BSc Computer Science Engineering</h3>
                     <p class="text-[0.9375rem] text-muted" data-i18n="edu.school">Autonomous University of Chihuahua (UACH) · Degree awarded by academic merit</p>
                 </div>
             </div>
@@ -419,7 +419,7 @@
         <div class="mx-auto max-w-[1280px]">
             <header class="flex flex-col gap-3 pb-10 scroll-reveal">
                 <p class="kicker" data-i18n="skills.kicker">03 · Toolkit</p>
-                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="skills.heading">Technical skills</h2>
+                <h2 class="font-display text-3xl md:text-[2.25rem] md:leading-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="skills.heading">Technical skills</h2>
             </header>
             <div class="border-b border-rule scroll-reveal">
                 <div class="grid sm:grid-cols-[210px_1fr] gap-3 sm:gap-8 py-5 border-t border-rule">
@@ -462,7 +462,7 @@
         <div class="mx-auto max-w-[1280px]">
             <header class="flex flex-col gap-3 pb-10 scroll-reveal">
                 <p class="kicker" data-i18n="contact.kicker">04 · Contact</p>
-                <h2 class="font-display text-3xl md:text-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="contact.heading">Let's talk</h2>
+                <h2 class="font-display text-3xl md:text-[2.25rem] md:leading-[2.25rem] font-bold tracking-[-0.035em]" data-i18n="contact.heading">Let's talk</h2>
             </header>
 
             <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
