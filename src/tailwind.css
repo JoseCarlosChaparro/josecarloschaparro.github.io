@@ -1,3 +1,52 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Entry point for the compiled stylesheet (npm run build:css).
+   Content sources are explicit: auto-detection would also scan docs/ and
+   tools/. The paths are relative to this file. */
+@import 'tailwindcss' source(none);
+@source '../index.html';
+@source '../app.js';
+@source '../locales';
+
+/* Cascade layers: Tailwind v4 emits `theme, base, components, utilities`,
+   and unlayered CSS always beats layered CSS. style.css therefore goes into
+   the components layer, below utilities, which keeps utilities such as
+   `md:hidden` winning over component rules such as `.icon-btn`. */
+@import '../style.css' layer(components);
+
+/* Kept from tailwind.config.js (`darkMode: 'class'`). No `dark:` utility is
+   in use today; this keeps the capability. style.css swaps the --c-* tokens
+   under `.dark`. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic tokens point at the CSS variables in style.css. `inline` makes
+   `bg-page` compile to `var(--c-page)` directly instead of going through an
+   intermediate `--color-page` variable, so every utility keeps following
+   the light/dark switch.
+   Never name a color `base`: it would clash with the text-base size utility
+   and override it. */
+@theme inline {
+  --color-page: var(--c-page);
+  --color-band: var(--c-band);
+  --color-card: var(--c-card);
+  --color-deep: var(--c-deep);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-faint: var(--c-faint);
+  --color-rule: var(--c-rule);
+  --color-edge: var(--c-edge);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-accent-soft: var(--c-accent-soft);
+
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-sans: Manrope, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  /* v4 preflight uses cursor: default on buttons; v3 used pointer. */
+  button:not(:disabled),
+  [role='button']:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+}
