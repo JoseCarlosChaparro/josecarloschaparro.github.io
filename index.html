@@ -73,11 +73,11 @@
     <link rel="preload" href="./assets/fonts/manrope-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="./assets/css/fonts.css?v=4a98780e56">
     <link rel="stylesheet" href="./assets/css/icons.css?v=d2fc61a4ef">
-    <link rel="stylesheet" href="style.css?v=a5d8d8636b">
-    <!-- Tailwind is compiled ahead of time (npm run build:css). It loads after
-         style.css on purpose: the in-browser CDN used to inject its styles last,
-         so utilities such as md:hidden must keep winning over component rules. -->
-    <link rel="stylesheet" href="./assets/css/tailwind.css?v=e4598652e0">
+    <!-- style.css is bundled into tailwind.css (npm run build:css) inside the
+         components layer, so utilities such as md:hidden win over component
+         rules such as .icon-btn. Loading it separately would leave it
+         unlayered, and unlayered CSS beats every layer. -->
+    <link rel="stylesheet" href="./assets/css/tailwind.css?v=69db61376f">
 
     <!-- Marca que hay JS ANTES de pintar. Las animaciones de entrada solo
          ocultan contenido cuando existe algo que pueda revelarlo: sin esto,

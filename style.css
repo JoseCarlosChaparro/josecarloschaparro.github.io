@@ -2,7 +2,7 @@
    José Chaparro — sistema de diseño "Bandas"
    ------------------------------------------------------------
    Los colores viven como custom properties semánticas y se
-   exponen a Tailwind desde tailwind.config (en index.html), así
+   exponen a Tailwind desde el bloque @theme de src/tailwind.css, así
    que `bg-band`, `text-muted`, etc. cambian solos con el tema.
 
    Cada valor se derivó en oklch y se verificó contra WCAG 2.1 AA

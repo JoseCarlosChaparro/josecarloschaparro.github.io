@@ -9,7 +9,8 @@ Source code for my personal portfolio site. Built with HTML, Tailwind CSS, and v
 ## Building
 
 Tailwind CSS is compiled ahead of time; the site serves the result from
-`assets/css/tailwind.css`. After changing classes in `index.html`, `app.js`
+`assets/css/tailwind.css` (Tailwind CSS 4; `style.css` is bundled into it in
+the components layer). After changing classes in `index.html`, `app.js`
 or the locale files, rebuild it:
 
 ```
@@ -18,7 +19,7 @@ npm run build
 ```
 
 `npm run build` compiles Tailwind and then stamps a content hash on every
-local CSS and JS reference in `index.html` (`style.css?v=...`). The host
+local CSS and JS reference in `index.html` (`assets/css/tailwind.css?v=...`). The host
 lets browsers cache files for 10 minutes; without the stamp, a visitor
 right after a deploy gets the new HTML with the old CSS and JS. Run it
 after any change to `style.css`, `app.js` or the classes in use.

@@ -1,8 +1,29 @@
-@import 'tailwindcss';
+/* Entry point for the compiled stylesheet (npm run build:css).
+   Content sources are explicit: auto-detection would also scan docs/ and
+   tools/. The paths are relative to this file. */
+@import 'tailwindcss' source(none);
+@source '../index.html';
+@source '../app.js';
+@source '../locales';
 
-@custom-variant dark (&:is(.dark *));
+/* Cascade layers: Tailwind v4 emits `theme, base, components, utilities`,
+   and unlayered CSS always beats layered CSS. style.css therefore goes into
+   the components layer, below utilities, which keeps utilities such as
+   `md:hidden` winning over component rules such as `.icon-btn`. */
+@import '../style.css' layer(components);
 
-@theme {
+/* Kept from tailwind.config.js (`darkMode: 'class'`). No `dark:` utility is
+   in use today; this keeps the capability. style.css swaps the --c-* tokens
+   under `.dark`. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic tokens point at the CSS variables in style.css. `inline` makes
+   `bg-page` compile to `var(--c-page)` directly instead of going through an
+   intermediate `--color-page` variable, so every utility keeps following
+   the light/dark switch.
+   Never name a color `base`: it would clash with the text-base size utility
+   and override it. */
+@theme inline {
   --color-page: var(--c-page);
   --color-band: var(--c-band);
   --color-card: var(--c-card);
@@ -21,20 +42,11 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  /* v4 preflight uses cursor: default on buttons; v3 used pointer. */
+  button:not(:disabled),
+  [role='button']:not(:disabled),
+  summary {
+    cursor: pointer;
   }
 }
