@@ -57,7 +57,7 @@
 \hypersetup{
     pdftitle={Jose Chaparro - Full Stack Engineer CV},
     pdfsubject={Resume: Full Stack Engineer},
-    pdfkeywords={Full Stack Engineer, React, Next.js, TypeScript, FastAPI, .NET, PostgreSQL, AWS, Docker}
+    pdfkeywords={Software Engineer, Full Stack, TypeScript, Node.js, REST APIs, PostgreSQL, AWS, Docker, Playwright, .NET}
 }
 \fi
 
@@ -97,32 +97,32 @@
 % =============================================================================
 
 % ----- Moneta Market -----
-\newcommand{\mmPlatform}{Replaced manual deployments with the company's first containerized platform: 6 services on AWS EC2 (Linux) run with Docker Compose (2 FastAPI microservices, Label Studio, MLflow, Nginx reverse proxy).}
-\newcommand{\mmVision}{Built an on-device vision pipeline on NVIDIA Jetson Orin Nano that counts products taken from a retail cooler (TensorRT FP16, 60 fps tracking, SIFT camera recalibration); its evaluation harness set the production frame-rate and image-format requirements.}
-\newcommand{\mmLead}{Led the team's two interns after the lead developer left, having co-supervised them before.}
+\newcommand{\mmPlatform}{Replaced manual deployments with the company's first containerized platform: 6 services on AWS EC2 (Linux) run with Docker Compose, including 2 FastAPI REST microservices.}
+\newcommand{\mmVision}{Built an on-device computer-vision pipeline on NVIDIA Jetson (TensorRT, 60 fps tracking) for a retail smart cooler.}
+\newcommand{\mmLead}{Led the team's two interns after the lead developer left, reviewing their code, having co-supervised them before.}
 \newcommand{\mmSchema}{Designed the 25-table PostgreSQL schema on AWS RDS that the operation runs on (24 foreign keys, 34 indexes, idempotent migrations, soft-delete audit trail), reachable only through an SSH tunnel via an EC2 bastion host.}
 \newcommand{\mmWebhook}{Built an event-driven FastAPI webhook between Label Studio and S3 with atomic DB/S3 rollback, async connection pooling and an in-memory cache with DB fallback; wrote the team runbooks.}
-\newcommand{\mmDesktop}{Migrated the frame-review desktop app from Windows-only WPF to cross-platform C\# (.NET 10, Avalonia): MVVM, two-pass verification, sliding-window prefetch cache.}
-\newcommand{\mmTooling}{Built the data pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances with MLflow tracking.}
+\newcommand{\mmTooling}{Built the data pipeline's operator tooling (CLIs, idempotent S3--PostgreSQL sync, drift audits) and automated model training via GitLab CI on ephemeral AWS GPU instances.}
 \newcommand{\mmSecurity}{Set up least-privilege IAM, AWS Secrets Manager, LocalStack for local S3 and the CI pipelines.}
 
 % ----- Bifrost Code -----
-\newcommand{\bfProducts}{Ship and run three client products in production (FisioApp, Feriu, Karaoke Balu) end to end on TypeScript pnpm monorepos: React, Next.js, NestJS, Express, PostgreSQL. Earlier projects shipped with FastAPI, Django and React Native.}
-\newcommand{\bfHosting}{Self-host every client app on the studio's own infrastructure as a low-cost alternative to Vercel/AWS: Proxmox VM (Ubuntu Server), Dokploy, Docker Compose health checks and Cloudflare Tunnels.}
+\newcommand{\bfDodfest}{DODFest 2026 (Día de Muertos festival, Amarillo, TX; built for 5,000 attendees): main contributor (about 70\% of 1,600+ commits) to the Next.js, TypeScript, PostgreSQL and Prisma platform for registration, QR-wristband and judge voting, and a role-based admin dashboard behind Microsoft Entra ID SSO.}
+\newcommand{\bfTesting}{On DODFest, wrote most of the 200+ Playwright end-to-end specs and the k6 load tests for the voting peak.}
+\newcommand{\bfProducts}{Ship and run client products in production end to end on TypeScript pnpm monorepos (React, Next.js, NestJS, Express, PostgreSQL), self-hosted with Docker Compose, Dokploy and Cloudflare Tunnels.}
 
 % ----- Grupo Roga -----
-\newcommand{\rgERP}{Maintained and extended a mission-critical VB.NET ERP used by 1,750+ employees across 170+ branches (Mueblería El Pasito / Villarreal Muebles / Dinexpress): POS, inventory, pricing and accounts receivable on .NET Framework.}
-\newcommand{\rgAgents}{Designed and built from scratch the ERP module for the field agents who visit customer homes for credit approval, with DevExpress maps plotting assignments and data from a companion Android app.}
-\newcommand{\rgSQL}{Designed SQL Server stored procedures for multi-branch inventory aggregation and pricing, and automated HTML report emails (Chilkat), eliminating manual report compilation for operations.}
+\newcommand{\rgERP}{Maintained and extended a mission-critical VB.NET ERP used by 1,750+ employees across 170+ branches: POS, inventory, pricing and accounts receivable on .NET Framework.}
+\newcommand{\rgAgents}{Designed and built from scratch the ERP module for the field agents who visit customer homes for credit approval, with maps plotting assignments and data from a companion Android app.}
+\newcommand{\rgSQL}{Designed SQL Server stored procedures for multi-branch inventory aggregation and pricing, and automated HTML report emails, eliminating manual report compilation for operations.}
 
 % ----- Skills -----
-\newcommand{\skLangFS}{\skillcat{Programming Languages}{TypeScript, JavaScript, Python, C\#, SQL}}
-\newcommand{\skLangBE}{\skillcat{Programming Languages}{Python, C\#, SQL, TypeScript, JavaScript}}
-\newcommand{\skFrontend}{\skillcat{Frontend}{React, Next.js, Tailwind CSS, React Native, Avalonia (desktop)}}
-\newcommand{\skBackend}{\skillcat{Backend}{FastAPI, NestJS, Express (Node.js), Django, .NET Framework}}
-\newcommand{\skData}{\skillcat{Databases}{PostgreSQL, SQL Server, SQLite}}
-\newcommand{\skCloud}{\skillcat{Cloud \& DevOps}{AWS (EC2, RDS, S3, IAM, Secrets Manager), Docker, Docker Compose, Nginx, Cloudflare, Dokploy, Backblaze B2, Git, GitHub Actions, GitLab CI/CD, Linux}}
-\newcommand{\skVision}{\skillcat{Computer Vision \& Edge}{Ultralytics YOLO, TensorRT, ONNX, OpenCV, NVIDIA Jetson}}
+\newcommand{\skLangFS}{\skillcat{Languages}{TypeScript, JavaScript, SQL, Python, C\#}}
+\newcommand{\skLangBE}{\skillcat{Languages}{Python, C\#, SQL, TypeScript, JavaScript}}
+\newcommand{\skBackend}{\skillcat{Backend \& APIs}{Node.js, REST APIs, NestJS, Express, Next.js API routes, FastAPI, Django, .NET}}
+\newcommand{\skData}{\skillcat{Databases}{PostgreSQL, SQL Server, SQLite, Prisma ORM}}
+\newcommand{\skCloud}{\skillcat{Cloud \& DevOps}{AWS (RDS, EC2, S3, IAM, Secrets Manager), Docker, GitHub, GitHub Actions, GitLab CI/CD, Linux}}
+\newcommand{\skTesting}{\skillcat{Testing \& Quality}{unit and integration tests, Playwright end-to-end tests, k6 load testing, code reviews}}
+\newcommand{\skFrontendTools}{\skillcat{Frontend \& Tools}{React, Next.js, Tailwind CSS, Claude Code (agentic coding), Jira, Confluence}}
 
 \linespread{0.96}
 \pagenumbering{gobble}
@@ -135,10 +135,10 @@
 % ----- Header (ATS-friendly: plain text, no glyphs) -----
 \begin{center}
     {\Huge\bfseries\color{accent} JOSÉ CARLOS CHAPARRO}\\[1pt]
-    {\large \ifbackend Software Engineer $\cdot$ Backend \& Infrastructure\else Full Stack Engineer\fi}\\[2pt]
+    {\large \ifbackend Software Engineer $\cdot$ Backend \& Infrastructure\else Software Engineer $\cdot$ Full Stack \& Platform\fi}\\[2pt]
     \footnotesize
     +52 614 215 2635 | \href{mailto:jc_chaparro@hotmail.com}{jc\_chaparro@hotmail.com} | \href{https://www.linkedin.com/in/jose-c-chaparro/}{linkedin.com/in/jose-c-chaparro} | \href{https://github.com/JoseCarlosChaparro}{github.com/JoseCarlosChaparro} | \href{https://www.josechaparro.com}{https://www.josechaparro.com}\\[1pt]
-    Chihuahua, MX $\cdot$ Open to remote / US relocation $\cdot$ \textbf{US Citizen (no sponsorship required)} $\cdot$ Spanish (native) / English (B2, upper-intermediate)
+    Chihuahua, MX $\cdot$ Open to remote / US relocation $\cdot$ \textbf{Mexican \& US citizen (no sponsorship required)} $\cdot$ Spanish (native) / English (B2, upper-intermediate)
 \end{center}
 
 % ----- Professional Summary -----
@@ -147,17 +147,17 @@
 % outscored the actual name in name detection.
 \section*{Professional Summary}
 \ifbackend
-Software engineer focused on backend systems, data and the infrastructure they run on. Designed and built Moneta Market's production platform, six containerized services on AWS EC2 with a 25-table PostgreSQL schema on RDS, and led the team's two interns after the lead developer left. Previously extended a VB.NET ERP used by 1,750+ employees across 170+ retail branches, including its SQL Server stored procedures. Self-hosts client products on Proxmox, Docker and Cloudflare Tunnels.
+Software engineer focused on backend systems, data and the infrastructure they run on. Designed and built Moneta Market's production platform on AWS (containerized services, a 25-table PostgreSQL schema on RDS) and led the team's two interns, reviewing their code, after the lead developer left. Previously extended a VB.NET ERP used by 1,750+ employees across 170+ retail branches, including its SQL Server stored procedures. Main contributor to DODFest 2026, built for 5,000 attendees.
 \else
-Full stack engineer who builds products end to end and runs the infrastructure under them. Designed and built Moneta Market's production platform, six containerized services on AWS, plus an on-device computer-vision pipeline on NVIDIA Jetson, and led the team's two interns after the lead developer left. Co-founded Bifrost Code, which ships and self-hosts three client products in production. Previously extended an ERP used by 1,750+ employees across 170+ retail branches.
+Full stack software engineer who delivers features end to end, from tech design and REST APIs to tests and production operations. Designed and built Moneta Market's production platform on AWS (containerized services, a 25-table PostgreSQL schema on RDS) and led the team's two interns, reviewing their code, after the lead developer left. Main contributor to DODFest 2026, a TypeScript festival platform built for 5,000 attendees, writing most of its end-to-end and load tests. Uses Claude Code, GitHub and Jira.
 \fi
 
 % ----- Technical Skills -----
 \section*{Technical Skills}
 \ifbackend
-\skLangBE \skBackend \skData \skCloud \skFrontend \skVision
+\skLangBE \skBackend \skData \skCloud \skTesting \skFrontendTools
 \else
-\skLangFS \skFrontend \skBackend \skData \skCloud \skVision
+\skLangFS \skBackend \skData \skCloud \skTesting \skFrontendTools
 \fi
 
 % ----- Work Experience -----
@@ -165,7 +165,6 @@ Full stack engineer who builds products end to end and runs the infrastructure u
 
 \role{Full Stack Engineer}{Moneta Market}{August 2025 -- Present}{}
 \begin{itemize}
-\ifbackend
     \item \mmPlatform
     \item \mmSchema
     \item \mmWebhook
@@ -173,28 +172,13 @@ Full stack engineer who builds products end to end and runs the infrastructure u
     \item \mmSecurity
     \item \mmTooling
     \item \mmVision
-    \item \mmDesktop
-\else
-    \item \mmPlatform
-    \item \mmVision
-    \item \mmLead
-    \item \mmSchema
-    \item \mmWebhook
-    \item \mmDesktop
-    \item \mmTooling
-    \item \mmSecurity
-\fi
 \end{itemize}
 
 \role{Co-founder \& Full Stack Engineer}{Bifrost Code}{February 2025 -- Present}{independent software studio; side project in my own time, alongside the full-time Moneta Market role}
 \begin{itemize}
-\ifbackend
-    \item \bfHosting
+    \item \bfDodfest
+    \item \bfTesting
     \item \bfProducts
-\else
-    \item \bfProducts
-    \item \bfHosting
-\fi
 \end{itemize}
 
 \role{.NET Software Developer}{Grupo Roga}{March 2024 -- August 2025}{}
@@ -215,11 +199,10 @@ Full stack engineer who builds products end to end and runs the infrastructure u
 % "Selected Projects (Bifrost Code, in production)" never registered as a
 % section, so projects were swallowed by Work Experience.
 \section*{Selected Projects}
-{\textcolor{subtle}{\textit{Bifrost Code side projects, running in production}}}\par\vspace{1pt}
 \begin{itemize}
-    \item \textbf{FisioApp:} multi-tenant clinic management (patients, clinical records, appointments, payments); Next.js + PostgreSQL, WCAG 2.1 AA audited, automated off-site backups via cron to Backblaze B2.
+    \item \textbf{FisioApp:} multi-tenant clinic management in production at Kineia Fisioterapia (patients, clinical records, appointments, payments); Next.js + PostgreSQL, WCAG 2.1 AA audited.
     \item \textbf{Feriu:} multi-tenant shared-expense platform (Splitwise-style settlement engine); NestJS + Next.js monorepo, PostgreSQL.
-    \item \textbf{Karaoke Balu:} real-time karaoke request platform (SSE-synced queue, kiosk mode, Virtual DJ integration); Express + React.
+    \item \textbf{Karaoke Balu:} real-time karaoke request platform (SSE-synced queue, kiosk mode); Express + React.
 \end{itemize}
 
 % ----- Education -----
