@@ -47,14 +47,14 @@
   "hero": {
     "eyebrow": "Ingeniero full stack · Backend · Cloud",
     "headline": "Construyo software en producción, y la infraestructura donde corre.",
-    "lead": "React y Next.js al frente, Python y .NET detrás, PostgreSQL y AWS por debajo. Diseñé la plataforma de producción de Moneta Market y opero productos para clientes desde mi estudio, Bifrost Code.",
+    "lead": "React y Next.js al frente, Python y .NET detrás, PostgreSQL y AWS por debajo. Construí la primera plataforma de producción en contenedores de Moneta Market y opero productos para clientes desde mi estudio, Bifrost Code.",
     "factCitizen": "Ciudadano estadounidense — no requiere visa ni patrocinio",
     "factRemote": "Abierto a remoto o reubicación en EE. UU.",
     "factLocation": "Radico en Chihuahua, México",
     "factLanguages": "Inglés B2 · Español nativo",
     "stat1": "empleados en más de 170 sucursales usan el ERP que amplié",
     "stat2": "productos para clientes que construí, en producción",
-    "stat3": "servicios en la plataforma de producción que diseñé en Moneta Market"
+    "stat3": "servicios en la primera plataforma en contenedores que construí en Moneta Market"
   },
   "work": {
     "kicker": "01 · Trabajo destacado",
@@ -83,7 +83,7 @@
     "mmPeriod": "Agosto 2025 — Presente",
     "monetaRole": "Ingeniero Full Stack",
     "monetaCompany": "Moneta Market LLC",
-    "monetaSummary": "Diseñé y construí la plataforma de producción de la empresa (seis servicios en AWS, la base de datos detrás y un pipeline de visión en el dispositivo) y guié a los dos becarios del equipo cuando se fue el lead developer.",
+    "monetaSummary": "Construí la primera plataforma de producción en contenedores de la empresa (seis servicios en AWS, la base de datos detrás y un pipeline de visión en el dispositivo) y guié a los dos becarios del equipo cuando se fue el lead developer.",
     "monetaB1": "Sustituí los despliegues manuales por la primera plataforma containerizada de la empresa: seis servicios en AWS EC2 (dos microservicios FastAPI, Label Studio, MLflow y Nginx) que se levantan de forma reproducible con Docker Compose.",
     "monetaB7": "Construí un pipeline de visión por computadora en un NVIDIA Jetson Orin Nano que identifica los productos que un cliente toma de un refrigerador, y el arnés de evaluación que fijó sus requisitos de producción.",
     "monetaB2": "Diseñé el esquema PostgreSQL sobre el que corre la operación: 25 tablas en AWS RDS con 24 llaves foráneas, 34 índices, migraciones idempotentes y borrado lógico con auditoría, accesible solo a través de un bastion SSH.",
