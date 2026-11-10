@@ -47,14 +47,14 @@
   "hero": {
     "eyebrow": "Full stack engineer · Backend · Cloud",
     "headline": "I build production software, and the infrastructure it runs on.",
-    "lead": "React and Next.js on the front, Python and .NET behind it, PostgreSQL and AWS underneath. I designed the production platform at Moneta Market and run client products through my studio, Bifrost Code.",
+    "lead": "React and Next.js on the front, Python and .NET behind it, PostgreSQL and AWS underneath. I built the company's first containerized production platform at Moneta Market and run client products through my studio, Bifrost Code.",
     "factCitizen": "US citizen — no visa sponsorship needed",
     "factRemote": "Open to remote or US relocation",
     "factLocation": "Based in Chihuahua, Mexico",
     "factLanguages": "English B2 · Spanish native",
     "stat1": "employees across 170+ branches use the ERP I extended",
     "stat2": "client products I built, live in production",
-    "stat3": "services in the production platform I designed at Moneta Market"
+    "stat3": "services in the first containerized platform I built at Moneta Market"
   },
   "work": {
     "kicker": "01 · Selected work",
@@ -83,7 +83,7 @@
     "mmPeriod": "August 2025 — Present",
     "monetaRole": "Full Stack Engineer",
     "monetaCompany": "Moneta Market LLC",
-    "monetaSummary": "Designed and built the company's production platform (six services on AWS, the database behind it and an on-device vision pipeline) and led the team's two interns after the lead developer left.",
+    "monetaSummary": "Built the company's first containerized production platform (six services on AWS, the database behind it and an on-device vision pipeline) and led the team's two interns after the lead developer left.",
     "monetaB1": "Replaced manual deployments with the company's first containerized platform: six services on AWS EC2 (two FastAPI microservices, Label Studio, MLflow, Nginx) brought up reproducibly with Docker Compose.",
     "monetaB7": "Built an on-device computer-vision pipeline on NVIDIA Jetson Orin Nano that identifies the products a customer takes from a retail cooler, plus the evaluation harness that set its production requirements.",
     "monetaB2": "Designed the PostgreSQL schema the operation runs on: 25 tables on AWS RDS with 24 foreign keys, 34 indexes, idempotent migrations and a soft-delete audit trail, reachable only through an SSH bastion.",
